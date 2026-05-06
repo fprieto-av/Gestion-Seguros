@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p assets/img assets/video assets/css assets/js)",
+      "Bash(cp \"01.jpg\" \"assets/img/banner-home.jpg\")",
+      "Bash(cp \"02.jpg\" \"assets/img/banner-caucion.jpg\")",
+      "Bash(cp \"03.jpg\" \"assets/img/banner-personas.jpg\")",
+      "Bash(cp \"04.jpg\" \"assets/img/banner-rc.jpg\")",
+      "Bash(awk '{print $NF, \"\\(\"$5\" bytes\\)\"}')",
+      "Bash(cp *)",
+      "PowerShell(Start-Process \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\Sitio\\\\index.html\")"
+    ]
+  }
+}
