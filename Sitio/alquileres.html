@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alquileres | Gestión Seguros</title>
+<meta name="description" content="Garantías de alquiler de Gestión Seguros para vivienda y comercio. Simulá tu cotización y consultá cobertura, requisitos y beneficios.">
+<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  .alq-sim-title { margin-bottom: 18px; }
+  .alq-sim-title h3 { font-size: 24px; margin-bottom: 8px; }
+  .alq-sim-title p { color: var(--ink); font-size: 14px; }
+  .alq-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    padding: 34px;
+    box-shadow: var(--shadow-md);
+  }
+  .alq-card h3 { font-size: 24px; margin-bottom: 20px; color: var(--dark); }
+  .alq-step { margin-bottom: 12px; }
+  .alq-step label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .alq-opts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .alq-opts button {
+    border: 1.5px solid var(--line);
+    border-radius: var(--r-sm);
+    padding: 10px 0;
+    background: var(--bg);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--ink);
+  }
+  .alq-card input, .alq-card select {
+    width: 100%;
+    border: 1.5px solid var(--line);
+    border-radius: var(--r-sm);
+    padding: 12px 14px;
+    background: var(--bg);
+    outline: none;
+    font-size: 15px;
+    color: var(--dark);
+  }
+  .alq-card input:focus, .alq-card select:focus {
+    border-color: var(--primary);
+    background: var(--white);
+  }
+  .alq-inline { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .alq-btn {
+    width: 100%;
+    border-radius: var(--r-md);
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 14px 16px;
+    font-weight: 800;
+    margin-top: 10px;
+    box-shadow: var(--shadow-cta);
+    transition: all 0.2s var(--ease);
+  }
+  .alq-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+  }
+  .alq-note { font-size: 11px; color: var(--ink-light); text-align: right; margin-top: 6px; }
+  .alq-result {
+    display: none;
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: var(--r-sm);
+    background: var(--primary-soft);
+    border: 1px solid rgba(27,79,174,0.28);
+    color: var(--primary-dark);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+  .alq-error {
+    display: none;
+    margin-top: 10px;
+    color: #c43131;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .alq-opts button.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+  }
+  .alq-contact-link {
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .alq-jump-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+  }
+  .alq-jump-card p {
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .alq-intro-side {
+    position: static;
+    top: auto;
+  }
+  @media (max-width: 640px) {
+    .alq-card { padding: 24px; }
+    .alq-opts { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 1024px) {
+    .alq-intro-side {
+      order: -1;
+      margin-bottom: 20px;
+    }
+  }
+  .detail-main .alq-type-title {
+    color: var(--primary);
+    font-weight: 800;
+  }
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><img src="assets/img/logo.png" alt="" class="loader-logo"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><path d="M22 6l-10 7L2 6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="i-li" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 100 4 2 2 0 000-4z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37a4 4 0 11-4.62-4.62M17.5 6.5h.01"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12 9.545 15.568z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M20.52 3.48A11.93 11.93 0 0012.05 0C5.49 0 .13 5.36.13 11.92a11.9 11.9 0 001.6 5.94L0 24l6.3-1.66a11.88 11.88 0 005.73 1.46h.01c6.56 0 11.92-5.36 11.92-11.92 0-3.18-1.24-6.18-3.44-8.4zM12.05 21.77h-.01a9.85 9.85 0 01-5.02-1.38l-.36-.21-3.74.98 1-3.64-.23-.37a9.85 9.85 0 0115.27-12.1 9.82 9.82 0 01-6.91 16.72zm5.71-7.38c-.31-.16-1.85-.91-2.14-1.01-.29-.1-.5-.16-.71.16-.21.31-.82 1.01-1 1.22-.18.21-.37.24-.68.08-.31-.16-1.32-.49-2.52-1.55-.93-.82-1.56-1.84-1.74-2.15-.18-.31-.02-.48.14-.63.14-.14.31-.37.47-.55.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.71-.97-2.34-.25-.61-.52-.53-.71-.54l-.61-.01c-.21 0-.55.08-.84.39-.29.31-1.11 1.08-1.11 2.63 0 1.55 1.14 3.05 1.3 3.26.16.21 2.24 3.42 5.43 4.79.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.6-.37z"/></symbol>
+  </defs>
+</svg>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a>
+    <a href="tel:08003451340"><svg class="icon"><use href="#i-phone"/></svg> 0800-345-1340</a>
+  </div>
+  <div class="topbar-right">
+    <a href="mailto:caucion@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> caucion@gestionseguros.com.ar</a>
+  </div>
+</div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="logo">
+    <img src="assets/img/logo.png" alt="Gestión Seguros">
+  </a>
+  <div class="nav-menu" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="nosotros.html">Nosotros</a>
+    <div class="has-submenu">
+      <a href="index.html#productos">Coberturas</a>
+      <div class="submenu">
+        <a href="caucion.html"><svg class="icon"><use href="#i-arrow"/></svg> Caución</a>
+        <a href="personas.html"><svg class="icon"><use href="#i-arrow"/></svg> Personas</a>
+        <a href="responsabilidad-civil.html"><svg class="icon"><use href="#i-arrow"/></svg> Responsabilidad Civil</a>
+      </div>
+    </div>
+    <a href="alquileres.html" class="active">Alquileres</a>
+    <a href="cotizador.html">Cotizador</a>
+    <a href="productores.html">Productores</a>
+    <a href="formularios.html">Formularios</a>
+    <a href="contacto.html">Contacto</a>
+    <div class="has-submenu">
+      <a href="#">Gestión Online</a>
+      <div class="submenu">
+        <a href="#" title="Acceso a sistema GestionAR"><svg class="icon"><use href="#i-arrow"/></svg> GestionAR</a>
+        <a href="#" title="Acceso a instructivos y manuales"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos/Manuales</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-cta">
+    <a href="contacto.html?producto=alquileres" class="btn btn-accent">Cotizar ahora <svg class="icon" style="width:16px"><use href="#i-arrow"/></svg></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb"><a href="index.html">Home</a> / <span>Alquileres</span></nav>
+    <span class="section-label dark reveal"><svg class="icon" style="width:14px"><use href="#i-award"/></svg>Alquileres</span>
+    <h1>Garantías de <em>Alquileres</em></h1>
+    <p class="lead">Una alternativa moderna y segura para reemplazar la garantía propietaria tradicional. Protegemos al propietario y simplificamos el acceso al inquilino.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="detail-grid">
+    <article class="detail-main detail-main--accent-titles">
+      <h2>¿Qué cubre nuestra garantía?</h2>
+      <ul>
+        <li>Alquileres, expensas y servicios</li>
+        <li>Ocupación indebida</li>
+        <li>Asesoramiento legal con desalojo incluido</li>
+        <li>Ajustes automáticos del contrato</li>
+        <li>Depósito en garantía (opcional)</li>
+      </ul>
+
+      <h2>Tipos de garantías</h2>
+      <p><strong class="alq-type-title">Garantía de alquiler de vivienda:</strong> protege al propietario frente al incumplimiento del pago del alquiler, expensas, servicios y demás obligaciones contractuales.</p>
+      <p><strong class="alq-type-title">Garantía de alquiler comercial:</strong> orientada a oficinas, locales, depósitos y naves industriales para asegurar el cumplimiento de las obligaciones del inquilino.</p>
+
+      <h2>Requisitos</h2>
+      <ul>
+        <li>No tener antecedentes financieros negativos.</li>
+        <li>Ingresos demostrables: últimos 3 recibos de sueldo, monotributo o declaración de ganancias.</li>
+        <li>Que el alquiler + expensas no supere el 50% de los ingresos (si lo supera, se puede presentar un garante).</li>
+      </ul>
+    </article>
+
+    <aside class="detail-side alq-intro-side">
+      <div class="alq-sim-title">
+        <h3>Simulador de Alquileres</h3>
+        <p>Conocé en segundos una referencia de prima mensual y total estimado.</p>
+      </div>
+      <div class="alq-jump-card">
+        <p>Completá un formulario corto y obtené al instante un cálculo orientativo.</p>
+        <a href="#simulador-alquileres" class="btn btn-primary">Ir al simulador <svg class="icon"><use href="#i-arrow"/></svg></a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section" id="simulador-alquileres">
+  <div class="section-head">
+    <h2>Simulador de Alquileres</h2>
+    <p>Completá estos datos y obtené una referencia inicial para tu garantía de alquiler.</p>
+  </div>
+  <div style="max-width:640px;margin:0 auto;">
+    <form class="alq-card" id="alqForm">
+      <h3>Simulá tu seguro de caución</h3>
+      <div class="alq-step">
+        <label>¿Cuántos ambientes tendrá tu próximo hogar?</label>
+        <div class="alq-opts">
+          <button type="button" data-amb="1">1</button>
+          <button type="button" data-amb="2" class="active">2</button>
+          <button type="button" data-amb="3">3</button>
+          <button type="button" data-amb="4">4</button>
+          <button type="button" data-amb="5">5+</button>
+        </div>
+      </div>
+      <div class="alq-step">
+        <label>Valor mensual del alquiler</label>
+        <input type="text" id="alqValor" name="valorAlquiler" placeholder="$ 300.000" value="$ 300.000" required>
+      </div>
+      <div class="alq-step">
+        <label>Valor mensual de las expensas</label>
+        <input type="text" id="alqExpensas" name="expensas" placeholder="$ 90.000" value="$ 90.000" required>
+      </div>
+      <div class="alq-step">
+        <label>Duración del contrato</label>
+        <select id="alqDuracion" name="duracion" required>
+          <option value="">Seleccione una opción</option>
+          <option value="12">12 meses</option>
+          <option value="24" selected>24 meses</option>
+          <option value="36">36 meses</option>
+        </select>
+      </div>
+      <div class="alq-step">
+        <label>Provincia</label>
+        <select id="alqProvincia" name="provincia" required>
+          <option value="">Seleccione una provincia</option>
+          <option value="Buenos Aires">Buenos Aires</option>
+          <option value="CABA">CABA</option>
+          <option value="Córdoba">Córdoba</option>
+          <option value="Santa Fe">Santa Fe</option>
+        </select>
+      </div>
+      <div class="alq-step">
+        <label>E-mail</label>
+        <input type="email" id="alqEmail" name="email" placeholder="juan@email.com" required>
+      </div>
+      <div class="alq-inline">
+        <div class="alq-step">
+          <label>Código de área</label>
+          <input type="text" id="alqArea" name="codigoArea" placeholder="011" required>
+        </div>
+        <div class="alq-step">
+          <label>Teléfono</label>
+          <input type="text" id="alqTelefono" name="telefono" placeholder="12345678" required>
+        </div>
+      </div>
+      <button class="alq-btn" type="submit">Simular</button>
+      <div class="alq-note">*Datos obligatorios</div>
+      <div id="alqError" class="alq-error"></div>
+      <div id="alqResultado" class="alq-result"></div>
+      <a id="alqContactoLink" class="alq-contact-link" href="contacto.html?producto=alquileres">Continuar y solicitar cotización</a>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="Gestión Seguros"></a>
+      <p>Compañía argentina de seguros. Caución, Personas y Responsabilidad Civil.</p>
+      <div class="social">
+        <a href="https://ar.linkedin.com/company/gestionsegurossa" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-li"/></svg></a>
+        <a href="https://www.instagram.com/gestionseguros.sa/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-ig"/></svg></a>
+        <a href="https://www.facebook.com/gestionseguros.sa" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-fb"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCnAyg1zeqZ5_QcsXsoBoGWw" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-yt"/></svg></a>
+      </div>
+      <div class="ssn-block"><strong>Organismo de control</strong>SSN · <a href="https://www.argentina.gob.ar/ssn" target="_blank" rel="noopener">www.argentina.gob.ar/ssn</a></div>
+    </div>
+    <div class="footer-col"><h5>Coberturas</h5><a href="caucion.html">Caución</a><a href="alquileres.html">Alquileres</a><a href="personas.html">Personas</a><a href="responsabilidad-civil.html">Resp. Civil</a></div>
+    <div class="footer-col"><h5>Sitio</h5><a href="cotizador.html">Cotizador</a><a href="formularios.html">Formularios</a><a href="productores.html">Productores</a></div>
+    <div class="footer-col"><h5>Empresa</h5><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></div>
+    <div class="footer-col"><h5>Contacto</h5><a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a><a href="tel:08003451340"><svg class="icon"><use href="#i-phone"/></svg> 0800-345-1340</a><a href="mailto:info@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> info@gestionseguros.com.ar</a></div>
+  </div>
+  <div class="footer-bottom">
+    <div>© <span id="currentYear">2026</span> Gestión Seguros S.A.</div>
+    <div><a href="#">Privacidad</a> · <a href="#">Términos</a></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5491152544009?text=Hola!%20Quiero%20cotizar%20una%20garant%C3%ADa%20de%20alquiler" class="wa-float" aria-label="WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>
+</a>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
