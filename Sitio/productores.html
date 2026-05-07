@@ -26,8 +26,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .pas-docs {
     border: 1px solid var(--line);
     border-radius: var(--r-md);
-    padding: 18px;
-    margin-top: 12px;
+    padding: 14px;
+    margin-top: 8px;
     background: var(--bg);
   }
   .pas-step {
@@ -45,30 +45,172 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     margin-bottom: 8px;
   }
   .pas-docs h4 {
-    margin: 0 0 8px;
+    margin: 0 0 6px;
     color: var(--dark);
+    font-size: 14px;
   }
   .pas-docs p {
-    margin: 0 0 18px;
+    margin: 0 0 12px;
     color: var(--ink);
-    font-size: 13px;
+    font-size: 12px;
   }
   .pas-docs-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px 12px;
   }
   .pas-doc-item label {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     display: block;
   }
   .pas-doc-item input[type="file"] {
-    font-size: 12px;
+    font-size: 11px;
   }
   .pas-doc-item--full {
-    grid-column: auto;
+    grid-column: span 3;
+  }
+  #form-pas .contact-grid {
+    max-width: 1060px;
+    width: min(100%, 1060px);
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  #beneficios .section-head,
+  #beneficios .proc-grid {
+    max-width: 1060px;
+    width: min(100%, 1060px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #beneficios.section {
+    padding-bottom: 0;
+  }
+  #form-pas.section {
+    background: var(--bg);
+    padding-top: 32px;
+    padding-bottom: clamp(36px, 5.5vw, 64px);
+  }
+  #form-pas .contact-info {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.95fr) 1.45fr;
+    grid-template-areas:
+      "title methods"
+      "text methods";
+    column-gap: 24px;
+    row-gap: 10px;
+    padding: 22px 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--r-lg);
+    background: linear-gradient(135deg, #1a448f 0%, #143a7e 60%, #102f69 100%);
+    color: var(--white);
+    box-shadow: var(--shadow-md);
+    width: 100%;
+    margin: 0;
+  }
+  #form-pas .contact-info::before { display: block; }
+  #form-pas .contact-info h3 { grid-area: title; margin: 0; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.06; color: var(--white); }
+  #form-pas .contact-info > p { grid-area: text; margin: 0; font-size: 14px; line-height: 1.55; color: rgba(255,255,255,0.82); max-width: 36ch; }
+  #form-pas .contact-info .contact-methods {
+    grid-area: methods;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 12px;
+  }
+  #form-pas .contact-info .contact-method {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.22);
+    border-radius: 12px;
+    padding: 10px 12px;
+    align-items: center;
+    min-height: 58px;
+    gap: 10px;
+  }
+  #form-pas .contact-info .contact-method .ic {
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: rgba(43,184,232,0.22);
+    color: #67d8ff;
+  }
+  #form-pas .contact-info .contact-method b {
+    font-size: 10px;
+    letter-spacing: 1.2px;
+    margin-bottom: 2px;
+    color: rgba(255,255,255,0.62);
+  }
+  #form-pas .contact-info .contact-method span,
+  #form-pas .contact-info .contact-method a {
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--white);
+  }
+  #form-pas .contact-info .contact-method a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  #form-pas .contact-info .contact-method a:hover {
+    color: var(--accent-dark);
+  }
+  #form-pas .contact-form {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 20px;
+  }
+  #form-pas .contact-form h3 { margin-bottom: 4px; font-size: 24px; }
+  #form-pas .contact-form h3 .pas-accent { color: var(--accent); }
+  #form-pas .contact-form h4 { margin: 2px 0 8px !important; font-size: 13px; }
+  #form-pas .form-grid { gap: 8px 10px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #form-pas .form-field { margin-bottom: 6px; }
+  #form-pas .form-field.full { grid-column: span 3; }
+  #form-pas .form-field label { font-size: 12px; margin-bottom: 4px; }
+  #form-pas .form-check {
+    margin: 6px 0 10px;
+    font-size: 12px;
+  }
+  #form-pas .form-field input,
+  #form-pas .form-field select,
+  #form-pas .form-field textarea {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  #form-pas .form-field textarea { min-height: 74px; }
+  #form-pas .pas-docs-grid { gap: 8px 10px; }
+  #form-pas .btn[type="submit"] { padding: 11px 14px; font-size: 14px; }
+  @media (max-width: 1200px) {
+    #form-pas .contact-info .contact-methods { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #form-pas .form-grid { grid-template-columns: 1fr 1fr; }
+    #form-pas .form-field.full { grid-column: span 2; }
+    #form-pas .pas-docs-grid { grid-template-columns: 1fr 1fr; }
+    #form-pas .pas-doc-item--full { grid-column: span 2; }
+  }
+  @media (max-width: 1024px) {
+    #form-pas .contact-info {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "title"
+        "text"
+        "methods";
+      row-gap: 14px;
+      padding: 20px;
+    }
+    #form-pas .contact-info .contact-methods { grid-template-columns: 1fr 1fr; }
+    #form-pas .contact-form { padding: 22px; }
+    #form-pas .form-grid { grid-template-columns: 1fr 1fr; }
+    #form-pas .form-field.full { grid-column: span 2; }
+    #form-pas .pas-docs-grid { grid-template-columns: 1fr 1fr; }
+    #form-pas .pas-doc-item--full { grid-column: span 2; }
+  }
+  @media (max-width: 680px) {
+    #form-pas .contact-info .contact-methods { grid-template-columns: 1fr; }
+    #form-pas .contact-form { padding: 16px; }
+    #form-pas .form-grid { grid-template-columns: 1fr; }
+    #form-pas .form-field.full { grid-column: span 1; }
+    #form-pas .pas-docs-grid { grid-template-columns: 1fr; }
+    #form-pas .pas-doc-item--full { grid-column: span 1; }
   }
 </style>
 </head>
@@ -135,7 +277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#">Gestión Online</a>
       <div class="submenu">
         <a href="#" title="Acceso a sistema GestionAR"><svg class="icon"><use href="#i-arrow"/></svg> GestionAR</a>
-        <a href="#" title="Acceso a instructivos y manuales"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos/Manuales</a>
+        <a href="#" title="Acceso a instructivos y manuales"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos/ Manuales</a>
       </div>
     </div>
   </div>
@@ -204,16 +346,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <form class="contact-form" id="contactForm" name="form-pas" action="https://formsubmit.co/comercial@gestionseguros.com.ar" method="POST" enctype="multipart/form-data" data-server-submit="true">
-      <h3>Sumate como PAS</h3>
+      <h3>Sumate como <span class="pas-accent">PAS</span></h3>
       <h4 style="margin:4px 0 12px;color:var(--dark)">Parte 1 · Datos del productor</h4>
       <div class="form-grid">
         <div class="form-field">
           <label>Nombre y Apellido <span class="req">*</span></label>
           <input type="text" name="nombre" required>
-        </div>
-        <div class="form-field">
-          <label>Matrícula SSN <span class="req">*</span></label>
-          <input type="text" name="matricula" required placeholder="Número de matrícula">
         </div>
         <div class="form-field">
           <label>Email <span class="req">*</span></label>
@@ -223,13 +361,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <label>Teléfono</label>
           <input type="tel" name="telefono">
         </div>
-        <div class="form-field full">
-          <label>Provincia</label>
-          <input type="text" name="provincia" placeholder="Ej: Buenos Aires">
-        </div>
-        <div class="form-field full">
-          <label>Experiencia / Observaciones</label>
-          <textarea name="mensaje" rows="4" placeholder="Contanos brevemente tu experiencia, cartera actual y expectativas"></textarea>
+        <div class="form-field">
+          <label>Matrícula SSN <span class="req">*</span></label>
+          <input type="text" name="matricula" required placeholder="Número de matrícula">
         </div>
         <div class="form-field">
           <label>C.U.I.T <span class="req">*</span></label>
@@ -244,6 +378,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <option value="Exento">Exento</option>
             <option value="No alcanzado">No alcanzado</option>
           </select>
+        </div>
+        <div class="form-field full">
+          <label>Provincia</label>
+          <input type="text" name="provincia" placeholder="Ej: Buenos Aires">
+        </div>
+        <div class="form-field full">
+          <label>Experiencia / Observaciones</label>
+          <textarea name="mensaje" rows="4" placeholder="Contanos brevemente tu experiencia, cartera actual y expectativas"></textarea>
         </div>
         <div class="form-field full">
           <fieldset class="pas-docs">
@@ -309,10 +451,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="ssn-block"><strong>Organismo de control</strong>SSN · <a href="https://www.argentina.gob.ar/ssn" target="_blank" rel="noopener">www.argentina.gob.ar/ssn</a></div>
     </div>
-    <div class="footer-col"><h5>Coberturas</h5><a href="caucion.html">Caución</a><a href="personas.html">Personas</a><a href="responsabilidad-civil.html">Resp. Civil</a></div>
-    <div class="footer-col"><h5>Empresa</h5><a href="nosotros.html">Nosotros</a><a href="productores.html">Productores</a><a href="contacto.html">Contacto</a></div>
-    <div class="footer-col"><h5>PAS</h5><a href="#">GestionAr</a><a href="#">Facturas</a><a href="#">Capacitaciones</a></div>
-    <div class="footer-col"><h5>Contacto</h5><a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a><a href="mailto:productores@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> productores@gestionseguros.com.ar</a></div>
+    <div class="footer-col"><h5>Coberturas</h5><a href="caucion.html">Caución</a><a href="alquileres.html">Alquileres</a><a href="personas.html">Personas</a><a href="responsabilidad-civil.html">Resp. Civil</a></div>
+    <div class="footer-col"><h5>Sitio</h5><a href="cotizador.html">Cotizador</a><a href="formularios.html">Formularios</a><a href="productores.html">Productores</a></div>
+    <div class="footer-col"><h5>Empresa</h5><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></div>
+    <div class="footer-col"><h5>Contacto</h5><a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a><a href="tel:08003451340"><svg class="icon"><use href="#i-phone"/></svg> 0800-345-1340</a><a href="mailto:info@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> info@gestionseguros.com.ar</a></div>
   </div>
   <div class="footer-bottom">
     <div>© <span id="currentYear">2026</span> Gestión Seguros S.A.</div>

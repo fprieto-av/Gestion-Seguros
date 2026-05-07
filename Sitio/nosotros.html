@@ -89,37 +89,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: block;
     background: #eef2f8;
   }
-  /* LinkedIn: imagen completa, escala con el ancho (sin recorte tipo cover) */
+  /* LinkedIn: imagen ocupa todo el media container (sin espacios) */
   .social-card-media--linkedin {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     min-height: 0;
     height: 100%;
     background: #eef2f8;
+    overflow: hidden;
   }
   /* Vista previa estática del perfil (LinkedIn no permite iframe) */
   .social-card-media--linkedin .social-linkedin-preview-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     width: 100%;
-    max-width: 100%;
     height: 100%;
-    min-width: 0;
-    min-height: 0;
+    line-height: 0;
     outline: none;
   }
   .social-linkedin-preview-link:focus-visible {
     box-shadow: inset 0 0 0 3px var(--primary);
   }
   .social-card-media--linkedin .social-linkedin-preview-link img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    object-position: center center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 3% center;
     display: block;
   }
   /* Misma altura de botones; borde invisible en primary para igualar ghost */
@@ -233,7 +226,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#">Gestión Online</a>
       <div class="submenu">
         <a href="#" title="Acceso a sistema GestionAR"><svg class="icon"><use href="#i-arrow"/></svg> GestionAR</a>
-        <a href="#" title="Acceso a instructivos y manuales"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos/Manuales</a>
+        <a href="#" title="Acceso a instructivos y manuales"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos/ Manuales</a>
       </div>
     </div>
   </div>
@@ -365,10 +358,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="ssn-block"><strong>Organismo de control</strong>SSN · <a href="https://www.argentina.gob.ar/ssn" target="_blank" rel="noopener">www.argentina.gob.ar/ssn</a></div>
     </div>
-    <div class="footer-col"><h5>Coberturas</h5><a href="caucion.html">Caución</a><a href="personas.html">Personas</a><a href="responsabilidad-civil.html">Resp. Civil</a></div>
-    <div class="footer-col"><h5>Empresa</h5><a href="nosotros.html">Nosotros</a><a href="productores.html">Productores</a><a href="contacto.html">Contacto</a></div>
-    <div class="footer-col"><h5>Gestión online</h5><a href="#">Mi panel</a><a href="#">Denunciar siniestro</a></div>
-    <div class="footer-col"><h5>Contacto</h5><a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a><a href="mailto:info@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> info@gestionseguros.com.ar</a></div>
+    <div class="footer-col"><h5>Coberturas</h5><a href="caucion.html">Caución</a><a href="alquileres.html">Alquileres</a><a href="personas.html">Personas</a><a href="responsabilidad-civil.html">Resp. Civil</a></div>
+    <div class="footer-col"><h5>Sitio</h5><a href="cotizador.html">Cotizador</a><a href="formularios.html">Formularios</a><a href="productores.html">Productores</a></div>
+    <div class="footer-col"><h5>Empresa</h5><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></div>
+    <div class="footer-col"><h5>Contacto</h5><a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a><a href="tel:08003451340"><svg class="icon"><use href="#i-phone"/></svg> 0800-345-1340</a><a href="mailto:info@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> info@gestionseguros.com.ar</a></div>
   </div>
   <div class="footer-bottom">
     <div>© <span id="currentYear">2026</span> Gestión Seguros S.A.</div>

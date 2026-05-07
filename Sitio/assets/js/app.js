@@ -16,6 +16,21 @@
     if (loader) setTimeout(() => loader.classList.add('hide'), 350);
   });
 
+  /* ----------------------- Topbar compartida ----------------------- */
+  const sharedTopbar = document.querySelector('.topbar');
+  if (sharedTopbar) {
+    sharedTopbar.innerHTML = `
+  <div class="topbar-left">
+    <a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a>
+    <a href="tel:08003451340"><svg class="icon"><use href="#i-phone"/></svg> 0800-345-1340</a>
+    <span class="topbar-item">Lunes a Viernes · 9 a 18hs</span>
+  </div>
+  <div class="topbar-right">
+    <a href="mailto:info@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> info@gestionseguros.com.ar</a>
+    <a href="#">Denunciar siniestro</a>
+  </div>`;
+  }
+
   /* ----------------------- Nav scroll state & móvil ----------------------- */
   const NAV_MOBILE_MAX = 1280;
   const nav = $('#nav');
@@ -260,7 +275,7 @@
       }
       if (contactLink) {
         contactLink.href = `contacto.html?producto=alquileres&alquiler=${alquiler}&expensas=${expensas}&duracion=${meses}&ambientes=${ambientes}&provincia=${encodeURIComponent(provincia.value)}`;
-        contactLink.style.display = 'inline-block';
+        contactLink.style.display = 'inline-flex';
       }
     });
     preview();
@@ -273,6 +288,9 @@
     const track = $('.partners-track', partnersRoot);
     const prevBtn = $('.partners-prev', partnersRoot);
     const nextBtn = $('.partners-next', partnersRoot);
+    if (!viewport || !track || !prevBtn || !nextBtn) {
+      // Section can be rendered as a video block.
+    } else {
     const items = $$('.partner-item', track);
     let offsetPx = 0;
 
@@ -310,6 +328,7 @@
       render();
     }, { passive: true });
     render();
+    }
   }
 
   /* ----------------------- Counter up ----------------------- */
@@ -417,6 +436,173 @@
       window.scrollTo({ top: y, behavior: 'smooth' });
     });
   });
+
+  /* ----------------------- Branding bloques internos ----------------------- */
+  const path = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  const isHome = path === '' || path === 'index.html';
+  const pageCfg = {
+    'caucion.html': {
+      unidad: 'Caución',
+      email: 'caucion@gestionseguros.com.ar',
+      whatsappText: 'Hola! Quiero cotizar un seguro de caución',
+      ctaTitle: '¿Necesitás una cobertura a medida?',
+      ctaText: 'Nuestro equipo de caución te asesora en minutos.',
+      ctaHref: 'contacto.html?producto=caucion'
+    },
+    'alquileres.html': {
+      unidad: 'Alquileres',
+      email: 'caucion@gestionseguros.com.ar',
+      whatsappText: 'Hola! Quiero cotizar una garantía de alquiler',
+      ctaTitle: '¿Querés avanzar con tu garantía?',
+      ctaText: 'Recibí asistencia personalizada para tu alquiler.',
+      ctaHref: 'contacto.html?producto=alquileres'
+    },
+    'personas.html': {
+      unidad: 'Personas',
+      email: 'personas@gestionseguros.com.ar',
+      whatsappText: 'Hola! Quiero cotizar un seguro de personas',
+      ctaTitle: '¿Buscás protección personal o familiar?',
+      ctaText: 'Te guiamos para elegir la cobertura ideal.',
+      ctaHref: 'contacto.html?producto=personas'
+    },
+    'responsabilidad-civil.html': {
+      unidad: 'Responsabilidad Civil',
+      email: 'rc@gestionseguros.com.ar',
+      whatsappText: 'Hola! Quiero cotizar una cobertura de responsabilidad civil',
+      ctaTitle: '¿Necesitás respaldo para tu actividad?',
+      ctaText: 'Cotizá RC con acompañamiento de especialistas.',
+      ctaHref: 'contacto.html?producto=rc'
+    },
+    'productores.html': {
+      unidad: 'Productores',
+      email: 'productores@gestionseguros.com.ar',
+      whatsappText: 'Hola! Soy PAS y quiero sumarme',
+      ctaTitle: '¿Sos PAS y querés sumarte?',
+      ctaText: 'Conocé beneficios y comenzá tu alta hoy.',
+      ctaHref: 'productores.html#form-pas'
+    },
+    'nosotros.html': {
+      unidad: 'Institucional',
+      email: 'info@gestionseguros.com.ar',
+      whatsappText: 'Hola! Quiero conocer más sobre Gestión Seguros',
+      ctaTitle: '¿Querés hablar con nuestro equipo?',
+      ctaText: 'Estamos para ayudarte en lo que necesites.',
+      ctaHref: 'contacto.html'
+    },
+    'formularios.html': {
+      unidad: 'Gestión y Formularios',
+      email: 'info@gestionseguros.com.ar',
+      whatsappText: 'Hola! Necesito ayuda con formularios',
+      ctaTitle: '¿No encontrás el formulario correcto?',
+      ctaText: 'Te orientamos para completar la gestión.',
+      ctaHref: 'contacto.html'
+    },
+    'contacto.html': {
+      unidad: 'Contacto',
+      email: 'info@gestionseguros.com.ar',
+      whatsappText: 'Hola! Quiero hacer una consulta',
+      ctaTitle: '¿Preferís hablar por WhatsApp?',
+      ctaText: 'Estamos disponibles para responderte rápido.',
+      ctaHref: 'https://wa.me/5491152544009?text=Hola!%20Quiero%20hacer%20una%20consulta'
+    },
+    'cotizador.html': {
+      unidad: 'Cotizador',
+      email: 'info@gestionseguros.com.ar',
+      whatsappText: 'Hola! Quiero que me ayuden a cotizar',
+      ctaTitle: '¿Necesitás ayuda para cotizar?',
+      ctaText: 'Un asesor te acompaña paso a paso.',
+      ctaHref: 'contacto.html'
+    },
+    'mediosdepago.html': {
+      unidad: 'Medios de pago',
+      email: 'info@gestionseguros.com.ar',
+      whatsappText: 'Hola! Necesito información sobre medios de pago',
+      ctaTitle: '¿Querés confirmar un medio de pago?',
+      ctaText: 'Te asistimos para gestionar pagos e imputaciones.',
+      ctaHref: 'contacto.html'
+    },
+    '404.html': {
+      unidad: 'Gestión Seguros',
+      email: 'info@gestionseguros.com.ar',
+      whatsappText: 'Hola! Necesito ayuda para encontrar una sección',
+      ctaTitle: '¿No encontraste lo que buscabas?',
+      ctaText: 'Te ayudamos a llegar rápido a la sección correcta.',
+      ctaHref: 'contacto.html'
+    }
+  };
+  const cfg = pageCfg[path];
+  if (!isHome && cfg) {
+    const hero = document.querySelector('.page-hero');
+    if (hero && !document.querySelector('.gs-brand-strip')) {
+      const strip = document.createElement('section');
+      strip.className = 'gs-brand-strip';
+      strip.innerHTML = `<div class="gs-brand-strip-inner"><b>Gestión Seguros</b><span>Respaldo institucional, respuesta ágil y atención humana en todo el país</span></div>`;
+      hero.insertAdjacentElement('afterend', strip);
+    }
+
+    const footer = document.querySelector('footer');
+    if (footer && !document.querySelector('.gs-page-cta')) {
+      const cardWrap = document.createElement('section');
+      cardWrap.className = 'gs-unit-card-wrap';
+      cardWrap.innerHTML = `
+        <div class="gs-unit-card">
+          <div>
+            <h4>Contacto directo · ${cfg.unidad}</h4>
+            <p>Canal rápido para consultas y seguimiento de tu gestión.</p>
+          </div>
+          <div class="gs-unit-card-links">
+            <a href="mailto:${cfg.email}"><svg class="icon" style="width:16px"><use href="#i-mail"/></svg>${cfg.email}</a>
+            <a href="https://wa.me/5491152544009?text=${encodeURIComponent(cfg.whatsappText)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;display:block"><use href="#i-wa"/></svg>WhatsApp</a>
+          </div>
+        </div>`;
+      footer.insertAdjacentElement('beforebegin', cardWrap);
+
+      const cta = document.createElement('section');
+      cta.className = 'gs-page-cta';
+      cta.innerHTML = `
+        <div class="gs-page-cta-inner">
+          <div class="gs-page-cta-copy">
+            <b>${cfg.ctaTitle}</b>
+            <span>${cfg.ctaText}</span>
+          </div>
+          <a class="btn btn-accent" href="${cfg.ctaHref}">Contactar ahora <svg class="icon" style="width:16px"><use href="#i-arrow"/></svg></a>
+        </div>`;
+      footer.insertAdjacentElement('beforebegin', cta);
+    }
+  }
+
+  /* ----------------------- WhatsApp flotante consistente ----------------------- */
+  const waFloat = document.querySelector('.wa-float');
+  if (waFloat) {
+    waFloat.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.93 11.93 0 0012.05 0C5.49 0 .13 5.36.13 11.92a11.9 11.9 0 001.6 5.94L0 24l6.3-1.66a11.88 11.88 0 005.73 1.46h.01c6.56 0 11.92-5.36 11.92-11.92 0-3.18-1.24-6.18-3.44-8.4zM12.05 21.77h-.01a9.85 9.85 0 01-5.02-1.38l-.36-.21-3.74.98 1-3.64-.23-.37a9.85 9.85 0 0115.27-12.1 9.82 9.82 0 01-6.91 16.72zm5.71-7.38c-.31-.16-1.85-.91-2.14-1.01-.29-.1-.5-.16-.71.16-.21.31-.82 1.01-1 1.22-.18.21-.37.24-.68.08-.31-.16-1.32-.49-2.52-1.55-.93-.82-1.56-1.84-1.74-2.15-.18-.31-.02-.48.14-.63.14-.14.31-.37.47-.55.16-.18.21-.31.32-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.71-.97-2.34-.25-.61-.52-.53-.71-.54l-.61-.01c-.21 0-.55.08-.84.39-.29.31-1.11 1.08-1.11 2.63 0 1.55 1.14 3.05 1.3 3.26.16.21 2.24 3.42 5.43 4.79.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.6-.37z"/></svg>`;
+  }
+
+  /* ----------------------- Footer compartido (single source of truth) ----------------------- */
+  const sharedFooter = document.querySelector('footer');
+  if (sharedFooter) {
+    sharedFooter.innerHTML = `
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="Gestión Seguros"></a>
+      <p>Compañía argentina de seguros. Caución, Personas y Responsabilidad Civil.</p>
+      <div class="social">
+        <a href="https://ar.linkedin.com/company/gestionsegurossa" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-li"/></svg></a>
+        <a href="https://www.instagram.com/gestionseguros.sa/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-ig"/></svg></a>
+        <a href="https://www.facebook.com/gestionseguros.sa" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-fb"/></svg></a>
+        <a href="https://www.youtube.com/channel/UCnAyg1zeqZ5_QcsXsoBoGWw" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-yt"/></svg></a>
+      </div>
+      <div class="ssn-block"><strong>Organismo de control</strong>SSN · <a href="https://www.argentina.gob.ar/ssn" target="_blank" rel="noopener">www.argentina.gob.ar/ssn</a></div>
+    </div>
+    <div class="footer-col"><h5>Coberturas</h5><a href="caucion.html">Caución</a><a href="alquileres.html">Alquileres</a><a href="personas.html">Personas</a><a href="responsabilidad-civil.html">Resp. Civil</a></div>
+    <div class="footer-col"><h5>Sitio</h5><a href="cotizador.html">Cotizador</a><a href="formularios.html">Formularios</a><a href="productores.html">Productores</a></div>
+    <div class="footer-col"><h5>Empresa</h5><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></div>
+    <div class="footer-col"><h5>Contacto</h5><a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a><a href="tel:08003451340"><svg class="icon"><use href="#i-phone"/></svg> 0800-345-1340</a><a href="mailto:info@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> info@gestionseguros.com.ar</a></div>
+  </div>
+  <div class="footer-bottom">
+    <div>© <span id="currentYear">2026</span> Gestión Seguros S.A.</div>
+    <div><a href="#">Privacidad</a> · <a href="#">Términos</a></div>
+  </div>`;
+  }
 
   /* ----------------------- Año dinámico en footer ----------------------- */
   const yearEl = $('#currentYear');
