@@ -135,16 +135,41 @@
     margin-bottom: 16px;
   }
   .alq-intro-side {
-    position: static;
-    top: auto;
+    position: sticky;
+    top: 190px;
+    align-self: start;
   }
   .alq-pre-sim-section.section { padding-bottom: clamp(18px, 3vw, 34px); }
+  .alq-programa-section.section {
+    padding-top: 0;
+    padding-bottom: clamp(22px, 3.5vw, 42px);
+  }
+  .alq-programa-wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    text-align: center;
+  }
   #simulador-alquileres.section { padding-top: clamp(18px, 3vw, 34px); }
   #simulador-alquileres {
     background: var(--bg);
   }
   #simulador-alquileres .section-head { margin-bottom: 24px; }
   .alq-sim-highlight { color: var(--accent); }
+  .alq-section-title {
+    max-width: 980px;
+    margin: 0 auto 14px;
+    text-align: center;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+  .alq-section-title--programa {
+    font-size: clamp(36px, 4.1vw, 54px);
+  }
+  .alq-section-title--sim {
+    font-size: clamp(48px, 5.2vw, 72px);
+  }
   @media (max-width: 640px) {
     .alq-card { padding: 24px; }
     .alq-opts { grid-template-columns: repeat(3, 1fr); }
@@ -153,6 +178,8 @@
   }
   @media (max-width: 1024px) {
     .alq-intro-side {
+      position: static;
+      top: auto;
       order: -1;
       margin-bottom: 20px;
     }
@@ -160,6 +187,115 @@
   .detail-main .alq-type-title {
     color: var(--primary);
     font-weight: 800;
+  }
+  .alq-programa-badge {
+    display: inline-flex;
+    margin: 0 auto 12px;
+  }
+  .detail-main.detail-main--accent-titles .alq-programa-card h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding: 0;
+    border-left: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .detail-main.detail-main--accent-titles .alq-programa-card h2::before {
+    content: none;
+  }
+  .alq-programa-card a.alq-external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .alq-programa-card a.alq-external-link::after {
+    content: "↗";
+    font-size: 12px;
+    color: var(--accent-dark);
+    line-height: 1;
+  }
+  .alq-programa-card {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 20px 18px 14px;
+    border: none;
+    border-radius: var(--r-lg);
+    background: transparent;
+    box-shadow: none;
+    text-align: left;
+  }
+  .alq-programa-card h2 {
+    margin: 0 0 14px;
+    color: var(--dark);
+  }
+  .alq-programa-card h2 .alq-programa-accent {
+    color: var(--accent);
+  }
+  .alq-programa-main {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .alq-programa-card h3 {
+    font-size: 18px;
+    color: var(--primary-dark);
+    margin: 14px 0 8px;
+  }
+  .alq-programa-card p {
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .alq-programa-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 26px;
+    align-items: start;
+    margin-top: 10px;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+  }
+  .alq-programa-columns > div:last-child {
+    padding-left: 22px;
+    border-left: 1px solid var(--line);
+  }
+  .alq-programa-card ul,
+  .alq-programa-card ol {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .alq-programa-card ul {
+    list-style: disc;
+  }
+  .alq-programa-card ol {
+    list-style: disc;
+  }
+  .alq-programa-card li {
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+  .alq-programa-info-link {
+    margin-top: 14px;
+  }
+  @media (max-width: 640px) {
+    .alq-programa-card {
+      padding: 18px;
+      margin-top: 0;
+    }
+    .alq-programa-columns {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 8px;
+      padding-top: 10px;
+    }
+    .alq-programa-columns > div:last-child {
+      padding-left: 0;
+      border-left: none;
+    }
+    .alq-programa-card h3 { font-size: 17px; }
   }
 </style>
 </head>
@@ -210,12 +346,13 @@
     <a href="cotizador.html">Cotizador</a>
     <a href="productores.html">Productores</a>
     <a href="formularios.html">Formularios</a>
+    <a href="mediosdepago.html">Pagos</a>
     <a href="contacto.html">Contacto</a>
     <div class="has-submenu">
       <a href="#">Gestión Online</a>
       <div class="submenu">
         <a href="#" title="Acceso a sistema GestionAR"><svg class="icon"><use href="#i-arrow"/></svg> GestionAR</a>
-        <a href="#" title="Acceso a instructivos y manuales"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos/ Manuales</a>
+        <a href="instructivos.html" title="Acceso a instructivos y manuales"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos/ Manuales</a>
       </div>
     </div>
   </div>
@@ -237,7 +374,7 @@
 <section class="section alq-pre-sim-section">
   <div class="detail-grid">
     <article class="detail-main detail-main--accent-titles">
-      <h2>¿Qué cubre nuestra garantía?</h2>
+      <h2 class="detail-h2-clean">¿Qué cubre nuestra garantía?</h2>
       <ul>
         <li>Alquileres, expensas y servicios</li>
         <li>Ocupación indebida</li>
@@ -256,6 +393,7 @@
         <li>Ingresos demostrables: últimos 3 recibos de sueldo, monotributo o declaración de ganancias.</li>
         <li>Que el alquiler + expensas no supere el 50% de los ingresos (si lo supera, se puede presentar un garante).</li>
       </ul>
+
     </article>
 
     <aside class="detail-side alq-intro-side">
@@ -271,9 +409,44 @@
   </div>
 </section>
 
+<section class="section alq-programa-section">
+  <div class="alq-programa-wrap">
+    <span class="section-label alq-programa-badge"><svg class="icon" style="width:14px"><use href="#i-award"/></svg>Programa especial</span>
+    <div class="alq-programa-card">
+      <h2 class="alq-section-title alq-section-title--programa">Programa “<span class="alq-programa-accent">Garantía + Fácil</span>” – CABA</h2>
+      <div class="alq-programa-main">
+        <p>En Gestión Seguros somos parte del programa <strong>Garantía Más Fácil</strong> del Gobierno de la Ciudad de Buenos Aires, junto al Instituto de la Vivienda.</p>
+        <p>Si alquilás en CABA, podés acceder a tu garantía con hasta un <strong>70% de descuento</strong>.</p>
+      </div>
+      <div class="alq-programa-columns">
+        <div>
+          <h3>¿Cómo acceder?</h3>
+          <ul>
+            <li>Primero debés inscribirte en la web del IVC.</li>
+            <li>Luego, al solicitar tu póliza en Gestión Seguros, indicá que sos beneficiario del programa.</li>
+          </ul>
+          <p class="alq-programa-info-link"><strong>Más info e inscripción:</strong> <a class="alq-external-link" href="https://vivienda.buenosaires.gob.ar/garantia#top" target="_blank" rel="noopener">vivienda.buenosaires.gob.ar/garantia#top</a></p>
+        </div>
+        <div>
+          <h3>Para postularte, necesitás</h3>
+          <ul>
+            <li>Ser mayor de 18 años.</li>
+            <li>Tener ingresos familiares de hasta 7 SMVM.</li>
+            <li>No registrar antecedentes financieros negativos.</li>
+            <li>Contar con DNI argentino.</li>
+            <li>Destino habitacional y propiedad ubicada en CABA.</li>
+          </ul>
+        </div>
+      </div>
+      <p><strong>Referencia SMVM:</strong> <a class="alq-external-link" href="https://www.argentina.gob.ar/trabajo/consejodelsalario" target="_blank" rel="noopener">argentina.gob.ar/trabajo/consejodelsalario</a></p>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="simulador-alquileres">
   <div class="section-head">
-    <h2>Simulador de <span class="alq-sim-highlight">Alquileres</span></h2>
+    <span class="section-label"><svg class="icon" style="width:14px"><use href="#i-award"/></svg>Simulador</span>
+    <h2 class="alq-section-title alq-section-title--sim">Simulador de <span class="alq-sim-highlight">Alquileres</span></h2>
     <p>Completá estos datos y obtené una referencia inicial para tu garantía de alquiler.</p>
   </div>
   <div style="max-width:920px;margin:0 auto;">

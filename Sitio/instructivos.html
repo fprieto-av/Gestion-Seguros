@@ -3,46 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Formularios | Gestión Seguros</title>
-<meta name="description" content="Formularios de Gestión Seguros. Próximamente vas a encontrar en esta sección todos los formularios de gestión.">
+<title>Instructivos | Gestión Seguros</title>
+<meta name="description" content="Instructivos y manuales operativos de Gestión Seguros para altas, pólizas, preliquidaciones y validaciones.">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 <style>
-  .forms-hero {
+  .guides-intro {
     max-width: 980px;
-    margin: 0 auto 26px;
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 22px;
-    align-items: center;
-  }
-  .forms-hero img {
-    width: 220px;
-    height: 190px;
-    object-fit: cover;
-    border-radius: var(--r-md);
+    margin: 0 auto 24px;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
     border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 18px 20px;
   }
-  .forms-hero h2 {
-    font-size: 16px;
-    text-transform: uppercase;
-    letter-spacing: 1.4px;
-    color: var(--accent-dark);
-    margin-bottom: 4px;
-  }
-  .forms-hero h3 {
-    font-size: clamp(22px, 3.4vw, 30px);
-    font-weight: 800;
+  .guides-intro h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
     color: var(--dark);
-    line-height: 1.2;
-    margin: 0;
   }
-  .forms-tabs {
+  .guides-intro p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.6;
+  }
+  .guides-tabs {
     max-width: 980px;
-    margin: 0 auto 26px;
+    margin: 0 auto 24px;
     background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
     border: 1px solid var(--line);
     border-radius: var(--r-lg);
@@ -51,7 +42,7 @@
     position: relative;
     overflow: hidden;
   }
-  .forms-tabs::before {
+  .guides-tabs::before {
     content: "";
     position: absolute;
     top: 0;
@@ -60,15 +51,19 @@
     height: 3px;
     background: linear-gradient(90deg, var(--accent), #ffbe73);
   }
-  .forms-tabs h4 {
+  .guides-tabs h4 {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 14px;
     margin-bottom: 12px;
     color: var(--primary);
   }
-  .forms-links-row { display: flex; flex-wrap: wrap; gap: 10px; }
-  .forms-links-row a {
+  .guides-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .guides-links-row a {
     padding: 8px 14px;
     border: 1px solid var(--line);
     border-radius: var(--r-full);
@@ -78,30 +73,29 @@
     background: #fff;
     transition: all .2s var(--ease);
   }
-  .forms-links-row a:hover {
+  .guides-links-row a:hover {
     color: var(--accent-dark);
     border-color: rgba(255,154,31,0.45);
     background: rgba(255,154,31,0.14);
     transform: translateY(-1px);
   }
-  .forms-sections {
+  .guides-sections {
     max-width: 980px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  .forms-col {
+  .guides-col {
     background: var(--white);
     border: 1px solid var(--line);
     border-radius: var(--r-lg);
     box-shadow: var(--shadow-sm);
     padding: 20px;
-    transition: all .25s var(--ease);
     position: relative;
     overflow: hidden;
   }
-  .forms-col::before {
+  .guides-col::before {
     content: "";
     position: absolute;
     top: 0;
@@ -110,20 +104,19 @@
     height: 2px;
     background: linear-gradient(90deg, var(--accent), transparent);
   }
-  .forms-col:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .forms-col h5 {
+  .guides-col h5 {
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 12px;
     color: var(--primary);
   }
-  .forms-links-grid {
+  .guides-links-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0 16px;
   }
-  .forms-col a {
+  .guides-col a {
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -134,7 +127,7 @@
     transition: color .2s var(--ease), padding-left .2s var(--ease);
     position: relative;
   }
-  .forms-col a::before {
+  .guides-col a::before {
     content: "";
     position: absolute;
     left: 0;
@@ -144,10 +137,9 @@
     border-radius: 50%;
     background: linear-gradient(135deg, var(--accent), #ffbe73);
   }
-  .forms-col a:last-child { border-bottom: none; }
-  .forms-links-grid a:nth-last-child(-n+2) { border-bottom: none; }
-  .forms-col a:hover { color: var(--accent-dark); padding-left: 22px; }
-  .forms-link-meta {
+  .guides-col a:hover { color: var(--accent-dark); padding-left: 22px; }
+  .guides-links-grid a:nth-last-child(-n+2) { border-bottom: none; }
+  .guide-link-meta {
     display: inline-flex;
     width: fit-content;
     padding: 2px 8px;
@@ -160,11 +152,9 @@
     background: var(--primary-soft);
   }
   @media (max-width: 900px) {
-    .forms-hero { grid-template-columns: 1fr; }
-    .forms-hero img { width: 100%; height: 180px; }
-    .forms-links-grid { grid-template-columns: 1fr; }
-    .forms-links-grid a { border-bottom: 1px solid rgba(27,79,174,0.2); }
-    .forms-links-grid a:last-child { border-bottom: none; }
+    .guides-links-grid { grid-template-columns: 1fr; }
+    .guides-links-grid a { border-bottom: 1px solid rgba(27,79,174,0.2); }
+    .guides-links-grid a:last-child { border-bottom: none; }
   }
 </style>
 </head>
@@ -214,14 +204,14 @@
     <a href="alquileres.html">Alquileres</a>
     <a href="cotizador.html">Cotizador</a>
     <a href="productores.html">Productores</a>
-    <a href="formularios.html" class="active">Formularios</a>
+    <a href="formularios.html">Formularios</a>
     <a href="mediosdepago.html">Pagos</a>
     <a href="contacto.html">Contacto</a>
     <div class="has-submenu">
       <a href="#">Gestión Online</a>
       <div class="submenu">
         <a href="#" title="Acceso a sistema GestionAR"><svg class="icon"><use href="#i-arrow"/></svg> GestionAR</a>
-        <a href="instructivos.html" title="Acceso a instructivos y manuales"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos/ Manuales</a>
+        <a href="instructivos.html" class="active" title="Acceso a instructivos y manuales"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos/ Manuales</a>
       </div>
     </div>
   </div>
@@ -233,65 +223,70 @@
 
 <header class="page-hero">
   <div class="page-hero-inner">
-    <nav class="breadcrumb"><a href="index.html">Home</a> / <span>Formularios</span></nav>
-    <span class="section-label dark reveal"><svg class="icon" style="width:14px"><use href="#i-award"/></svg>Formularios</span>
-    <h1>Nuestros <em>Formularios</em></h1>
-    <p class="lead">Desde esta sección podrás acceder a formularios operativos de Caución, Personas y documentación general. <br>Descargá solicitudes, declaraciones y documentación de respaldo para iniciar gestiones, actualizar datos y presentar información requerida según el tipo de cobertura.<br></p>
+    <nav class="breadcrumb"><a href="index.html">Home</a> / <span>Instructivos</span></nav>
+    <span class="section-label dark reveal"><svg class="icon" style="width:14px"><use href="#i-award"/></svg>Instructivos</span>
+    <h1>Instructivos y <em>Manuales</em></h1>
+    <p class="lead">Accedé a guías prácticas para operar con Gestión Seguros: altas, pólizas, preliquidaciones, certificados y validaciones.</p>
   </div>
 </header>
 
+<section class="gs-brand-strip">
+  <div class="gs-brand-strip-inner">
+    <b>Gestión Seguros</b>
+    <span>Respaldo institucional, respuesta ágil y atención humana en todo el país</span>
+  </div>
+</section>
+
 <section class="section">
-  <div class="forms-hero">
-    <img src="assets/img/formularios-hero.png" alt="Gestión Seguros formularios">
-    <div>
-      <h2>Seleccioná el formulario que necesitás</h2>
-      <h3>Descargá y completá para iniciar la gestión</h3>
-    </div>
+  <div class="guides-intro">
+    <h2>Todo en un solo lugar</h2>
+    <p>Seleccioná el instructivo que necesitás y descargalo para seguir el paso a paso operativo según tu gestión.</p>
   </div>
 
-  <div class="forms-tabs">
+  <div class="guides-tabs">
     <h4>Acceso rápido</h4>
-    <div class="forms-links-row">
-      <a href="formularios/Caucion - Solicitud Convenio.pdf" target="_blank" rel="noopener">Solicitud convenio (Caución)</a>
-      <a href="formularios/Caucion - Manifestacion de Bienes.pdf" target="_blank" rel="noopener">Manifestación de bienes</a>
-      <a href="formularios/Caucion - Aval.pdf" target="_blank" rel="noopener">Aval</a>
-      <a href="formularios/Caucion - Aval Ingles .pdf" target="_blank" rel="noopener">Aval inglés</a>
-      <a href="formularios/RC - Formulario Denuncia de Siniestros.pdf" target="_blank" rel="noopener">Denuncia de siniestros RC</a>
-      <a href="formularios/RC - Formulario Turismo Aventura.pdf" target="_blank" rel="noopener">Turismo aventura</a>
+    <div class="guides-links-row">
+      <a href="instructivos/Instrutivo Alta PAS.pdf" target="_blank" rel="noopener">Alta PAS</a>
+      <a href="instructivos/Alta usuario web .pdf" target="_blank" rel="noopener">Alta usuario web</a>
+      <a href="instructivos/WEB INSTRUCTIVO.pdf" target="_blank" rel="noopener">Web instructivo</a>
+      <a href="instructivos/Instructivo de Carga de Preliquidaciones (1).pdf" target="_blank" rel="noopener">Carga de preliquidaciones</a>
+      <a href="instructivos/EXTRACCIÓN DE POLIZA .pdf" target="_blank" rel="noopener">Extracción de póliza</a>
+      <a href="instructivos/VALIDACION DE FIRMA DIGITAL.pdf" target="_blank" rel="noopener">Validación de firma digital</a>
     </div>
   </div>
 
-  <div class="forms-sections">
-    <article class="forms-col">
-      <h5>Formularios de Caución</h5>
-      <div class="forms-links-grid">
-        <a href="formularios/Caucion - Solicitud Convenio.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Alta</span>Solicitud convenio</a>
-        <a href="formularios/Caucion - Manifestacion de Bienes.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Patrimonial</span>Manifestación de bienes</a>
-        <a href="formularios/Caucion - Aval.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Garantía</span>Aval</a>
-        <a href="formularios/Caucion - Aval Ingles .pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Garantía</span>Aval inglés</a>
-        <a href="formularios/DOCUMENTACIÓN PARA DAR DE BAJA UNA POLIZA DE CAUCIÓN.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Baja</span>Documentación para dar de baja una póliza de caución</a>
+  <div class="guides-sections">
+    <article class="guides-col">
+      <h5>Altas y acceso web</h5>
+      <div class="guides-links-grid">
+        <a href="instructivos/Instrutivo Alta PAS.pdf" target="_blank" rel="noopener"><span class="guide-link-meta">Alta</span>Instructivo alta PAS</a>
+        <a href="instructivos/Alta usuario web .pdf" target="_blank" rel="noopener"><span class="guide-link-meta">Usuarios</span>Alta usuario web</a>
+        <a href="instructivos/WEB INSTRUCTIVO.pdf" target="_blank" rel="noopener"><span class="guide-link-meta">Portal</span>Web instructivo</a>
       </div>
     </article>
 
-    <article class="forms-col">
-      <h5>Formularios de Responsabilidad Civil</h5>
-      <div class="forms-links-grid">
-        <a href="formularios/RC - Formulario Contratistas Establecimientos Educativos.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Contratistas</span>Contratistas establecimientos educativos</a>
-        <a href="formularios/RC - Formulario Contratistas .pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Contratistas</span>Contratistas</a>
-        <a href="formularios/RC - Formulario Empresas de Turismo.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Turismo</span>Empresas de turismo</a>
-        <a href="formularios/RC - Formulario Denuncia de Siniestros.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Siniestros</span>Denuncia de siniestros</a>
-        <a href="formularios/RC - Formulario Carteles.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Publicidad</span>Carteles</a>
-        <a href="formularios/RC - Formulario Carteles(1).pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Publicidad</span>Carteles (versión 2)</a>
-        <a href="formularios/RC - Formulario Empresas de Seguridad.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Seguridad</span>Empresas de seguridad</a>
-        <a href="formularios/RC - Formulario Turismo Aventura.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Turismo</span>Turismo aventura</a>
-        <a href="formularios/RC - Formulario Restaurants.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Gastronomía</span>Restaurants</a>
-        <a href="formularios/RC - Formulario Obras Viales, Hidraulicas.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Obras</span>Obras viales e hidráulicas</a>
-        <a href="formularios/RC- Formulario Comprensivas.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">General</span>Comprensivas</a>
-        <a href="formularios/RC- Formulario Estadios Cerrados.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Eventos</span>Estadios cerrados</a>
-        <a href="formularios/RC- Formulario Exposiciones.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Eventos</span>Exposiciones</a>
-        <a href="formularios/RC- Formulario Obras.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Obras</span>Obras</a>
-        <a href="formularios/RC- Formulario Productos.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Productos</span>Productos</a>
-        <a href="formularios/RC- Formulario Profesional Individual.pdf" target="_blank" rel="noopener"><span class="forms-link-meta">Profesional</span>Profesional individual</a>
+    <article class="guides-col">
+      <h5>Pólizas e ítems</h5>
+      <div class="guides-links-grid">
+        <a href="instructivos/EXTRACCIÓN DE POLIZA .pdf" target="_blank" rel="noopener"><span class="guide-link-meta">Pólizas</span>Extracción de póliza</a>
+        <a href="instructivos/INCLUSION DE ITEM.pdf.pdf" target="_blank" rel="noopener"><span class="guide-link-meta">Ítems</span>Inclusión de ítem</a>
+        <a href="instructivos/EXCLUSION DE ITEM.pdf" target="_blank" rel="noopener"><span class="guide-link-meta">Ítems</span>Exclusión de ítem</a>
+      </div>
+    </article>
+
+    <article class="guides-col">
+      <h5>Facturación y certificados</h5>
+      <div class="guides-links-grid">
+        <a href="instructivos/CARGA DE FACTURA PAS.pdf" target="_blank" rel="noopener"><span class="guide-link-meta">Facturación</span>Carga de factura PAS</a>
+        <a href="instructivos/Instructivo de Carga de Preliquidaciones (1).pdf" target="_blank" rel="noopener"><span class="guide-link-meta">Liquidaciones</span>Carga de preliquidaciones</a>
+        <a href="instructivos/LIBRE DEUDA y CERTIFICADO GRUPAL.pdf" target="_blank" rel="noopener"><span class="guide-link-meta">Certificados</span>Libre deuda y certificado grupal</a>
+      </div>
+    </article>
+
+    <article class="guides-col">
+      <h5>Validaciones</h5>
+      <div class="guides-links-grid">
+        <a href="instructivos/VALIDACION DE FIRMA DIGITAL.pdf" target="_blank" rel="noopener"><span class="guide-link-meta">Firma digital</span>Validación de firma digital</a>
       </div>
     </article>
   </div>
@@ -321,7 +316,7 @@
   </div>
 </footer>
 
-<a href="https://wa.me/5491152544009?text=Hola!%20Necesito%20formularios%20de%20gesti%C3%B3n" class="wa-float" aria-label="WhatsApp" target="_blank" rel="noopener">
+<a href="https://wa.me/5491152544009?text=Hola!%20Necesito%20instructivos%20de%20gesti%C3%B3n" class="wa-float" aria-label="WhatsApp" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>
 </a>
 

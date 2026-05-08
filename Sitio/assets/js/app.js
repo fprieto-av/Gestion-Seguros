@@ -531,15 +531,18 @@
     }
   };
   const cfg = pageCfg[path];
-  if (!isHome && cfg) {
-    const hero = document.querySelector('.page-hero');
-    if (hero && !document.querySelector('.gs-brand-strip')) {
+  if (!isHome && !document.querySelector('.gs-brand-strip')) {
+    const stripAnchor = document.querySelector('.page-hero') || document.querySelector('.nav');
+    if (stripAnchor) {
       const strip = document.createElement('section');
       strip.className = 'gs-brand-strip';
       strip.innerHTML = `<div class="gs-brand-strip-inner"><b>Gestión Seguros</b><span>Respaldo institucional, respuesta ágil y atención humana en todo el país</span></div>`;
-      hero.insertAdjacentElement('afterend', strip);
+      stripAnchor.insertAdjacentElement('afterend', strip);
     }
+  }
 
+  if (!isHome && cfg) {
+    const pagesWithoutBlueCta = new Set(['caucion.html', 'responsabilidad-civil.html', 'personas.html']);
     const footer = document.querySelector('footer');
     if (footer && !document.querySelector('.gs-page-cta')) {
       const cardWrap = document.createElement('section');
@@ -552,22 +555,23 @@
           </div>
           <div class="gs-unit-card-links">
             <a href="mailto:${cfg.email}"><svg class="icon" style="width:16px"><use href="#i-mail"/></svg>${cfg.email}</a>
-            <a href="https://wa.me/5491152544009?text=${encodeURIComponent(cfg.whatsappText)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;display:block"><use href="#i-wa"/></svg>WhatsApp</a>
           </div>
         </div>`;
       footer.insertAdjacentElement('beforebegin', cardWrap);
 
-      const cta = document.createElement('section');
-      cta.className = 'gs-page-cta';
-      cta.innerHTML = `
-        <div class="gs-page-cta-inner">
-          <div class="gs-page-cta-copy">
-            <b>${cfg.ctaTitle}</b>
-            <span>${cfg.ctaText}</span>
-          </div>
-          <a class="btn btn-accent" href="${cfg.ctaHref}">Contactar ahora <svg class="icon" style="width:16px"><use href="#i-arrow"/></svg></a>
-        </div>`;
-      footer.insertAdjacentElement('beforebegin', cta);
+      if (!pagesWithoutBlueCta.has(path)) {
+        const cta = document.createElement('section');
+        cta.className = 'gs-page-cta';
+        cta.innerHTML = `
+          <div class="gs-page-cta-inner">
+            <div class="gs-page-cta-copy">
+              <b>${cfg.ctaTitle}</b>
+              <span>${cfg.ctaText}</span>
+            </div>
+            <a class="btn btn-accent" href="${cfg.ctaHref}">Contactar ahora <svg class="icon" style="width:16px"><use href="#i-arrow"/></svg></a>
+          </div>`;
+        footer.insertAdjacentElement('beforebegin', cta);
+      }
     }
   }
 
