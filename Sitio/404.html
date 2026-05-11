@@ -12,17 +12,227 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Página no encontrada · Gestión Seguros</title>
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#1B4FAE">
 <link rel="icon" type="image/png" href="assets/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 <style>
-  .e404 { display: grid; place-items: center; text-align: center; padding: 72px 24px 56px; background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%); color: #fff; }
-  .e404 .num { font-family: 'Archivo'; font-size: clamp(100px, 20vw, 220px); font-weight: 900; line-height: 1; background: linear-gradient(135deg, var(--accent), var(--secondary)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.05em; }
-  .e404 h1 { color: #fff; font-size: clamp(28px, 4vw, 44px); margin: 20px 0 16px; }
-  .e404 p { max-width: 520px; margin: 0 auto 32px; font-size: 17px; opacity: 0.85; line-height: 1.6; }
-  .e404 img { height: 48px; width: auto; max-width: min(260px, 85vw); object-fit: contain; opacity: 0.95; margin-bottom: 20px; }
+/* ===== 404 Hero ===== */
+.e404-wrap {
+  position: relative;
+  min-height: min(88vh, 820px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px var(--pad-x) 72px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(43,184,232,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(255,154,31,0.10) 0%, transparent 60%),
+    linear-gradient(160deg, var(--primary) 0%, var(--dark) 55%, var(--darker) 100%);
+  color: #fff;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Decorative rings */
+.e404-wrap::before,
+.e404-wrap::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+.e404-wrap::before {
+  width: clamp(400px, 70vw, 860px);
+  height: clamp(400px, 70vw, 860px);
+  border: 1px solid rgba(255,255,255,0.05);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.e404-wrap::after {
+  width: clamp(280px, 50vw, 600px);
+  height: clamp(280px, 50vw, 600px);
+  border: 1px solid rgba(43,184,232,0.12);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.e404-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  width: 100%;
+}
+
+.e404-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 7px 16px;
+  border-radius: var(--r-full);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 24px;
+}
+.e404-badge .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(255,154,31,0.8);
+  animation: pulse404 2s ease-in-out infinite;
+}
+@keyframes pulse404 { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(0.85)} }
+
+.e404-num {
+  font-family: 'Archivo', sans-serif;
+  font-size: clamp(110px, 22vw, 240px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  background: linear-gradient(135deg, var(--accent) 0%, #FFD080 40%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 60px rgba(43,184,232,0.25));
+  margin-bottom: 28px;
+  user-select: none;
+}
+
+.e404-inner h1 {
+  color: #fff;
+  font-size: clamp(24px, 3.5vw, 38px);
+  margin-bottom: 16px;
+  font-weight: 800;
+}
+
+.e404-inner p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.72);
+  max-width: 480px;
+  margin: 0 auto 36px;
+}
+
+.e404-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ===== Quick links section ===== */
+.e404-links {
+  background: var(--bg);
+  padding: 64px var(--pad-x);
+}
+.e404-links-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.e404-links-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.e404-links-header p {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.e404-links-header h2 {
+  font-size: clamp(22px, 3vw, 30px);
+  color: var(--dark);
+}
+
+.e404-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.e404-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  text-decoration: none;
+  color: var(--dark);
+  transition: all var(--dur) var(--ease);
+  position: relative;
+  overflow: hidden;
+}
+.e404-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--primary-soft), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.e404-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.e404-card:hover::before { opacity: 1; }
+.e404-card:hover .e404-card-icon { background: var(--primary); color: #fff; }
+
+.e404-card-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--r-md);
+  background: var(--primary-soft);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  position: relative;
+  z-index: 1;
+}
+.e404-card-title {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  position: relative;
+  z-index: 1;
+}
+.e404-card-desc {
+  font-size: 13px;
+  color: var(--ink-light);
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+.e404-card-arrow {
+  margin-top: auto;
+  font-size: 18px;
+  color: var(--primary);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.25s;
+  position: relative;
+  z-index: 1;
+}
+.e404-card:hover .e404-card-arrow { opacity: 1; transform: translateX(0); }
 </style>
 </head>
 <body>
@@ -30,20 +240,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PC23BLNS"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-<div class="e404">
-  <div>
-    <img src="assets/img/logo.png" alt="Gestión Seguros">
-    <div class="num">404</div>
-    <h1>Esta página no existe</h1>
-    <p>La dirección que buscás se mudó, cambió de nombre o nunca existió. Volvamos a la home y encontremos juntos el seguro que necesitás.</p>
-    <a href="index.html" class="btn btn-accent btn-lg">Volver al inicio</a>
-  </div>
-</div>
+
+<div class="loader" id="loader"><img src="assets/img/logo.png" alt="" class="loader-logo"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-calc" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M8 6h8M8 10h2M12 10h2M16 10h0M8 14h2M12 14h2M16 14h2M8 18h2M12 18h2M16 18h0"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><path d="M22 6l-10 7L2 6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
     <symbol id="i-li" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 100 4 2 2 0 000-4z"/></symbol>
     <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37a4 4 0 11-4.62-4.62M17.5 6.5h.01"/></symbol>
     <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></symbol>
@@ -52,29 +262,108 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </defs>
 </svg>
 
-<footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="Gestión Seguros"></a>
-      <p>Compañía argentina de seguros. Caución, Personas y Responsabilidad Civil.</p>
-      <div class="social">
-        <a href="https://ar.linkedin.com/company/gestionsegurossa" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-li"/></svg></a>
-        <a href="https://www.instagram.com/gestionseguros.sa/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-ig"/></svg></a>
-        <a href="https://www.facebook.com/gestionseguros.sa" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-fb"/></svg></a>
-        <a href="https://www.youtube.com/channel/UCnAyg1zeqZ5_QcsXsoBoGWw" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-yt"/></svg></a>
+<div class="topbar">
+  <div class="topbar-left">
+    <a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a>
+    <a href="tel:08003451340"><svg class="icon"><use href="#i-phone"/></svg> 0800-345-1340</a>
+  </div>
+  <div class="topbar-right">
+    <a href="mailto:info@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> info@gestionseguros.com.ar</a>
+  </div>
+</div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="logo">
+    <img src="assets/img/logo.png" alt="Gestión Seguros">
+  </a>
+  <div class="nav-menu" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="nosotros.html">Nosotros</a>
+    <div class="has-submenu">
+      <a href="index.html#productos">Coberturas</a>
+      <div class="submenu">
+        <a href="caucion.html"><svg class="icon"><use href="#i-arrow"/></svg> Caución</a>
+        <a href="personas.html"><svg class="icon"><use href="#i-arrow"/></svg> Personas</a>
+        <a href="responsabilidad-civil.html"><svg class="icon"><use href="#i-arrow"/></svg> Responsabilidad Civil</a>
       </div>
-      <div class="ssn-block"><strong>Organismo de control</strong>SSN · <a href="https://www.argentina.gob.ar/ssn" target="_blank" rel="noopener">www.argentina.gob.ar/ssn</a></div>
     </div>
-    <div class="footer-col"><h5>Coberturas</h5><a href="caucion.html">Caución</a><a href="alquileres.html">Alquileres</a><a href="personas.html">Personas</a><a href="responsabilidad-civil.html">Resp. Civil</a></div>
-    <div class="footer-col"><h5>Sitio</h5><a href="cotizador.html">Cotizador</a><a href="formularios.html">Formularios</a><a href="productores.html">Productores</a></div>
-    <div class="footer-col"><h5>Empresa</h5><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></div>
-    <div class="footer-col"><h5>Contacto</h5><a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a><a href="tel:08003451340"><svg class="icon"><use href="#i-phone"/></svg> 0800-345-1340</a><a href="mailto:info@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> info@gestionseguros.com.ar</a></div>
+    <a href="alquileres.html">Alquileres</a>
+    <a href="cotizador.html">Cotizador</a>
+    <a href="productores.html">Productores</a>
+    <a href="formularios.html">Formularios</a>
+    <a href="mediosdepago.html">Pagos</a>
+    <a href="contacto.html">Contacto</a>
+    <div class="has-submenu">
+      <a href="#">Gestión Online</a>
+      <div class="submenu">
+        <a href="https://gestionar.segurosgestion.com.ar/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-arrow"/></svg> GestionAR</a>
+        <a href="instructivos.html"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos / Manuales</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-bottom">
-    <div>© <span id="currentYear">2026</span> Gestión Seguros S.A.</div>
-    <div><a href="#">Privacidad</a> · <a href="#">Términos</a></div>
+  <div class="nav-cta">
+    <a href="cotizador.html" class="btn btn-accent">Cotizá ahora <svg class="icon" style="width:16px"><use href="#i-arrow"/></svg></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button>
   </div>
-</footer>
+</nav>
+
+<!-- 404 Hero -->
+<section class="e404-wrap">
+  <div class="e404-inner">
+    <div class="e404-badge"><span class="dot"></span>Error 404</div>
+    <div class="e404-num" aria-hidden="true">404</div>
+    <h1>Esta página no existe</h1>
+    <p>La dirección que buscás se mudó, cambió de nombre o nunca existió. Explorá las secciones de abajo o volvé al inicio.</p>
+    <div class="e404-actions">
+      <a href="index.html" class="btn btn-accent btn-lg">Volver al inicio <svg class="icon" style="width:16px"><use href="#i-home"/></svg></a>
+      <a href="contacto.html" class="btn btn-ghost btn-lg">Contactanos</a>
+    </div>
+  </div>
+</section>
+
+<!-- Quick links -->
+<section class="e404-links">
+  <div class="e404-links-inner">
+    <div class="e404-links-header">
+      <p>Destinos frecuentes</p>
+      <h2>¿A dónde querías ir?</h2>
+    </div>
+    <div class="e404-cards">
+      <a href="caucion.html" class="e404-card">
+        <div class="e404-card-icon"><svg class="icon"><use href="#i-shield"/></svg></div>
+        <div class="e404-card-title">Caución</div>
+        <div class="e404-card-desc">Garantías de cumplimiento para licitaciones y contratos.</div>
+        <span class="e404-card-arrow">→</span>
+      </a>
+      <a href="personas.html" class="e404-card">
+        <div class="e404-card-icon"><svg class="icon"><use href="#i-user"/></svg></div>
+        <div class="e404-card-title">Personas</div>
+        <div class="e404-card-desc">Vida, accidentes personales y sepelio para vos y tu familia.</div>
+        <span class="e404-card-arrow">→</span>
+      </a>
+      <a href="cotizador.html" class="e404-card">
+        <div class="e404-card-icon"><svg class="icon"><use href="#i-calc"/></svg></div>
+        <div class="e404-card-title">Cotizador</div>
+        <div class="e404-card-desc">Simulá el costo de tu cobertura en segundos.</div>
+        <span class="e404-card-arrow">→</span>
+      </a>
+      <a href="formularios.html" class="e404-card">
+        <div class="e404-card-icon"><svg class="icon"><use href="#i-file"/></svg></div>
+        <div class="e404-card-title">Formularios</div>
+        <div class="e404-card-desc">Accedé a formularios de alta, renovación y siniestros.</div>
+        <span class="e404-card-arrow">→</span>
+      </a>
+      <a href="contacto.html" class="e404-card">
+        <div class="e404-card-icon"><svg class="icon"><use href="#i-mail"/></svg></div>
+        <div class="e404-card-title">Contacto</div>
+        <div class="e404-card-desc">Escribinos o llamanos. Respondemos rápido.</div>
+        <span class="e404-card-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer></footer>
 
 <a href="https://wa.me/5491152544009?text=Hola!%20Necesito%20ayuda%20con%20el%20sitio" class="wa-float" aria-label="WhatsApp" target="_blank" rel="noopener">
   <svg viewBox="0 0 24 24" fill="currentColor"><use href="#i-wa"/></svg>
