@@ -90,8 +90,7 @@ export default function Contacto() {
                   <a href="mailto:caucion@gestionseguros.com.ar">caucion@gestionseguros.com.ar</a>
                   <a href="mailto:personas@gestionseguros.com.ar">personas@gestionseguros.com.ar</a>
                   <a href="mailto:rc@gestionseguros.com.ar">rc@gestionseguros.com.ar</a>
-                  <a href="mailto:productores@gestionseguros.com.ar">productores@gestionseguros.com.ar</a>
-                  <a href="mailto:siniestros@gestionseguros.com.ar">siniestros@gestionseguros.com.ar</a>
+                  <a href="mailto:comercial@gestionseguros.com.ar">comercial@gestionseguros.com.ar</a>
                 </div>
               </div>
               <div className="contact-method">
@@ -106,7 +105,7 @@ export default function Contacto() {
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-shield" /></svg></div>
                 <div>
                   <b>Denunciar siniestro</b>
-                  <a href="mailto:siniestros@gestionseguros.com.ar">siniestros@gestionseguros.com.ar</a>
+                  <a href="mailto:comercial@gestionseguros.com.ar">comercial@gestionseguros.com.ar</a>
                   <span>Dentro de las 72hs del hecho</span>
                 </div>
               </div>

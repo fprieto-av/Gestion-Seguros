@@ -70,7 +70,7 @@ export default function Productores() {
               </div>
               <div className="contact-method">
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-mail" /></svg></div>
-                <div><b>Contacto directo</b><a href="mailto:productores@gestionseguros.com.ar">productores@gestionseguros.com.ar</a></div>
+                <div><b>Contacto directo</b><a href="mailto:comercial@gestionseguros.com.ar">comercial@gestionseguros.com.ar</a></div>
               </div>
             </div>
           </div>
@@ -178,7 +178,7 @@ export default function Productores() {
       <ContactCard
         title="Contacto directo · Productores"
         subtitle="Canal rápido para sumar productores y consultas del programa PAS."
-        links={[{ label: 'productores@gestionseguros.com.ar', href: 'mailto:productores@gestionseguros.com.ar', icon: 'i-mail' }]}
+        links={[{ label: 'comercial@gestionseguros.com.ar', href: 'mailto:comercial@gestionseguros.com.ar', icon: 'i-mail' }]}
       />
     </>
   )

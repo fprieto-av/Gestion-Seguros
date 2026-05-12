@@ -16,7 +16,8 @@
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\Sitio\\\\formularios\")",
       "Bash(Measure-Object)",
       "Bash(Select-Object Count)",
-      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\gestion-seguro-react\\\\src\" -Recurse | Where-Object { !$_.PSIsContainer } | Select-Object FullName)"
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\gestion-seguro-react\\\\src\" -Recurse | Where-Object { !$_.PSIsContainer } | Select-Object FullName)",
+      "WebFetch(domain:segurosgestion.com.ar)"
     ]
   }
 }

@@ -70,6 +70,10 @@ section.section.nosotros-band { background: var(--bg); }
 .social-card-actions .btn { min-height: 48px; box-sizing: border-box; }
 .social-card-actions .btn-primary { border: 1.5px solid transparent; }
 
+@media (max-width: 1024px) {
+  .equipo-grid { grid-template-columns: 1fr !important; }
+}
+
 @media (max-width: 900px) {
   .nosotros-band .social-proof-grid { display: flex; flex-direction: column; align-items: stretch; gap: 18px; grid-template-rows: none; }
   .social-card { display: flex; flex-direction: column; grid-row: auto; grid-template-rows: none; height: auto; align-self: stretch; flex: 0 0 auto; }

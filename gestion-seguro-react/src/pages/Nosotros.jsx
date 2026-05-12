@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
 import BrandStrip from '../components/BrandStrip'
@@ -7,6 +7,71 @@ import PageCta from '../components/PageCta'
 import '../assets/css/nosotros.css'
 import nosotrosImg from '../assets/img/nosotros.png'
 import linkedinImg from '../assets/img/linkedin-perfil-gestion.png'
+import equipoImg from '../assets/img/equipocomercial.png'
+import sergioImg from '../assets/img/sergio-sabha.png'
+import nicolasImg from '../assets/img/nicolas-cuevas.png'
+import nadiaImg from '../assets/img/nadia-machado.png'
+import germanImg from '../assets/img/german-camino.png'
+
+const PERSONAS = (imgs) => [
+  { img: imgs.sergioImg,  nombre: 'Sergio Sabha',           cargo: 'Socio' },
+  { img: imgs.nicolasImg, nombre: 'Nicolás Cuevas Zárate',  cargo: 'Socio' },
+  { img: imgs.nadiaImg,   nombre: 'Nadia Machado',          cargo: 'Gerente Administración y Finanzas' },
+  { img: imgs.germanImg,  nombre: 'Germán Camino',          cargo: 'Gerente Comercial' },
+]
+
+function EquipoCarousel({ equipoImg, sergioImg, nicolasImg, nadiaImg, germanImg }) {
+  const slides = PERSONAS({ sergioImg, nicolasImg, nadiaImg, germanImg })
+  const [idx, setIdx] = useState(0)
+  useEffect(() => {
+    const t = setInterval(() => setIdx(i => (i + 1) % slides.length), 3000)
+    return () => clearInterval(t)
+  }, [slides.length])
+  const cur = slides[idx]
+
+  return (
+    <section className="section nosotros-band">
+      <div className="section-head reveal">
+        <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-users" /></svg>Equipo</span>
+        <h2>Nuestro <span className="gradient-text">equipo</span></h2>
+        <p>Las personas detrás de cada póliza.</p>
+      </div>
+
+      <div className="equipo-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignItems: 'start', maxWidth: 'var(--container)', margin: '0 auto' }}>
+
+        {/* Foto grupal */}
+        <div style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 40px rgba(14,23,48,0.12)', height: '420px' }}>
+          <img src={equipoImg} alt="Equipo comercial de Gestión Seguros" style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover', objectPosition: 'center center' }} />
+        </div>
+
+        {/* Carrusel individual */}
+        <div style={{ position: 'relative' }}>
+          <div style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 40px rgba(14,23,48,0.14)', height: '420px' }}>
+            <img
+              key={idx}
+              src={cur.img}
+              alt={cur.nombre}
+              style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover', objectPosition: 'center center' }}
+            />
+          </div>
+
+          {/* Dots indicadores (solo visuales) */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '16px' }}>
+            {slides.map((_, i) => (
+              <div key={i} style={{
+                width: i === idx ? '24px' : '8px', height: '8px',
+                borderRadius: '999px',
+                background: i === idx ? 'var(--primary)' : 'rgba(14,23,48,0.2)',
+                transition: 'all 0.3s',
+              }} />
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+  )
+}
 
 export default function Nosotros() {
   useEffect(() => {
@@ -92,48 +157,76 @@ export default function Nosotros() {
         </div>
       </section>
 
+      {/* EQUIPO COMERCIAL */}
+      <EquipoCarousel equipoImg={equipoImg} sergioImg={sergioImg} nicolasImg={nicolasImg} nadiaImg={nadiaImg} germanImg={germanImg} />
+
       {/* REDES + MAPA */}
       <section className="section nosotros-band">
         <div className="section-head reveal">
           <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-heart" /></svg>Comunidad</span>
-          <h2>Seguinos y valoranos</h2>
-          <p>Mirá novedades de Gestión Seguros en LinkedIn y dejá tu reseña en Google Maps.</p>
+          <h2>Seguinos y <span className="gradient-text">valoranos</span></h2>
+          <p>Encontranos en LinkedIn y Google Maps.</p>
         </div>
-        <div className="social-proof-grid">
-          <article className="social-card reveal">
-            <div className="social-card-head">
-              <h3>LinkedIn · Novedades y publicaciones</h3>
-              <p>Imagen de referencia del perfil; abrí LinkedIn para ver el contenido actualizado.</p>
-            </div>
-            <div className="social-card-media social-card-media--linkedin">
-              <a href="https://www.linkedin.com/company/gestionsegurossa/" className="social-linkedin-preview-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir perfil en LinkedIn">
-                <img src={linkedinImg} alt="Perfil de Gestión Seguros en LinkedIn" loading="lazy" />
-              </a>
-            </div>
-            <div className="social-card-actions">
-              <a href="https://www.linkedin.com/company/gestionsegurossa/" className="btn btn-primary" target="_blank" rel="noopener noreferrer">Ver en LinkedIn <svg className="icon"><use href="#i-arrow" /></svg></a>
-            </div>
-          </article>
 
-          <article className="social-card reveal delay-1">
-            <div className="social-card-head">
-              <h3>Google Maps · Ubicación y reseñas</h3>
-              <p>Conocé cómo llegar y ayudanos con tu calificación y comentario.</p>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', maxWidth: '860px', margin: '0 auto', alignItems: 'stretch' }}>
+
+          {/* LinkedIn */}
+          <div className="reveal" style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(14,23,48,0.08)', boxShadow: '0 4px 20px rgba(14,23,48,0.07)', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ background: '#0077B5', padding: '24px', display: 'flex', alignItems: 'center', gap: '14px' }}>
+              <svg viewBox="0 0 24 24" style={{ width: '32px', height: '32px', fill: '#fff', flexShrink: 0 }}>
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              <div>
+                <p style={{ margin: 0, fontWeight: 700, color: '#fff', fontSize: '15px' }}>LinkedIn</p>
+                <p style={{ margin: 0, color: 'rgba(255,255,255,0.75)', fontSize: '13px' }}>Gestión Compañía Argentina de Seguros S.A.</p>
+              </div>
             </div>
-            <div className="social-card-media">
-              <iframe
-                className="social-embed"
-                src="https://www.google.com/maps?q=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+Comuna+3%2C+C1036+CABA%2C+Argentina&output=embed"
-                title="Google Maps — Bartolomé Mitre 480, Gestión Seguros"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            <a href="https://www.linkedin.com/company/gestionsegurossa/" target="_blank" rel="noopener noreferrer">
+              <img src={linkedinImg} alt="Perfil LinkedIn Gestión Seguros" style={{ width: '100%', display: 'block' }} />
+            </a>
+            <div style={{ padding: '20px 24px', background: '#fff', display: 'flex', flexDirection: 'column', flex: 1 }}>
+              <p style={{ margin: '0 0 16px', fontSize: '14px', color: 'var(--gray)', lineHeight: 1.6, flex: 1 }}>
+                Seguinos para estar al día con novedades, productos y noticias del sector asegurador.
+              </p>
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <a href="https://www.linkedin.com/company/gestionsegurossa/" className="btn btn-primary" target="_blank" rel="noopener noreferrer" style={{ flex: 1, justifyContent: 'center' }}>
+                  Ver perfil <svg className="icon"><use href="#i-arrow" /></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/gestionsegurossa/" className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+                  Seguir
+                </a>
+              </div>
             </div>
-            <div className="social-card-actions">
-              <a href="https://www.google.com/maps/search/?api=1&query=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+C1036+CABA" className="btn btn-primary" target="_blank" rel="noopener noreferrer">Ver en Maps <svg className="icon"><use href="#i-arrow" /></svg></a>
-              <a href="https://www.google.com/maps/search/?api=1&query=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+C1036+CABA" className="btn btn-ghost" target="_blank" rel="noopener noreferrer">Dejar valoración</a>
+          </div>
+
+          {/* Google Maps */}
+          <div className="reveal delay-1" style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(14,23,48,0.08)', boxShadow: '0 4px 20px rgba(14,23,48,0.07)', display: 'flex', flexDirection: 'column' }}>
+            <iframe
+              src="https://www.google.com/maps?q=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+Comuna+3%2C+C1036+CABA%2C+Argentina&output=embed"
+              title="Google Maps — Bartolomé Mitre 480, Gestión Seguros"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{ width: '100%', flex: 1, display: 'block', border: 'none', minHeight: '200px' }}
+            />
+            <div style={{ padding: '20px 24px', background: '#fff' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '16px' }}>
+                <svg className="icon" style={{ width: '18px', flexShrink: 0, marginTop: '2px', color: 'var(--primary)' }}><use href="#i-pin" /></svg>
+                <div>
+                  <p style={{ margin: 0, fontWeight: 700, fontSize: '14px', color: 'var(--dark)' }}>Bartolomé Mitre 480, Piso 11</p>
+                  <p style={{ margin: 0, fontSize: '13px', color: 'var(--gray)' }}>C1036 CABA · Lunes a Viernes 9–18hs</p>
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <a href="https://www.google.com/maps/search/?api=1&query=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+C1036+CABA" className="btn btn-primary" target="_blank" rel="noopener noreferrer" style={{ flex: 1, justifyContent: 'center' }}>
+                  Ver en Maps <svg className="icon"><use href="#i-arrow" /></svg>
+                </a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+C1036+CABA" className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+                  Valorar
+                </a>
+              </div>
             </div>
-          </article>
+          </div>
+
         </div>
       </section>
 

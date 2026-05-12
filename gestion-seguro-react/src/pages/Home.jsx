@@ -177,7 +177,7 @@ function FAQ() {
     },
     {
       q: '¿Cómo denuncio un siniestro?',
-      a: <>Tenés tres canales:<br />• <b>Portal online</b>: ingresá a tu panel y cargá la denuncia.<br />• <b>Email</b>: <a href="mailto:siniestros@gestionseguros.com.ar" style={{ color: 'var(--primary)', fontWeight: 700 }}>siniestros@gestionseguros.com.ar</a>.<br />• <b>Teléfono</b>: 0800-345-1340, lunes a viernes de 9 a 18hs.</>
+      a: <>Tenés tres canales:<br />• <b>Portal online</b>: ingresá a tu panel y cargá la denuncia.<br />• <b>Email</b>: <a href="mailto:comercial@gestionseguros.com.ar" style={{ color: 'var(--primary)', fontWeight: 700 }}>comercial@gestionseguros.com.ar</a>.<br />• <b>Teléfono</b>: 0800-345-1340, lunes a viernes de 9 a 18hs.</>
     },
     {
       q: 'Soy Productor Asesor, ¿cómo me asocio a Gestión Seguros?',
@@ -187,14 +187,14 @@ function FAQ() {
 
   return (
     <section className="section faq" id="faq">
-      <div className="section-head reveal">
+      <div className="section-head">
         <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-plus" /></svg>Preguntas frecuentes</span>
         <h2>Respondemos tus <span className="gradient-text">dudas</span></h2>
         <p>Las consultas más comunes de nuestros clientes y productores asesores.</p>
       </div>
       <div className="faq-list">
         {items.map((item, idx) => (
-          <div key={idx} className={`faq-item reveal${openIdx === idx ? ' open' : ''}`}>
+          <div key={idx} className={`faq-item${openIdx === idx ? ' open' : ''}`}>
             <button className="faq-q" onClick={() => setOpenIdx(openIdx === idx ? -1 : idx)}>
               {item.q}
               <span className="faq-plus"><svg className="icon" style={{ width: '16px' }}><use href="#i-plus" /></svg></span>
@@ -209,6 +209,7 @@ function FAQ() {
 
 export default function Home() {
   useReveal()
+  const [bajaHover, setBajaHover] = useState(false)
 
   return (
     <>
@@ -416,6 +417,46 @@ export default function Home() {
       </section>
 
       <FAQ />
+
+      {/* BAJA DE PÓLIZA */}
+      <div>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '16px',
+          background: 'rgba(194, 172, 118, 0.13)',
+          border: '1px solid rgba(255,184,0,0.4)',
+          borderRadius: '0',
+          padding: '8px 20px 8px 18px',
+          flexWrap: 'wrap',
+          width: '100%',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <svg className="icon" style={{ width: '16px', flexShrink: 0, color: '#96700a' }}><use href="#i-shield" /></svg>
+            <span style={{ fontSize: '13px', color: 'var(--dark)', lineHeight: 1.5 }}>
+              <span style={{ fontWeight: 700, color: '#96700a' }}>Ley N° 24.240 · Art. 34 —</span>{' '}
+              Podés solicitar la <strong>baja de tu póliza</strong> en cualquier momento, sin necesidad de justificación.
+            </span>
+          </div>
+          <Link
+            to="/baja-poliza"
+            style={{
+              whiteSpace: 'nowrap', fontSize: '13px', fontWeight: 700, flexShrink: 0,
+              color: '#96700a',
+              textDecoration: bajaHover ? 'underline' : 'none',
+              textUnderlineOffset: '3px',
+              display: 'flex', alignItems: 'center', gap: '4px',
+              transition: 'gap 0.2s',
+            }}
+            onMouseEnter={() => setBajaHover(true)}
+            onMouseLeave={() => setBajaHover(false)}
+          >
+            Solicitar baja
+            <svg className="icon" style={{ width: '14px', transform: bajaHover ? 'translateX(4px)' : 'translateX(0)', transition: 'transform 0.2s' }}><use href="#i-arrow" /></svg>
+          </Link>
+        </div>
+      </div>
 
       {/* CTA GRANDE */}
       <section className="cta-big">

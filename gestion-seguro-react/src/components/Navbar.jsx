@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useLocation } from 'react-router-dom'
 
 export default function Navbar() {
+  const { pathname } = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [coberturasOpen, setCoberturasOpen] = useState(false)
@@ -43,11 +44,10 @@ export default function Navbar() {
         </div>
 
         <NavLink to="/alquileres" onClick={closeMenu}>Alquileres</NavLink>
-        <NavLink to="/cotizador" onClick={closeMenu}>Cotizador</NavLink>
-        <NavLink to="/productores" onClick={closeMenu}>Productores</NavLink>
+<NavLink to="/productores" onClick={closeMenu}>Productores</NavLink>
         <NavLink to="/formularios" onClick={closeMenu}>Formularios</NavLink>
         <NavLink to="/medios-de-pago" onClick={closeMenu}>Pagos</NavLink>
-        <a href="#faq" onClick={closeMenu}>Preguntas</a>
+        {pathname === '/' && <a href="#faq" onClick={closeMenu}>Preguntas</a>}
         <NavLink to="/contacto" onClick={closeMenu}>Contacto</NavLink>
 
         <div className={`has-submenu${gestionOpen ? ' open' : ''}`}>
@@ -67,9 +67,9 @@ export default function Navbar() {
       </div>
 
       <div className="nav-cta">
-        <a href="#simulador" className="btn btn-accent">
+        <Link to="/cotizador" className="btn btn-accent" onClick={closeMenu}>
           Cotizar ahora <svg className="icon" style={{ width: '16px' }}><use href="#i-arrow" /></svg>
-        </a>
+        </Link>
         <button
           className="nav-toggle"
           aria-label="Abrir menú"
