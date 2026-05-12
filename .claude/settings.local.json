@@ -8,7 +8,15 @@
       "Bash(cp \"04.jpg\" \"assets/img/banner-rc.jpg\")",
       "Bash(awk '{print $NF, \"\\(\"$5\" bytes\\)\"}')",
       "Bash(cp *)",
-      "PowerShell(Start-Process \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\Sitio\\\\index.html\")"
+      "PowerShell(Start-Process \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\Sitio\\\\index.html\")",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\Sitio\" -Recurse -Force)",
+      "Bash(Select-Object FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\Sitio\" -Recurse | ForEach-Object { $_.FullName })",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\Sitio\\\\formularios\")",
+      "Bash(Measure-Object)",
+      "Bash(Select-Object Count)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\gestion-seguro-react\\\\src\" -Recurse | Where-Object { !$_.PSIsContainer } | Select-Object FullName)"
     ]
   }
 }

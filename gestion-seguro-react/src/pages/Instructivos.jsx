@@ -1,0 +1,121 @@
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import '../assets/css/instructivos.css'
+import instructivos from '../assets/img/instructivos.png'
+
+export default function Instructivos() {
+  useEffect(() => {
+    document.title = 'Instructivos | Gestión Seguros'
+  }, [])
+
+  return (
+    <>
+      {/* HERO */}
+      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${instructivos})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="page-hero-inner">
+          <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Instructivos</span></nav>
+          <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Instructivos</span>
+          <h1 className="reveal delay-1">Instructivos y <em>Manuales</em></h1>
+          <p className="lead reveal delay-2">Accedé a guías prácticas para operar con Gestión Seguros: altas, pólizas, preliquidaciones, certificados y validaciones.</p>
+        </div>
+      </header>
+
+      <section className="gs-brand-strip">
+        <div className="gs-brand-strip-inner">
+          <b>Gestión Seguros</b>
+          <span>Respaldo institucional, respuesta ágil y atención humana en todo el país</span>
+        </div>
+      </section>
+
+      <section className="section">
+        {/* INTRO */}
+        <div className="guides-intro">
+          <h2>Todo en un solo lugar</h2>
+          <p>Seleccioná el instructivo que necesitás y descargalo para seguir el paso a paso operativo según tu gestión.</p>
+        </div>
+
+        {/* ACCESO RÁPIDO */}
+        <div className="guides-tabs">
+          <h4>Acceso rápido</h4>
+          <div className="guides-links-row">
+            <a href="/instructivos/Instrutivo%20Alta%20PAS.pdf" target="_blank" rel="noopener">Alta PAS</a>
+            <a href="/instructivos/Alta%20usuario%20web%20.pdf" target="_blank" rel="noopener">Alta usuario web</a>
+            <a href="/instructivos/WEB%20INSTRUCTIVO.pdf" target="_blank" rel="noopener">Web instructivo</a>
+            <a href="/instructivos/Instructivo%20de%20Carga%20de%20Preliquidaciones%20(1).pdf" target="_blank" rel="noopener">Carga de preliquidaciones</a>
+            <a href="/instructivos/EXTRACCI%C3%93N%20DE%20POLIZA%20.pdf" target="_blank" rel="noopener">Extracción de póliza</a>
+            <a href="/instructivos/VALIDACION%20DE%20FIRMA%20DIGITAL.pdf" target="_blank" rel="noopener">Validación de firma digital</a>
+          </div>
+        </div>
+
+        {/* SECCIONES */}
+        <div className="guides-sections">
+
+          <article className="guides-col">
+            <h5>Altas y acceso web</h5>
+            <div className="guides-links-grid">
+              <a href="/instructivos/Instrutivo%20Alta%20PAS.pdf" target="_blank" rel="noopener">
+                <span className="guide-link-meta">Alta</span>
+                Instructivo alta PAS
+              </a>
+              <a href="/instructivos/Alta%20usuario%20web%20.pdf" target="_blank" rel="noopener">
+                <span className="guide-link-meta">Usuarios</span>
+                Alta usuario web
+              </a>
+              <a href="/instructivos/WEB%20INSTRUCTIVO.pdf" target="_blank" rel="noopener">
+                <span className="guide-link-meta">Portal</span>
+                Web instructivo
+              </a>
+            </div>
+          </article>
+
+          <article className="guides-col">
+            <h5>Pólizas e ítems</h5>
+            <div className="guides-links-grid">
+              <a href="/instructivos/EXTRACCI%C3%93N%20DE%20POLIZA%20.pdf" target="_blank" rel="noopener">
+                <span className="guide-link-meta">Pólizas</span>
+                Extracción de póliza
+              </a>
+              <a href="/instructivos/INCLUSION%20DE%20ITEM.pdf.pdf" target="_blank" rel="noopener">
+                <span className="guide-link-meta">Ítems</span>
+                Inclusión de ítem
+              </a>
+              <a href="/instructivos/EXCLUSION%20DE%20ITEM.pdf" target="_blank" rel="noopener">
+                <span className="guide-link-meta">Ítems</span>
+                Exclusión de ítem
+              </a>
+            </div>
+          </article>
+
+          <article className="guides-col">
+            <h5>Facturación y certificados</h5>
+            <div className="guides-links-grid">
+              <a href="/instructivos/CARGA%20DE%20FACTURA%20PAS.pdf" target="_blank" rel="noopener">
+                <span className="guide-link-meta">Facturación</span>
+                Carga de factura PAS
+              </a>
+              <a href="/instructivos/Instructivo%20de%20Carga%20de%20Preliquidaciones%20(1).pdf" target="_blank" rel="noopener">
+                <span className="guide-link-meta">Liquidaciones</span>
+                Carga de preliquidaciones
+              </a>
+              <a href="/instructivos/LIBRE%20DEUDA%20y%20CERTIFICADO%20GRUPAL.pdf" target="_blank" rel="noopener">
+                <span className="guide-link-meta">Certificados</span>
+                Libre deuda y certificado grupal
+              </a>
+            </div>
+          </article>
+
+          <article className="guides-col">
+            <h5>Validaciones</h5>
+            <div className="guides-links-grid">
+              <a href="/instructivos/VALIDACION%20DE%20FIRMA%20DIGITAL.pdf" target="_blank" rel="noopener">
+                <span className="guide-link-meta">Firma digital</span>
+                Validación de firma digital
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+    </>
+  )
+}
