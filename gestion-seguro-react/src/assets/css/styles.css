@@ -322,7 +322,7 @@ h1, h2, h3, h4, h5 {
 @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 
 /* ===== Secciones ===== */
-section.section { padding: clamp(60px, 9vw, 120px) var(--pad-x); }
+section.section { padding: clamp(36px, 5vw, 70px) var(--pad-x); }
 .section-head { text-align: center; max-width: 780px; margin: 0 auto 60px; }
 .section-label {
   display: inline-flex; align-items: center; gap: 8px;

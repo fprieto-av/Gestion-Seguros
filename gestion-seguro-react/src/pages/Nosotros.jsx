@@ -1,5 +1,9 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import useReveal from '../hooks/useReveal'
+import BrandStrip from '../components/BrandStrip'
+import ContactCard from '../components/ContactCard'
+import PageCta from '../components/PageCta'
 import '../assets/css/nosotros.css'
 import nosotrosImg from '../assets/img/nosotros.png'
 import linkedinImg from '../assets/img/linkedin-perfil-gestion.png'
@@ -8,6 +12,7 @@ export default function Nosotros() {
   useEffect(() => {
     document.title = 'Nosotros · Compañía argentina de seguros | Gestión Seguros'
   }, [])
+  useReveal()
 
   return (
     <>
@@ -20,6 +25,8 @@ export default function Nosotros() {
           <p className="lead reveal delay-2">Tecnología con alma humana. Detrás de cada póliza hay personas escuchando, analizando y diseñando la cobertura ideal para cada situación.</p>
         </div>
       </header>
+
+      <BrandStrip />
 
       {/* VALORES */}
       <section className="section proceso nosotros-band">
@@ -129,6 +136,16 @@ export default function Nosotros() {
           </article>
         </div>
       </section>
+
+      <ContactCard
+        title="Contacto directo · Institucional"
+        subtitle="Canal rápido para consultas y seguimiento de tu gestión."
+        links={[{ label: 'info@gestionseguros.com.ar', href: 'mailto:info@gestionseguros.com.ar', icon: 'i-mail' }]}
+      />
+      <PageCta
+        title="¿Querés hablar con nuestro equipo?"
+        subtitle="Estamos para ayudarte en lo que necesites."
+      />
     </>
   )
 }

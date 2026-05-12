@@ -1,5 +1,8 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import useReveal from '../hooks/useReveal'
+import BrandStrip from '../components/BrandStrip'
+import PageCta from '../components/PageCta'
 import '../assets/css/instructivos.css'
 import instructivos from '../assets/img/instructivos.png'
 
@@ -7,6 +10,7 @@ export default function Instructivos() {
   useEffect(() => {
     document.title = 'Instructivos | Gestión Seguros'
   }, [])
+  useReveal()
 
   return (
     <>
@@ -20,12 +24,7 @@ export default function Instructivos() {
         </div>
       </header>
 
-      <section className="gs-brand-strip">
-        <div className="gs-brand-strip-inner">
-          <b>Gestión Seguros</b>
-          <span>Respaldo institucional, respuesta ágil y atención humana en todo el país</span>
-        </div>
-      </section>
+      <BrandStrip />
 
       <section className="section">
         {/* INTRO */}
@@ -116,6 +115,11 @@ export default function Instructivos() {
 
         </div>
       </section>
+
+      <PageCta
+        title="¿Necesitás ayuda con los instructivos?"
+        subtitle="Nuestro equipo te guía paso a paso en cualquier gestión."
+      />
     </>
   )
 }

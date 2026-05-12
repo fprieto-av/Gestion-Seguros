@@ -36,20 +36,9 @@ export default function Navbar() {
             else closeMenu()
           }}>Coberturas</a>
           <div className="submenu">
-            <div className="submenu-title">Caución</div>
-            <NavLink to="/caucion" onClick={closeMenu}><svg className="icon"><use href="#i-key" /></svg> Caución (general)</NavLink>
-            <NavLink to="/caucion#contractuales" onClick={closeMenu}><svg className="icon"><use href="#i-doc" /></svg> Garantías Contractuales</NavLink>
-            <NavLink to="/caucion#aduaneras" onClick={closeMenu}><svg className="icon"><use href="#i-truck" /></svg> Garantías Aduaneras</NavLink>
-            <NavLink to="/caucion#judiciales" onClick={closeMenu}><svg className="icon"><use href="#i-gavel" /></svg> Garantías Judiciales</NavLink>
-            <div className="submenu-title">Personas</div>
-            <NavLink to="/personas#vida" onClick={closeMenu}><svg className="icon"><use href="#i-heart" /></svg> Vida</NavLink>
-            <NavLink to="/personas#accidentes" onClick={closeMenu}><svg className="icon"><use href="#i-activity" /></svg> Accidentes Personales</NavLink>
-            <NavLink to="/personas#sepelio" onClick={closeMenu}><svg className="icon"><use href="#i-coffin" /></svg> Sepelio</NavLink>
-            <div className="submenu-title">Responsabilidad Civil</div>
-            <NavLink to="/responsabilidad-civil#rc-indice" onClick={closeMenu}><svg className="icon"><use href="#i-shield" /></svg> Índice de coberturas RC</NavLink>
-            <NavLink to="/responsabilidad-civil#evento" onClick={closeMenu}><svg className="icon"><use href="#i-users" /></svg> RC Eventos</NavLink>
-            <NavLink to="/responsabilidad-civil#turismo" onClick={closeMenu}><svg className="icon"><use href="#i-plane" /></svg> RC Turismo Aventura</NavLink>
-            <NavLink to="/responsabilidad-civil#educativo" onClick={closeMenu}><svg className="icon"><use href="#i-school" /></svg> RC Establecimientos Educativos y Clubes</NavLink>
+            <NavLink to="/caucion" onClick={closeMenu}><svg className="icon"><use href="#i-key" /></svg> Caución</NavLink>
+            <NavLink to="/personas" onClick={closeMenu}><svg className="icon"><use href="#i-heart" /></svg> Personas</NavLink>
+            <NavLink to="/responsabilidad-civil" onClick={closeMenu}><svg className="icon"><use href="#i-shield" /></svg> Responsabilidad Civil</NavLink>
           </div>
         </div>
 

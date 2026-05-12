@@ -1,5 +1,8 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import useReveal from '../hooks/useReveal'
+import ContactCard from '../components/ContactCard'
+import PageCta from '../components/PageCta'
 import '../assets/css/mediosdepago.css'
 import mediosdepago from '../assets/img/mediosdepago.png'
 
@@ -7,6 +10,7 @@ export default function MediosDePago() {
   useEffect(() => {
     document.title = 'Medios de pago | Gestión Seguros'
   }, [])
+  useReveal()
 
   return (
     <>
@@ -165,6 +169,17 @@ export default function MediosDePago() {
           </aside>
         </div>
       </section>
+
+      <ContactCard
+        title="Contacto directo · Cobranzas"
+        subtitle="Canal rápido para consultas y seguimiento de tu gestión."
+        links={[{ label: 'cobranzas@gestionseguros.com.ar', href: 'mailto:cobranzas@gestionseguros.com.ar', icon: 'i-mail' }]}
+      />
+      <PageCta
+        title="¿Tenés dudas sobre tu pago?"
+        subtitle="Contactanos y te ayudamos a resolver cualquier consulta de cobranza."
+        btnText="Contactar ahora"
+      />
     </>
   )
 }

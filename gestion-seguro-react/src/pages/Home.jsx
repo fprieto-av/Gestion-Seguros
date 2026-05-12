@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import useReveal from '../hooks/useReveal'
 
 function Counter({ target, suffix = '', prefix = '' }) {
   const [value, setValue] = useState(0)
@@ -27,17 +28,6 @@ function Counter({ target, suffix = '', prefix = '' }) {
   return <span ref={ref}>{prefix}{value.toLocaleString('es-AR')}{suffix}</span>
 }
 
-function useReveal() {
-  useEffect(() => {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target) }
-      })
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
-    return () => obs.disconnect()
-  }, [])
-}
 
 function ProductTabs() {
   const [filter, setFilter] = useState('caucion')
