@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import logoImg from '../assets/img/logo.png'
 
 /* Loader component */
 export default function Loader() {
@@ -16,7 +17,7 @@ export default function Loader() {
 
     return (
         <div className={`loader${hide ? ' hide' : ''}`}>
-            <img src="/assets/img/logo.png" alt="" className="loader-logo" />
+            <img src={logoImg} alt="" className="loader-logo" />
         </div>
     )
 }

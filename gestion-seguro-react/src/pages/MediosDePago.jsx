@@ -1,10 +1,28 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
 import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
 import '../assets/css/mediosdepago.css'
 import mediosdepago from '../assets/img/mediosdepago.png'
+
+function CbuCopy({ value }) {
+  const [copied, setCopied] = useState(false)
+  const copy = () => {
+    navigator.clipboard.writeText(value).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+  return (
+    <span className="cbu-copy-row">
+      <span>CBU: {value}</span>
+      <button type="button" className={`cbu-copy-btn${copied ? ' copied' : ''}`} onClick={copy} title="Copiar CBU">
+        <svg className="icon" style={{ width: '14px' }}><use href={copied ? '#i-check' : '#i-copy'} /></svg>
+      </button>
+    </span>
+  )
+}
 
 export default function MediosDePago() {
   useEffect(() => {
@@ -72,19 +90,19 @@ export default function MediosDePago() {
               <div className="pay-accounts">
                 <div className="pay-account">
                   <b>Cuenta para vida y sepelio</b>
-                  <span>CBU: 0340010400100611022016</span>
+                  <CbuCopy value="0340010400100611022016" />
                   <span>Cuenta: CC $ 10-100611022-1</span>
                   <span>CUIT: 30-71483881-0</span>
                 </div>
                 <div className="pay-account">
                   <b>Cuenta para accidentes personales, responsabilidad civil y caución</b>
-                  <span>CBU: 0340010400100611022009</span>
+                  <CbuCopy value="0340010400100611022009" />
                   <span>Cuenta: CC $ 10-100611022-0</span>
                   <span>CUIT: 30-71483881-0</span>
                 </div>
                 <div className="pay-account">
                   <b>Cuenta en dólares</b>
-                  <span>CBU: 0340010409100611022008</span>
+                  <CbuCopy value="0340010409100611022008" />
                   <span>Cuenta: CA USD 010-100611022-000</span>
                   <span>CUIT: 30-71483881-0</span>
                 </div>

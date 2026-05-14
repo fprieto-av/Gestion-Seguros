@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
+import logoImg from '../assets/img/logo.png'
 
 export default function Navbar() {
   const { pathname } = useLocation()
@@ -24,7 +25,7 @@ export default function Navbar() {
   return (
     <nav className={`nav${scrolled ? ' scrolled' : ''}`} id="nav">
       <Link to="/" className="logo">
-        <img src="/assets/img/logo.png" alt="Gestión Seguros" />
+        <img src={logoImg} alt="Gestión Seguros" />
       </Link>
 
       <div className={`nav-menu${menuOpen ? ' open' : ''}`} id="navMenu">

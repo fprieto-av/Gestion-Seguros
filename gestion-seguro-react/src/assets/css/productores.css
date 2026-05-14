@@ -108,7 +108,7 @@
 }
 #form-pas .contact-info .contact-method a:hover { color: var(--accent-dark); }
 
-#form-pas .contact-form { width: 100%; max-width: none; margin: 0; padding: 20px; }
+#form-pas .contact-form { width: 100%; max-width: 1060px; margin: 24px auto 0; padding: 20px; }
 #form-pas .contact-form h3 { margin-bottom: 4px; font-size: 24px; }
 #form-pas .contact-form h3 .pas-accent { color: var(--accent); }
 #form-pas .contact-form h4 { margin: 2px 0 8px !important; font-size: 13px; }

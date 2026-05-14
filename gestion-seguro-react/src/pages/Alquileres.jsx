@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
 import BrandStrip from '../components/BrandStrip'
@@ -6,6 +6,9 @@ import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
 import '../assets/css/alquileres.css'
 import alquileresBg from '../assets/img/alquileres.png'
+
+/** Ancho máximo (px) para mostrar la barra fija “Ir al simulador” al hacer scroll */
+const SIM_STICKY_MAX_WIDTH = 768
 
 const formatMoney = n => '$ ' + Math.round(n).toLocaleString('es-AR')
 const toNumber = v => Number(String(v || '').replace(/[^0-9]/g, '')) || 0
@@ -34,6 +37,48 @@ export default function Alquileres() {
   const [error, setError] = useState('')
   const [showContactLink, setShowContactLink] = useState(false)
   const [contactHref, setContactHref] = useState('/contacto')
+
+  const jumpBlockRef = useRef(null)
+  const simSectionRef = useRef(null)
+  const [showSimSticky, setShowSimSticky] = useState(false)
+  const scrollRafRef = useRef(0)
+
+  const updateSimSticky = useCallback(() => {
+    const jumpEl = jumpBlockRef.current
+    const simEl = simSectionRef.current
+    if (!jumpEl || !simEl) return
+    const jump = jumpEl.getBoundingClientRect()
+    const sim = simEl.getBoundingClientRect()
+    const jumpPast = jump.bottom < 1
+    const simVisible = sim.top < window.innerHeight && sim.bottom > 0
+    const simFullyPast = sim.bottom < 0
+    const narrowViewport = window.innerWidth <= SIM_STICKY_MAX_WIDTH
+    setShowSimSticky(narrowViewport && jumpPast && !simVisible && !simFullyPast)
+  }, [])
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (scrollRafRef.current) return
+      scrollRafRef.current = requestAnimationFrame(() => {
+        scrollRafRef.current = 0
+        updateSimSticky()
+      })
+    }
+    updateSimSticky()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (scrollRafRef.current) cancelAnimationFrame(scrollRafRef.current)
+    }
+  }, [updateSimSticky])
+
+  useEffect(() => {
+    if (showSimSticky) document.body.classList.add('alq-sim-sticky-active')
+    else document.body.classList.remove('alq-sim-sticky-active')
+    return () => document.body.classList.remove('alq-sim-sticky-active')
+  }, [showSimSticky])
 
   const alquiler = toNumber(valorAlquiler)
   const expensas = toNumber(valorExpensas)
@@ -103,7 +148,7 @@ export default function Alquileres() {
             </ul>
           </article>
 
-          <aside className="detail-side alq-intro-side">
+          <aside className="detail-side alq-intro-side" ref={jumpBlockRef}>
             <div className="alq-sim-title">
               <h3>Simulador de Alquileres</h3>
               <p>Conocé en segundos una referencia de prima mensual y total estimado.</p>
@@ -120,39 +165,62 @@ export default function Alquileres() {
       <section className="section alq-programa-section">
         <div className="alq-programa-wrap">
           <span className="section-label alq-programa-badge"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Programa especial</span>
-          <div className="alq-programa-card">
-            <h2 className="alq-section-title alq-section-title--programa">Programa "<span className="alq-programa-accent">Garantía + Fácil</span>" (CABA)</h2>
+
+          <div className="alq-programa-hero">
+            <h2 className="alq-section-title alq-section-title--programa">Programa &quot;<span className="alq-programa-accent">Garantía + Fácil</span>&quot; (CABA)</h2>
+            <div className="alq-programa-discount" aria-label="Hasta 70 por ciento de descuento en garantía">
+              <span className="alq-programa-discount-value">70%</span>
+              <span className="alq-programa-discount-label">de descuento en tu garantía</span>
+            </div>
             <div className="alq-programa-main">
               <p>En Gestión Seguros somos parte del programa <strong>Garantía Más Fácil</strong> del Gobierno de la Ciudad de Buenos Aires, junto al Instituto de la Vivienda.</p>
-              <p>Si alquilás en CABA, podés acceder a tu garantía con hasta un <strong>70% de descuento</strong>.</p>
+              <p>Si alquilás en CABA, podés acceder a tu garantía con este beneficio exclusivo del programa.</p>
             </div>
-            <div className="alq-programa-columns">
-              <div>
+          </div>
+
+          <div className="alq-programa-columns">
+            <div className="alq-programa-panel">
+              <div className="alq-programa-panel-head">
+                <span className="alq-programa-panel-icon" aria-hidden="true">
+                  <svg className="icon"><use href="#i-zap" /></svg>
+                </span>
                 <h3>¿Cómo acceder?</h3>
+              </div>
+              <div className="alq-programa-panel-body">
                 <ul>
                   <li>Primero debés inscribirte en la web del IVC.</li>
                   <li>Luego, al solicitar tu póliza en Gestión Seguros, indicá que sos beneficiario del programa.</li>
                 </ul>
-                <p className="alq-programa-info-link"><strong>Más info e inscripción:</strong> <a className="alq-external-link" href="https://vivienda.buenosaires.gob.ar/garantia#top" target="_blank" rel="noopener">vivienda.buenosaires.gob.ar/garantia#top</a></p>
+                <p className="alq-programa-info-link"><strong>Más info e inscripción:</strong>{' '}
+                  <a className="alq-external-link" href="https://vivienda.buenosaires.gob.ar/garantia#top" target="_blank" rel="noopener">vivienda.buenosaires.gob.ar/garantia#top</a>
+                </p>
               </div>
-              <div>
+            </div>
+            <div className="alq-programa-panel">
+              <div className="alq-programa-panel-head">
+                <span className="alq-programa-panel-icon" aria-hidden="true">
+                  <svg className="icon"><use href="#i-users" /></svg>
+                </span>
                 <h3>Para postularte, necesitás</h3>
+              </div>
+              <div className="alq-programa-panel-body">
                 <ul>
                   <li>Ser mayor de 18 años.</li>
-                  <li>Tener ingresos familiares de hasta 7 SMVM.</li>
+                  <li>Tener ingresos familiares de hasta 7{' '}
+                    <a className="alq-external-link" href="https://www.argentina.gob.ar/trabajo/consejodelsalario" target="_blank" rel="noopener">SMVM (Salario Mínimo Vital y Móvil).</a>
+                  </li>
                   <li>No registrar antecedentes financieros negativos.</li>
                   <li>Contar con DNI argentino.</li>
                   <li>Destino habitacional y propiedad ubicada en CABA.</li>
                 </ul>
               </div>
             </div>
-            <p><strong>Referencia SMVM:</strong> <a className="alq-external-link" href="https://www.argentina.gob.ar/trabajo/consejodelsalario" target="_blank" rel="noopener">argentina.gob.ar/trabajo/consejodelsalario</a></p>
           </div>
         </div>
       </section>
 
       {/* SIMULADOR */}
-      <section className="section" id="simulador-alquileres">
+      <section className="section" id="simulador-alquileres" ref={simSectionRef}>
         <div className="section-head">
           <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Simulador</span>
           <h2 className="alq-section-title alq-section-title--sim">Simulador de <span className="alq-sim-highlight">Alquileres</span></h2>
@@ -241,13 +309,21 @@ export default function Alquileres() {
       <ContactCard
         title="Contacto directo · Alquileres"
         subtitle="Canal rápido para consultas y cotizaciones de garantías de alquiler."
-        links={[{ label: 'caucion@gestionseguros.com.ar', href: 'mailto:caucion@gestionseguros.com.ar', icon: 'i-mail' }]}
+        links={[{ label: 'comercial@gestionseguros.com.ar', href: 'mailto:comercial@gestionseguros.com.ar', icon: 'i-mail' }]}
       />
       <PageCta
         title="¿Querés avanzar con tu garantía?"
         subtitle="Recibí asistencia personalizada para tu alquiler."
         btnText="Contactar ahora"
       />
+
+      {showSimSticky && (
+        <div className="alq-sim-sticky-bar" role="region" aria-label="Ir al simulador de alquileres">
+          <a href="#simulador-alquileres" className="btn alq-sim-sticky-bar__btn">
+            Ir al simulador <svg className="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+          </a>
+        </div>
+      )}
     </>
   )
 }

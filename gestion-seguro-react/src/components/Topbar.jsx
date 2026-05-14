@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 export default function Topbar() {
     return (
         <div className="topbar">
@@ -17,9 +19,9 @@ export default function Topbar() {
                     <svg className="icon"><use href="#i-mail" /></svg>
                         info@gestionseguros.com.ar
                     </a>
-                    <a className="topbar-item" href="#">
-                    <svg className="icon"><use href="#i-shield" /></svg> Denunciar siniestro
-                    </a>
+                    <Link className="topbar-item" to="/baja-poliza">
+                        <svg className="icon"><use href="#i-doc" /></svg> Baja de Póliza
+                    </Link>
                 </div>
             </div>
             )

@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
+import introVideo from '../assets/video/intro.mp4'
+import partnersLoopVideo from '../assets/video/Para Web Actualizado.mp4'
+import bannerHome from '../assets/img/banner-home.jpg'
 
 function Counter({ target, suffix = '', prefix = '' }) {
   const [value, setValue] = useState(0)
@@ -68,7 +71,7 @@ function ProductTabs() {
           <button key={key} type="button" className={`prod-tab${filter === key ? ' active' : ''}`} onClick={() => setFilter(key)}>{label}</button>
         ))}
       </div>
-      <div className="prod-grid">
+      <div className={`prod-grid${filter !== 'caucion' ? ' prod-grid--count-3' : ''}`}>
         {visible.map((c, i) => (
           <article key={c.title} className={`prod-card reveal${i > 0 ? ` delay-${i}` : ''}`}>
             <div className={`prod-banner${c.mod ? ' ' + c.mod : ''}`}></div>
@@ -218,14 +221,13 @@ function FAQ() {
 
 export default function Home() {
   useReveal()
-  const [bajaHover, setBajaHover] = useState(false)
 
   return (
     <>
       {/* HERO */}
       <header className="hero">
-        <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster="/assets/img/banner-home.jpg" aria-hidden="true">
-          <source src="/assets/video/intro.mp4" type="video/mp4" />
+        <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster={bannerHome} aria-hidden="true">
+          <source src={introVideo} type="video/mp4" />
         </video>
         <div className="hero-overlay"></div>
         <div className="hero-inner">
@@ -246,40 +248,6 @@ export default function Home() {
               <div className="hero-badge-item"><span className="check"><svg className="icon"><use href="#i-check" /></svg></span> Respaldo institucional</div>
             </div>
           </div>
-          <aside className="hero-visual reveal delay-2">
-            <div className="floating-pill fp-top">
-              <div className="fp-ic"><svg className="icon" style={{ width: '20px' }}><use href="#i-shield" /></svg></div>
-              <div><strong>Cobertura activa</strong><small>● Al día</small></div>
-            </div>
-            <div className="hero-card">
-              <h4>Mi panel · Gestión Online <span className="live">● LIVE</span></h4>
-              <div className="hero-stats">
-                <div className="hero-stat"><small>Pólizas activas</small><b>3</b><span>↑ 100% vigentes</span></div>
-                <div className="hero-stat"><small>Próxima revisión</small><b>24d</b><span>Garantía alquiler</span></div>
-              </div>
-              <div className="hero-list">
-                <div className="hero-row">
-                  <div className="ic"><svg className="icon" style={{ width: '16px' }}><use href="#i-key" /></svg></div>
-                  <div><b>Garantía de alquiler</b><small>Vivienda</small></div>
-                  <span className="tag">VIGENTE</span>
-                </div>
-                <div className="hero-row">
-                  <div className="ic o"><svg className="icon" style={{ width: '16px' }}><use href="#i-users" /></svg></div>
-                  <div><b>Vida colectivo</b><small>12 colaboradores cubiertos</small></div>
-                  <span className="tag">VIGENTE</span>
-                </div>
-                <div className="hero-row">
-                  <div className="ic"><svg className="icon" style={{ width: '16px' }}><use href="#i-activity" /></svg></div>
-                  <div><b>Accidentes personales</b><small>Según póliza contratada</small></div>
-                  <span className="tag">VIGENTE</span>
-                </div>
-              </div>
-            </div>
-            <div className="floating-pill fp-bot">
-              <div className="fp-ic"><svg className="icon" style={{ width: '20px' }}><use href="#i-zap" /></svg></div>
-              <div><strong>Gestión online</strong><small>Según producto</small></div>
-            </div>
-          </aside>
         </div>
       </header>
 
@@ -360,8 +328,8 @@ export default function Home() {
             <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-globe" /></svg>Partners</span>
           </div>
           <div className="partners-shell reveal delay-1">
-            <video className="partners-video" autoPlay muted loop playsInline preload="auto" poster="/assets/img/banner-home.jpg">
-              <source src="/assets/video/Para%20Web%20Actualizado.mp4" type="video/mp4" />
+            <video className="partners-video" autoPlay muted loop playsInline preload="auto" poster={bannerHome}>
+              <source src={partnersLoopVideo} type="video/mp4" />
             </video>
           </div>
         </div>
@@ -427,45 +395,6 @@ export default function Home() {
 
       <FAQ />
 
-      {/* BAJA DE PÓLIZA */}
-      <div>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          gap: '16px',
-          background: 'rgba(194, 172, 118, 0.13)',
-          border: '1px solid rgba(255,184,0,0.4)',
-          borderRadius: '0',
-          padding: '8px 20px 8px 18px',
-          flexWrap: 'wrap',
-          width: '100%',
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <svg className="icon" style={{ width: '16px', flexShrink: 0, color: '#96700a' }}><use href="#i-shield" /></svg>
-            <span style={{ fontSize: '13px', color: 'var(--dark)', lineHeight: 1.5 }}>
-              <span style={{ fontWeight: 700, color: '#96700a' }}>Ley N° 24.240 · Art. 34 —</span>{' '}
-              Podés solicitar la <strong>baja de tu póliza</strong> en cualquier momento, sin necesidad de justificación.
-            </span>
-          </div>
-          <Link
-            to="/baja-poliza"
-            style={{
-              whiteSpace: 'nowrap', fontSize: '13px', fontWeight: 700, flexShrink: 0,
-              color: '#96700a',
-              textDecoration: bajaHover ? 'underline' : 'none',
-              textUnderlineOffset: '3px',
-              display: 'flex', alignItems: 'center', gap: '4px',
-              transition: 'gap 0.2s',
-            }}
-            onMouseEnter={() => setBajaHover(true)}
-            onMouseLeave={() => setBajaHover(false)}
-          >
-            Solicitar baja
-            <svg className="icon" style={{ width: '14px', transform: bajaHover ? 'translateX(4px)' : 'translateX(0)', transition: 'transform 0.2s' }}><use href="#i-arrow" /></svg>
-          </Link>
-        </div>
-      </div>
 
       {/* CTA GRANDE */}
       <section className="cta-big">

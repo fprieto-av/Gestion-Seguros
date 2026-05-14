@@ -5,6 +5,7 @@ import BrandStrip from '../components/BrandStrip'
 import PageCta from '../components/PageCta'
 import '../assets/css/instructivos.css'
 import instructivos from '../assets/img/instructivos.png'
+import { instructivos as instructivosPdf } from '../assets/instructivosUrls'
 
 export default function Instructivos() {
   useEffect(() => {
@@ -43,12 +44,12 @@ export default function Instructivos() {
         <div className="guides-tabs">
           <h4>Acceso rápido</h4>
           <div className="guides-links-row">
-            <a href="/instructivos/Instrutivo%20Alta%20PAS.pdf" target="_blank" rel="noopener">Alta PAS</a>
-            <a href="/instructivos/Alta%20usuario%20web%20.pdf" target="_blank" rel="noopener">Alta usuario web</a>
-            <a href="/instructivos/WEB%20INSTRUCTIVO.pdf" target="_blank" rel="noopener">Web instructivo</a>
-            <a href="/instructivos/Instructivo%20de%20Carga%20de%20Preliquidaciones%20(1).pdf" target="_blank" rel="noopener">Carga de preliquidaciones</a>
-            <a href="/instructivos/EXTRACCI%C3%93N%20DE%20POLIZA%20.pdf" target="_blank" rel="noopener">Extracción de póliza</a>
-            <a href="/instructivos/VALIDACION%20DE%20FIRMA%20DIGITAL.pdf" target="_blank" rel="noopener">Validación de firma digital</a>
+            <a href={instructivosPdf.altaPas} target="_blank" rel="noopener">Alta PAS</a>
+            <a href={instructivosPdf.altaUsuarioWeb} target="_blank" rel="noopener">Alta usuario web</a>
+            <a href={instructivosPdf.webInstructivo} target="_blank" rel="noopener">Web instructivo</a>
+            <a href={instructivosPdf.cargaPreliquidaciones} target="_blank" rel="noopener">Carga de preliquidaciones</a>
+            <a href={instructivosPdf.extraccionPoliza} target="_blank" rel="noopener">Extracción de póliza</a>
+            <a href={instructivosPdf.validacionFirmaDigital} target="_blank" rel="noopener">Validación de firma digital</a>
           </div>
         </div>
 
@@ -58,15 +59,15 @@ export default function Instructivos() {
           <article className="guides-col">
             <h5>Altas y acceso web</h5>
             <div className="guides-links-grid">
-              <a href="/instructivos/Instrutivo%20Alta%20PAS.pdf" target="_blank" rel="noopener">
+              <a href={instructivosPdf.altaPas} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Alta</span>
                 Instructivo alta PAS
               </a>
-              <a href="/instructivos/Alta%20usuario%20web%20.pdf" target="_blank" rel="noopener">
+              <a href={instructivosPdf.altaUsuarioWeb} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Usuarios</span>
                 Alta usuario web
               </a>
-              <a href="/instructivos/WEB%20INSTRUCTIVO.pdf" target="_blank" rel="noopener">
+              <a href={instructivosPdf.webInstructivo} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Portal</span>
                 Web instructivo
               </a>
@@ -76,15 +77,15 @@ export default function Instructivos() {
           <article className="guides-col">
             <h5>Pólizas e ítems</h5>
             <div className="guides-links-grid">
-              <a href="/instructivos/EXTRACCI%C3%93N%20DE%20POLIZA%20.pdf" target="_blank" rel="noopener">
+              <a href={instructivosPdf.extraccionPoliza} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Pólizas</span>
                 Extracción de póliza
               </a>
-              <a href="/instructivos/INCLUSION%20DE%20ITEM.pdf.pdf" target="_blank" rel="noopener">
+              <a href={instructivosPdf.inclusionItem} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Ítems</span>
                 Inclusión de ítem
               </a>
-              <a href="/instructivos/EXCLUSION%20DE%20ITEM.pdf" target="_blank" rel="noopener">
+              <a href={instructivosPdf.exclusionItem} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Ítems</span>
                 Exclusión de ítem
               </a>
@@ -94,15 +95,15 @@ export default function Instructivos() {
           <article className="guides-col">
             <h5>Facturación y certificados</h5>
             <div className="guides-links-grid">
-              <a href="/instructivos/CARGA%20DE%20FACTURA%20PAS.pdf" target="_blank" rel="noopener">
+              <a href={instructivosPdf.cargaFacturaPas} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Facturación</span>
                 Carga de factura PAS
               </a>
-              <a href="/instructivos/Instructivo%20de%20Carga%20de%20Preliquidaciones%20(1).pdf" target="_blank" rel="noopener">
+              <a href={instructivosPdf.cargaPreliquidaciones} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Liquidaciones</span>
                 Carga de preliquidaciones
               </a>
-              <a href="/instructivos/LIBRE%20DEUDA%20y%20CERTIFICADO%20GRUPAL.pdf" target="_blank" rel="noopener">
+              <a href={instructivosPdf.libreDeudaCertificadoGrupal} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Certificados</span>
                 Libre deuda y certificado grupal
               </a>
@@ -112,7 +113,7 @@ export default function Instructivos() {
           <article className="guides-col">
             <h5>Validaciones</h5>
             <div className="guides-links-grid">
-              <a href="/instructivos/VALIDACION%20DE%20FIRMA%20DIGITAL.pdf" target="_blank" rel="noopener">
+              <a href={instructivosPdf.validacionFirmaDigital} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Firma digital</span>
                 Validación de firma digital
               </a>

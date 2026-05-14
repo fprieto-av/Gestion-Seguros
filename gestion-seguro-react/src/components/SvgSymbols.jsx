@@ -37,6 +37,7 @@ export default function SvgSymbols() {
         <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M14 6l-6 6 6 6"/></symbol>
         <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M10 6l6 6-6 6"/></symbol>
         <symbol id="i-coffin" viewBox="0 0 24 24"><path d="M8 2h8l4 6v10l-4 4H8l-4-4V8l4-6zM12 10v8M9 14h6"/></symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></symbol>
       </defs>
     </svg>
   )

@@ -10,18 +10,13 @@ import linkedinImg from '../assets/img/linkedin-perfil-gestion.png'
 import equipoImg from '../assets/img/equipocomercial.png'
 import sergioImg from '../assets/img/sergio-sabha.png'
 import nicolasImg from '../assets/img/nicolas-cuevas.png'
-import nadiaImg from '../assets/img/nadia-machado.png'
-import germanImg from '../assets/img/german-camino.png'
-
 const PERSONAS = (imgs) => [
   { img: imgs.sergioImg,  nombre: 'Sergio Sabha',           cargo: 'Socio' },
   { img: imgs.nicolasImg, nombre: 'Nicolás Cuevas Zárate',  cargo: 'Socio' },
-  { img: imgs.nadiaImg,   nombre: 'Nadia Machado',          cargo: 'Gerente Administración y Finanzas' },
-  { img: imgs.germanImg,  nombre: 'Germán Camino',          cargo: 'Gerente Comercial' },
 ]
 
-function EquipoCarousel({ equipoImg, sergioImg, nicolasImg, nadiaImg, germanImg }) {
-  const slides = PERSONAS({ sergioImg, nicolasImg, nadiaImg, germanImg })
+function EquipoCarousel({ equipoImg, sergioImg, nicolasImg }) {
+  const slides = PERSONAS({ sergioImg, nicolasImg })
   const [idx, setIdx] = useState(0)
   useEffect(() => {
     const t = setInterval(() => setIdx(i => (i + 1) % slides.length), 3000)
@@ -37,33 +32,36 @@ function EquipoCarousel({ equipoImg, sergioImg, nicolasImg, nadiaImg, germanImg 
         <p>Las personas detrás de cada póliza.</p>
       </div>
 
-      <div className="equipo-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignItems: 'start', maxWidth: 'var(--container)', margin: '0 auto' }}>
+      <div className="equipo-grid">
 
         {/* Foto grupal */}
-        <div style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 40px rgba(14,23,48,0.12)', height: '420px' }}>
-          <img src={equipoImg} alt="Equipo comercial de Gestión Seguros" style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover', objectPosition: 'center center' }} />
+        <div>
+          <div className="equipo-label-row">
+            <span className="section-label" style={{ margin: 0 }}><svg className="icon" style={{ width: '13px' }}><use href="#i-users" /></svg>Equipo Comercial</span>
+          </div>
+          <div className="equipo-img-wrap">
+            <img src={equipoImg} alt="Equipo comercial de Gestión Seguros" className="equipo-img" />
+          </div>
         </div>
 
         {/* Carrusel individual */}
-        <div style={{ position: 'relative' }}>
-          <div style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 40px rgba(14,23,48,0.14)', height: '420px' }}>
+        <div>
+          <div className="equipo-label-row">
+            <span className="section-label" style={{ margin: 0 }}><svg className="icon" style={{ width: '13px' }}><use href="#i-award" /></svg>Socios</span>
+          </div>
+          <div className="equipo-img-wrap">
             <img
               key={idx}
               src={cur.img}
               alt={cur.nombre}
-              style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover', objectPosition: 'center center' }}
+              className="equipo-img"
             />
           </div>
 
-          {/* Dots indicadores (solo visuales) */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '16px' }}>
+          {/* Dots indicadores */}
+          <div className="equipo-dots">
             {slides.map((_, i) => (
-              <div key={i} style={{
-                width: i === idx ? '24px' : '8px', height: '8px',
-                borderRadius: '999px',
-                background: i === idx ? 'var(--primary)' : 'rgba(14,23,48,0.2)',
-                transition: 'all 0.3s',
-              }} />
+              <div key={i} className={`equipo-dot${i === idx ? ' equipo-dot--active' : ''}`} />
             ))}
           </div>
         </div>
@@ -158,7 +156,7 @@ export default function Nosotros() {
       </section>
 
       {/* EQUIPO COMERCIAL */}
-      <EquipoCarousel equipoImg={equipoImg} sergioImg={sergioImg} nicolasImg={nicolasImg} nadiaImg={nadiaImg} germanImg={germanImg} />
+      <EquipoCarousel equipoImg={equipoImg} sergioImg={sergioImg} nicolasImg={nicolasImg} />
 
       {/* REDES + MAPA */}
       <section className="section nosotros-band">
@@ -168,10 +166,10 @@ export default function Nosotros() {
           <p>Encontranos en LinkedIn y Google Maps.</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', maxWidth: '860px', margin: '0 auto', alignItems: 'stretch' }}>
+        <div className="social-grid">
 
           {/* LinkedIn */}
-          <div className="reveal" style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(14,23,48,0.08)', boxShadow: '0 4px 20px rgba(14,23,48,0.07)', display: 'flex', flexDirection: 'column' }}>
+          <div className="social-net-card reveal">
             <div style={{ background: '#0077B5', padding: '24px', display: 'flex', alignItems: 'center', gap: '14px' }}>
               <svg viewBox="0 0 24 24" style={{ width: '32px', height: '32px', fill: '#fff', flexShrink: 0 }}>
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -200,7 +198,7 @@ export default function Nosotros() {
           </div>
 
           {/* Google Maps */}
-          <div className="reveal delay-1" style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(14,23,48,0.08)', boxShadow: '0 4px 20px rgba(14,23,48,0.07)', display: 'flex', flexDirection: 'column' }}>
+          <div className="social-net-card reveal delay-1">
             <iframe
               src="https://www.google.com/maps?q=Gesti%C3%B3n+Argentina+de+Seguros+S.A%2C+Bartolom%C3%A9+Mitre+480+Piso+11%2C+CABA%2C+Argentina&output=embed"
               title="Google Maps — Bartolomé Mitre 480 Piso 11, Gestión Argentina de Seguros S.A"

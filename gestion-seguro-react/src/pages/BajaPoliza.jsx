@@ -51,7 +51,7 @@ export default function BajaPoliza() {
           <h2>Todo lo que necesitás <span className="gradient-text">saber antes de solicitar la baja</span></h2>
           <p>En los términos del Artículo 34 de la Ley N° 24.240 y del Artículo 1.110 del Código Civil y Comercial de la Nación, tenés derecho a revocar tu seguro vigente.</p>
         </div>
-        <div className="proc-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', maxWidth: '900px', margin: '0 auto' }}>
+        <div className="proc-grid proc-grid--baja">
           <div className="proc-item reveal">
             <div className="proc-num" style={{ background: 'var(--primary)' }}>
               <svg className="icon" style={{ color: '#fff', width: '22px' }}><use href="#i-doc" /></svg>
@@ -100,8 +100,8 @@ export default function BajaPoliza() {
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
 
-            <h4 style={{ margin: '16px 0 12px', color: 'var(--dark)' }}>Parte 1 · Datos personales</h4>
-            <div className="form-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
+            <h4 style={{ margin: '16px 0 12px', color: 'var(--primary)' }}>Parte 1 · Datos personales</h4>
+            <div className="form-grid form-grid--4col">
               <div className="form-field">
                 <label>Nombre y Apellido <span className="req">*</span></label>
                 <input type="text" name="nombre_apellido" required placeholder="Juan García" />
@@ -120,8 +120,8 @@ export default function BajaPoliza() {
               </div>
             </div>
 
-            <h4 style={{ margin: '20px 0 12px', color: 'var(--dark)' }}>Parte 2 · Datos de la póliza</h4>
-            <div className="form-grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
+            <h4 style={{ margin: '20px 0 12px', color: 'var(--primary)' }}>Parte 2 · Datos de la póliza</h4>
+            <div className="form-grid form-grid--3col">
               <div className="form-field">
                 <label>Tipo de seguro <span className="req">*</span></label>
                 <select name="tipo_seguro" required defaultValue="">
@@ -166,7 +166,7 @@ export default function BajaPoliza() {
         title="Consultas · Baja de póliza"
         subtitle="Si tenés dudas antes de solicitar la baja, contactanos directamente."
         links={[
-          { label: 'comercial@gestionseguros.com.ar', href: 'mailto:comercial@gestionseguros.com.ar', icon: 'i-mail' },
+          { label: 'bajas@gestionseguros.com.ar', href: 'mailto:comercial@gestionseguros.com.ar', icon: 'i-mail' },
         ]}
       />
     </>

@@ -86,7 +86,7 @@ export default function Productores() {
           <h1 className="reveal delay-1" id="pas-hero-title">Si sos <em>PAS</em>,<br />¡<span className="pas-ink">PAS</span>ate a Gestión!</h1>
           <p className="lead reveal delay-2">Sumate a nuestro equipo de <b>Productores Asesores de Seguros</b> y tené un respaldo de confianza. Plataforma GestionAr, capacitación continua, comisiones competitivas y soporte humano todos los días.</p>
           <div className="hero-ctas reveal delay-3 page-hero-pas-ctas">
-            <a href="#form-pas" className="btn btn-accent btn-lg">Quiero asociarme <svg className="icon"><use href="#i-arrow" /></svg></a>
+            <a href="#form-pas" className="btn btn-accent btn-lg">Quiero unirme <svg className="icon"><use href="#i-arrow" /></svg></a>
             <a href="#beneficios" className="btn btn-ghost btn-lg">Ver beneficios</a>
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function Productores() {
         </div>
         <div className="contact-grid">
           <div className="contact-info">
-            <h3 style={{ position: 'relative' }}>Sumate como Productor Asesor de Seguros</h3>
+            <h3 style={{ position: 'relative' }}>¿Querés unirte como <span className="pas-accent">Productor Asesor de Seguros</span>?</h3>
             <p style={{ position: 'relative' }}>Trabajamos con Productores Asesores habilitados por la Superintendencia de Seguros de la Nación. El proceso es simple y rápido.</p>
             <div className="contact-methods">
               <div className="contact-method">
@@ -141,9 +141,10 @@ export default function Productores() {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* noValidate desactiva la validación nativa — la manejamos nosotros antes de .submit() */}
-          <form
+        {/* noValidate desactiva la validación nativa — la manejamos nosotros antes de .submit() */}
+        <form
             ref={formRef}
             className="contact-form"
             name="form-pas"
@@ -153,8 +154,8 @@ export default function Productores() {
             onSubmit={handleSubmit}
             noValidate
           >
-            <h3>Rellena el formulario para convertirte en <span className="pas-accent">PAS</span></h3>
-            <h4 style={{ margin: '4px 0 12px', color: 'var(--dark)' }}>Parte 1 · Datos del productor</h4>
+            <h3>Asociate a través del formulario</h3>
+            <h4 style={{ margin: '4px 0 12px', color: 'var(--primary)' }}>Parte 1 · Datos del productor</h4>
             <div className="form-grid">
 
               <div className={`form-field${errors.nombre ? ' form-field--error' : ''}`}>
@@ -211,7 +212,7 @@ export default function Productores() {
 
               <div className="form-field full">
                 <fieldset className="pas-docs">
-                  <h4>Parte 2 · Documentación obligatoria para alta de productor</h4>
+                  <h4 style={{ color: 'var(--primary)' }}>Parte 2 · Documentación obligatoria para alta de productor</h4>
                   <p>Adjuntá todos los archivos requeridos para enviar la solicitud.</p>
                   <div className="pas-docs-grid">
 
@@ -284,8 +285,7 @@ export default function Productores() {
             <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
               Enviar solicitud <svg className="icon"><use href="#i-arrow" /></svg>
             </button>
-          </form>
-        </div>
+        </form>
       </section>
 
       <ContactCard

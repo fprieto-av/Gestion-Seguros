@@ -116,7 +116,12 @@
 .alq-intro-side { position: sticky; top: 190px; align-self: start; }
 .alq-type-title { color: var(--primary); font-weight: 800; }
 .alq-programa-badge { display: inline-flex; margin: 0 auto 12px; }
-.alq-programa-wrap { max-width: 980px; margin: 0 auto; text-align: center; }
+.alq-programa-wrap { max-width: 980px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+
+.alq-programa-section {
+  background: var(--bg);
+}
+
 .alq-section-title {
   max-width: 980px;
   margin: 0 auto 14px;
@@ -129,33 +134,130 @@
 .alq-section-title--programa { font-size: clamp(36px, 4.1vw, 54px); }
 .alq-section-title--sim { font-size: clamp(48px, 5.2vw, 72px); }
 .alq-sim-highlight { color: var(--accent); }
-.alq-programa-card {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 20px 18px 14px;
-  border-radius: var(--r-lg);
-  background: transparent;
-  text-align: left;
+.alq-programa-accent { color: var(--accent); }
+
+.alq-programa-hero {
+  max-width: 920px;
+  margin: 0 auto 28px;
+  padding: 28px 22px 26px;
+  border-radius: var(--r-xl);
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+  text-align: center;
 }
-.alq-programa-card h2 { margin: 0 0 14px; color: var(--dark); }
-.alq-programa-card h2 .alq-programa-accent { color: var(--accent); }
-.alq-programa-main { max-width: 900px; margin: 0 auto; }
-.alq-programa-card h3 { font-size: 18px; color: var(--primary-dark); margin: 14px 0 8px; }
-.alq-programa-card p { margin-bottom: 8px; line-height: 1.55; }
+.alq-programa-hero .alq-section-title { margin-bottom: 10px; }
+
+.alq-programa-discount {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin: 16px auto 20px;
+  padding: 14px 26px 16px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(145deg, rgba(27, 79, 174, 0.07) 0%, rgba(255, 154, 31, 0.12) 100%);
+  border: 1px solid rgba(27, 79, 174, 0.14);
+}
+.alq-programa-discount-value {
+  font-family: 'Archivo', system-ui, sans-serif;
+  font-size: clamp(38px, 9vw, 52px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent-dark) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.alq-programa-discount-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+}
+
+.alq-programa-main { max-width: 640px; margin: 0 auto; text-align: center; }
+.alq-programa-main p { margin: 0 0 10px; line-height: 1.6; color: var(--ink); font-size: 15px; }
+.alq-programa-main p:last-child { margin-bottom: 0; }
+
 .alq-programa-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px 26px;
-  align-items: start;
-  margin-top: 10px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
+  gap: 20px;
+  align-items: stretch;
+  max-width: 980px;
+  margin: 0 auto;
 }
-.alq-programa-columns > div:last-child { padding-left: 22px; border-left: 1px solid var(--line); }
-.alq-programa-card ul, .alq-programa-card ol { margin: 0; padding-left: 18px; list-style: disc; }
-.alq-programa-card li { margin-bottom: 4px; line-height: 1.5; }
-.alq-programa-info-link { margin-top: 14px; }
-.alq-programa-card a.alq-external-link {
+.alq-programa-panel {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.alq-programa-panel:hover {
+  border-color: rgba(27, 79, 174, 0.22);
+  box-shadow: var(--shadow-md);
+}
+.alq-programa-panel-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: linear-gradient(105deg, var(--primary-soft) 0%, rgba(255, 154, 31, 0.1) 100%);
+  border-bottom: 1px solid var(--line);
+}
+.alq-programa-panel-icon {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: var(--white);
+  border: 1px solid rgba(27, 79, 174, 0.18);
+  display: grid;
+  place-items: center;
+  color: var(--primary);
+  box-shadow: 0 4px 12px rgba(27, 79, 174, 0.08);
+}
+.alq-programa-panel-icon .icon { width: 22px; height: 22px; }
+.alq-programa-panel-head h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.2;
+}
+.alq-programa-panel-body { padding: 18px 20px 22px; }
+.alq-programa-panel-body ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+.alq-programa-panel-body li {
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 22px;
+  line-height: 1.5;
+  font-size: 14px;
+  color: var(--ink);
+}
+.alq-programa-panel-body li:last-child { margin-bottom: 0; }
+.alq-programa-panel-body li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+.alq-programa-info-link { margin-top: 16px; margin-bottom: 0; font-size: 14px; }
+.alq-programa-panel-body a.alq-external-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -164,28 +266,119 @@
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-.alq-programa-card a.alq-external-link::after { content: "↗"; font-size: 12px; color: var(--accent-dark); }
-.detail-main.detail-main--accent-titles .alq-programa-card h2 {
-  margin-top: 0;
-  padding: 0;
-  border-left: none;
-  border-radius: 0;
-  background: none;
-  box-shadow: none;
-}
-.detail-main.detail-main--accent-titles .alq-programa-card h2::before { content: none; }
+.alq-programa-panel-body a.alq-external-link::after { content: '↗'; font-size: 12px; color: var(--accent-dark); }
+
 section#simulador-alquileres { background: var(--bg); }
 section#simulador-alquileres .section-head { margin-bottom: 24px; }
 @media (max-width: 1024px) {
-  .alq-intro-side { position: static; top: auto; order: -1; margin-bottom: 20px; }
+  .alq-intro-side {
+    position: static;
+    top: auto;
+    order: -1;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: min(100%, 480px);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .alq-sim-title {
+    margin-bottom: 16px;
+    width: 100%;
+  }
+  .alq-sim-title h3,
+  .alq-sim-title p {
+    text-align: center;
+  }
+  .alq-jump-card {
+    width: 100%;
+    text-align: center;
+    padding: 24px 22px;
+  }
+  .alq-jump-card p {
+    margin-bottom: 18px;
+  }
+  .alq-jump-card .btn {
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+  }
 }
 @media (max-width: 640px) {
   .alq-card { padding: 24px; }
   .alq-opts { grid-template-columns: repeat(3, 1fr); }
   .alq-grid { grid-template-columns: 1fr; gap: 10px; }
   .alq-span-2 { grid-column: auto; }
-  .alq-programa-card { padding: 18px; margin-top: 0; }
-  .alq-programa-columns { grid-template-columns: 1fr; gap: 8px; margin-top: 8px; padding-top: 10px; }
-  .alq-programa-columns > div:last-child { padding-left: 0; border-left: none; }
-  .alq-programa-card h3 { font-size: 17px; }
+  .alq-programa-hero { padding: 22px 16px 20px; margin-bottom: 22px; }
+  .alq-programa-columns { grid-template-columns: 1fr; gap: 14px; }
+  .alq-programa-panel-head { padding: 14px 16px; }
+  .alq-programa-panel-head h3 { font-size: 17px; }
+  .alq-programa-panel-body { padding: 16px 16px 18px; }
+  .alq-programa-discount { padding: 12px 20px 14px; margin-top: 12px; margin-bottom: 16px; }
+}
+
+/* Botón flujo “Ir al simulador” (solo ≤768px, ver Alquileres.jsx): encima del WhatsApp, sin banda de fondo */
+@media (max-width: 768px) {
+  body.alq-sim-sticky-active {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+  .alq-sim-sticky-bar {
+    position: fixed;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: calc(24px + 64px + 12px + env(safe-area-inset-bottom, 0px));
+    top: auto;
+    z-index: 88;
+    width: auto;
+    max-width: min(calc(100vw - 32px), 280px);
+    padding: 0;
+    margin: 0;
+    display: block;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+    pointer-events: none;
+  }
+  .alq-sim-sticky-bar__btn {
+    pointer-events: auto;
+    margin: 0;
+    width: auto;
+    max-width: 100%;
+    justify-content: center;
+    padding: 11px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--primary);
+    background: var(--white);
+    border: 1.5px solid rgba(27, 79, 174, 0.22);
+    box-shadow: 0 4px 18px rgba(14, 23, 48, 0.12);
+    text-decoration: none;
+    border-radius: var(--r-full);
+  }
+  .alq-sim-sticky-bar__btn:hover {
+    background: var(--primary-soft);
+    border-color: rgba(27, 79, 174, 0.38);
+    color: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(27, 79, 174, 0.14);
+  }
+  .alq-sim-sticky-bar__btn .icon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .alq-sim-sticky-bar {
+    bottom: calc(12px + 52px + 12px + env(safe-area-inset-bottom, 0px));
+  }
 }
