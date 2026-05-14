@@ -32,6 +32,15 @@ function Counter({ target, suffix = '', prefix = '' }) {
 function ProductTabs() {
   const [filter, setFilter] = useState('caucion')
 
+  // Cuando cambia el tab, las nuevas cards tienen clase 'reveal' pero el observer
+  // global ya corrió. Las marcamos visibles en el siguiente frame de render.
+  useEffect(() => {
+    const id = requestAnimationFrame(() => {
+      document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'))
+    })
+    return () => cancelAnimationFrame(id)
+  }, [filter])
+
   const cards = [
     { cat: 'caucion', icon: 'i-doc', title: 'Garantías Contractuales', desc: 'Son las más utilizadas en el mercado y acompañan a las empresas en todo el proceso de contratación, tanto en el ámbito público como privado.', tags: ['Licitaciones', 'B2B'], href: '/caucion#contractuales' },
     { cat: 'caucion', icon: 'i-truck', title: 'Garantías Aduaneras', desc: 'Pensadas para que puedas operar con agilidad, liberar mercadería sin demoras y optimizar tu flujo de fondos.', tags: ['Comex', 'Aduana'], href: '/caucion#aduaneras' },

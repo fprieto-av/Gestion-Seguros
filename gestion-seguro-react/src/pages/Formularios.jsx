@@ -26,6 +26,9 @@ export default function Formularios() {
       <BrandStrip />
 
       <section className="section">
+        <div className="section-head reveal">
+          <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Formularios</span>
+        </div>
         <div className="forms-hero">
           <img src={formulariosHero} alt="Gestión Seguros formularios" />
           <div>
@@ -63,7 +66,7 @@ export default function Formularios() {
                 <span className="forms-link-meta">Garantía</span>Aval inglés
               </a>
               <a href="/formularios/DOCUMENTACI%C3%93N%20PARA%20DAR%20DE%20BAJA%20UNA%20POLIZA%20DE%20CAUC%C3%93N.pdf" target="_blank" rel="noopener">
-                <span className="forms-link-meta">Baja</span>Documentación para dar de baja una póliza de caución
+                <span className="forms-link-meta">Baja</span>Baja de póliza
               </a>
             </div>
           </article>

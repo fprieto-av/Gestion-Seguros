@@ -1157,6 +1157,13 @@ footer { background: var(--darker); color: rgba(255,255,255,0.65); padding: 80px
 }
 .form-field input:focus, .form-field select:focus, .form-field textarea:focus { outline: none; border-color: var(--accent); background: var(--white); }
 .form-field textarea { resize: vertical; min-height: 110px; }
+.form-field--error input,
+.form-field--error select,
+.form-field--error textarea { border-color: #e03131; background: #fff5f5; }
+.form-field--error input:focus,
+.form-field--error select:focus,
+.form-field--error textarea:focus { border-color: #e03131; }
+.form-error { display: block; margin-top: 4px; font-size: 12px; font-weight: 600; color: #e03131; }
 .form-check { display: flex; gap: 10px; font-size: 13px; color: var(--ink); margin: 10px 0 18px; }
 .form-check input { margin-top: 3px; }
 

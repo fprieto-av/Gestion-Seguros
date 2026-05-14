@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
 import BrandStrip from '../components/BrandStrip'
@@ -6,9 +6,76 @@ import ContactCard from '../components/ContactCard'
 import '../assets/css/productores.css'
 import bannerPas from '../assets/img/banner-pas.jpg'
 
+// Regex reutilizables
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const TEL_RE   = /^[\d\s\-\+\(\)]{6,20}$/
+const CUIT_RE  = /^\d{11}$/
+
+// Archivos obligatorios con sus labels para los mensajes de error
+const DOCS_REQUERIDOS = [
+  { name: 'ssnMatricula',   label: 'Constancia SSN' },
+  { name: 'rubricaDigital', label: 'Rúbrica digital' },
+  { name: 'constanciaIva',  label: 'Constancia IVA' },
+  { name: 'ingresosBrutos', label: 'Ingresos Brutos' },
+  { name: 'pagoMatricula',  label: 'Pago de matrícula' },
+  { name: 'constanciaCbu',  label: 'Constancia de CBU' },
+  { name: 'ddjjPep',        label: 'DDJJ PEP' },
+]
+
 export default function Productores() {
   useEffect(() => { document.title = 'Productores Asesores · ¡PASate a Gestión! | Gestión Seguros' }, [])
   useReveal()
+
+  // Estado solo para los campos de texto — los file inputs quedan no controlados
+  const [form, setForm] = useState({
+    nombre: '', email: '', telefono: '',
+    matricula: '', cuit: '', categoriaIva: '',
+    provincia: '', mensaje: '', terms: false,
+  })
+  const [errors, setErrors] = useState({})
+
+  // Ref al <form> para poder llamar .submit() nativo si la validación pasa
+  const formRef = useRef(null)
+
+  const set = (k, v) => {
+    setForm(f => ({ ...f, [k]: v }))
+    if (errors[k]) setErrors(e => { const n = { ...e }; delete n[k]; return n })
+  }
+
+  const validate = () => {
+    const errs = {}
+
+    // Datos del productor
+    if (!form.nombre.trim())              errs.nombre      = 'El nombre es obligatorio.'
+    if (!form.email.trim())               errs.email       = 'El email es obligatorio.'
+    else if (!EMAIL_RE.test(form.email))  errs.email       = 'Ingresá un email válido.'
+    if (form.telefono && !TEL_RE.test(form.telefono)) errs.telefono = 'Teléfono inválido.'
+    if (!form.matricula.trim())           errs.matricula   = 'La matrícula es obligatoria.'
+    if (!form.cuit.trim())                errs.cuit        = 'El CUIT es obligatorio.'
+    else if (!CUIT_RE.test(form.cuit))    errs.cuit        = 'El CUIT debe tener 11 dígitos sin guiones.'
+    if (!form.categoriaIva)              errs.categoriaIva = 'Seleccioná una categoría.'
+
+    // Archivos: verificamos via el DOM que cada file input tenga un archivo
+    if (formRef.current) {
+      DOCS_REQUERIDOS.forEach(({ name, label }) => {
+        const el = formRef.current.elements[name]
+        if (!el || !el.files || el.files.length === 0)
+          errs[name] = `${label} es obligatorio.`
+      })
+    }
+
+    if (!form.terms) errs.terms = 'Debés aceptar la política de privacidad.'
+    return errs
+  }
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length) { setErrors(errs); return }
+    setErrors({})
+    // Envío nativo: respeta el action/encType para subir archivos a formsubmit.co
+    formRef.current.submit()
+  }
 
   return (
     <>
@@ -75,99 +142,145 @@ export default function Productores() {
             </div>
           </div>
 
+          {/* noValidate desactiva la validación nativa — la manejamos nosotros antes de .submit() */}
           <form
+            ref={formRef}
             className="contact-form"
             name="form-pas"
             action="https://formsubmit.co/comercial@gestionseguros.com.ar"
             method="POST"
             encType="multipart/form-data"
+            onSubmit={handleSubmit}
+            noValidate
           >
             <h3>Rellena el formulario para convertirte en <span className="pas-accent">PAS</span></h3>
             <h4 style={{ margin: '4px 0 12px', color: 'var(--dark)' }}>Parte 1 · Datos del productor</h4>
             <div className="form-grid">
-              <div className="form-field">
+
+              <div className={`form-field${errors.nombre ? ' form-field--error' : ''}`}>
                 <label>Nombre y Apellido <span className="req">*</span></label>
-                <input type="text" name="nombre" required />
+                <input type="text" name="nombre" value={form.nombre} onChange={e => set('nombre', e.target.value)} />
+                {errors.nombre && <span className="form-error">{errors.nombre}</span>}
               </div>
-              <div className="form-field">
+
+              <div className={`form-field${errors.email ? ' form-field--error' : ''}`}>
                 <label>Email <span className="req">*</span></label>
-                <input type="email" name="email" required />
+                <input type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} />
+                {errors.email && <span className="form-error">{errors.email}</span>}
               </div>
-              <div className="form-field">
+
+              <div className={`form-field${errors.telefono ? ' form-field--error' : ''}`}>
                 <label>Teléfono</label>
-                <input type="tel" name="telefono" />
+                <input type="tel" name="telefono" value={form.telefono} onChange={e => set('telefono', e.target.value)} />
+                {errors.telefono && <span className="form-error">{errors.telefono}</span>}
               </div>
-              <div className="form-field">
+
+              <div className={`form-field${errors.matricula ? ' form-field--error' : ''}`}>
                 <label>Matrícula SSN <span className="req">*</span></label>
-                <input type="text" name="matricula" required placeholder="Número de matrícula" />
+                <input type="text" name="matricula" placeholder="Número de matrícula" value={form.matricula} onChange={e => set('matricula', e.target.value)} />
+                {errors.matricula && <span className="form-error">{errors.matricula}</span>}
               </div>
-              <div className="form-field">
+
+              <div className={`form-field${errors.cuit ? ' form-field--error' : ''}`}>
                 <label>C.U.I.T <span className="req">*</span></label>
-                <input type="text" name="cuit" inputMode="numeric" pattern="[0-9]{11}" placeholder="11 dígitos sin guiones" required />
+                <input type="text" name="cuit" inputMode="numeric" placeholder="11 dígitos sin guiones" value={form.cuit} onChange={e => set('cuit', e.target.value)} />
+                {errors.cuit && <span className="form-error">{errors.cuit}</span>}
               </div>
-              <div className="form-field">
+
+              <div className={`form-field${errors.categoriaIva ? ' form-field--error' : ''}`}>
                 <label>Categoría frente al IVA <span className="req">*</span></label>
-                <select name="categoriaIva" required>
+                <select name="categoriaIva" value={form.categoriaIva} onChange={e => set('categoriaIva', e.target.value)}>
                   <option value="">Seleccionar</option>
                   <option value="Responsable Inscripto">Responsable Inscripto</option>
                   <option value="Monotributo">Monotributo</option>
                   <option value="Exento">Exento</option>
                   <option value="No alcanzado">No alcanzado</option>
                 </select>
+                {errors.categoriaIva && <span className="form-error">{errors.categoriaIva}</span>}
               </div>
+
               <div className="form-field full">
                 <label>Provincia</label>
-                <input type="text" name="provincia" placeholder="Ej: Buenos Aires" />
+                <input type="text" name="provincia" placeholder="Ej: Buenos Aires" value={form.provincia} onChange={e => set('provincia', e.target.value)} />
               </div>
+
               <div className="form-field full">
                 <label>Experiencia / Observaciones</label>
-                <textarea name="mensaje" rows="4" placeholder="Contanos brevemente tu experiencia, cartera actual y expectativas" />
+                <textarea name="mensaje" rows="4" placeholder="Contanos brevemente tu experiencia, cartera actual y expectativas" value={form.mensaje} onChange={e => set('mensaje', e.target.value)} />
               </div>
+
               <div className="form-field full">
                 <fieldset className="pas-docs">
                   <h4>Parte 2 · Documentación obligatoria para alta de productor</h4>
                   <p>Adjuntá todos los archivos requeridos para enviar la solicitud.</p>
                   <div className="pas-docs-grid">
-                    <div className="pas-doc-item">
+
+                    <div className={`pas-doc-item${errors.ssnMatricula ? ' form-field--error' : ''}`}>
                       <label>Constancia SSN (frente y dorso) <span className="req">*</span></label>
-                      <input type="file" name="ssnMatricula" accept=".pdf,.jpg,.jpeg,.png" required />
+                      <input type="file" name="ssnMatricula" accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={() => { if (errors.ssnMatricula) setErrors(e => { const n = { ...e }; delete n.ssnMatricula; return n }) }} />
+                      {errors.ssnMatricula && <span className="form-error">{errors.ssnMatricula}</span>}
                     </div>
-                    <div className="pas-doc-item">
+
+                    <div className={`pas-doc-item${errors.rubricaDigital ? ' form-field--error' : ''}`}>
                       <label>Rúbrica digital <span className="req">*</span></label>
-                      <input type="file" name="rubricaDigital" accept=".pdf,.jpg,.jpeg,.png" required />
+                      <input type="file" name="rubricaDigital" accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={() => { if (errors.rubricaDigital) setErrors(e => { const n = { ...e }; delete n.rubricaDigital; return n }) }} />
+                      {errors.rubricaDigital && <span className="form-error">{errors.rubricaDigital}</span>}
                     </div>
-                    <div className="pas-doc-item">
+
+                    <div className={`pas-doc-item${errors.constanciaIva ? ' form-field--error' : ''}`}>
                       <label>Constancia categoría IVA <span className="req">*</span></label>
-                      <input type="file" name="constanciaIva" accept=".pdf,.jpg,.jpeg,.png" required />
+                      <input type="file" name="constanciaIva" accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={() => { if (errors.constanciaIva) setErrors(e => { const n = { ...e }; delete n.constanciaIva; return n }) }} />
+                      {errors.constanciaIva && <span className="form-error">{errors.constanciaIva}</span>}
                     </div>
-                    <div className="pas-doc-item">
+
+                    <div className={`pas-doc-item${errors.ingresosBrutos ? ' form-field--error' : ''}`}>
                       <label>Inscripción Ingresos Brutos <span className="req">*</span></label>
-                      <input type="file" name="ingresosBrutos" accept=".pdf,.jpg,.jpeg,.png" required />
+                      <input type="file" name="ingresosBrutos" accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={() => { if (errors.ingresosBrutos) setErrors(e => { const n = { ...e }; delete n.ingresosBrutos; return n }) }} />
+                      {errors.ingresosBrutos && <span className="form-error">{errors.ingresosBrutos}</span>}
                     </div>
-                    <div className="pas-doc-item">
+
+                    <div className={`pas-doc-item${errors.pagoMatricula ? ' form-field--error' : ''}`}>
                       <label>Pago anual de matrícula <span className="req">*</span></label>
-                      <input type="file" name="pagoMatricula" accept=".pdf,.jpg,.jpeg,.png" required />
+                      <input type="file" name="pagoMatricula" accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={() => { if (errors.pagoMatricula) setErrors(e => { const n = { ...e }; delete n.pagoMatricula; return n }) }} />
+                      {errors.pagoMatricula && <span className="form-error">{errors.pagoMatricula}</span>}
                     </div>
-                    <div className="pas-doc-item">
+
+                    <div className={`pas-doc-item${errors.constanciaCbu ? ' form-field--error' : ''}`}>
                       <label>Constancia de CBU propia <span className="req">*</span></label>
-                      <input type="file" name="constanciaCbu" accept=".pdf,.jpg,.jpeg,.png" required />
+                      <input type="file" name="constanciaCbu" accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={() => { if (errors.constanciaCbu) setErrors(e => { const n = { ...e }; delete n.constanciaCbu; return n }) }} />
+                      {errors.constanciaCbu && <span className="form-error">{errors.constanciaCbu}</span>}
                     </div>
-                    <div className="pas-doc-item pas-doc-item--full">
+
+                    <div className={`pas-doc-item pas-doc-item--full${errors.ddjjPep ? ' form-field--error' : ''}`}>
                       <label>Declaración Jurada PEP <span className="req">*</span></label>
-                      <input type="file" name="ddjjPep" accept=".pdf,.jpg,.jpeg,.png" required />
+                      <input type="file" name="ddjjPep" accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={() => { if (errors.ddjjPep) setErrors(e => { const n = { ...e }; delete n.ddjjPep; return n }) }} />
+                      {errors.ddjjPep && <span className="form-error">{errors.ddjjPep}</span>}
                     </div>
+
                   </div>
                 </fieldset>
               </div>
+
             </div>
+
             <input type="hidden" name="_subject" value="Nueva solicitud PAS desde la web" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_next" value="https://www.gestionseguros.com.ar/productores.html?pas=enviado" />
-            <div className="form-check">
-              <input type="checkbox" id="terms-pas" required />
+
+            <div className={`form-check${errors.terms ? ' form-field--error' : ''}`}>
+              <input type="checkbox" id="terms-pas" checked={form.terms} onChange={e => set('terms', e.target.checked)} />
               <label htmlFor="terms-pas">Acepto la política de privacidad y el tratamiento de mis datos personales.</label>
             </div>
+            {errors.terms && <span className="form-error">{errors.terms}</span>}
+
             <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
               Enviar solicitud <svg className="icon"><use href="#i-arrow" /></svg>
             </button>

@@ -11,6 +11,10 @@ const DESTINOS = {
   pas: 'comercial@gestionseguros.com.ar',
 }
 
+// Regex reutilizables — fácil de ajustar cuando haya backend
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const TEL_RE = /^[\d\s\-\+\(\)]{6,20}$/
+
 export default function Contacto() {
   useEffect(() => { document.title = 'Contacto | Gestión Seguros' }, [])
   useReveal()
@@ -38,13 +42,31 @@ export default function Contacto() {
     mensaje: alqMsg,
     terms: false,
   })
+  const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
 
-  const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
+  // Actualiza el campo y borra su error en tiempo real
+  const set = (k, v) => {
+    setForm(f => ({ ...f, [k]: v }))
+    if (errors[k]) setErrors(e => { const n = { ...e }; delete n[k]; return n })
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (!form.nombre || !form.email) return
+  const validate = () => {
+    const errs = {}
+    if (!form.nombre.trim())           errs.nombre   = 'El nombre es obligatorio.'
+    if (!form.email.trim())            errs.email    = 'El email es obligatorio.'
+    else if (!EMAIL_RE.test(form.email)) errs.email  = 'Ingresá un email válido.'
+    if (form.telefono && !TEL_RE.test(form.telefono)) errs.telefono = 'Teléfono inválido.'
+    if (!form.producto)                errs.producto = 'Seleccioná un producto.'
+    if (!form.terms)                   errs.terms    = 'Debés aceptar la política de privacidad.'
+    return errs
+  }
+
+  const handleSubmit = (ev) => {
+    ev.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length) { setErrors(errs); return }
+    setErrors({})
     const destino = DESTINOS[form.producto] || 'info@gestionseguros.com.ar'
     const subject = encodeURIComponent(`Consulta ${form.producto || 'web'} · ${form.nombre}`)
     const body = encodeURIComponent(
@@ -69,6 +91,11 @@ export default function Contacto() {
       <BrandStrip />
 
       <section className="section">
+        <div className="section-head reveal">
+          <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-mail" /></svg>Contacto</span>
+          <h2><span className="gradient-text">Contactanos</span></h2>
+          <p>Completá el formulario y un asesor se contactará a la brevedad</p>
+        </div>
         <div className="contact-grid">
           <div className="contact-info">
             <h3 style={{ position: 'relative' }}>Estamos disponibles</h3>
@@ -112,24 +139,32 @@ export default function Contacto() {
             </div>
           </div>
 
-          <form className="contact-form" onSubmit={handleSubmit}>
+          {/* noValidate desactiva la validación nativa del browser — la manejamos nosotros */}
+          <form className="contact-form" onSubmit={handleSubmit} noValidate>
             <h3 id="form">Dejanos tu consulta</h3>
             <div className="form-grid">
-              <div className="form-field">
+
+              <div className={`form-field${errors.nombre ? ' form-field--error' : ''}`}>
                 <label>Nombre y Apellido <span className="req">*</span></label>
-                <input type="text" name="nombre" required value={form.nombre} onChange={e => set('nombre', e.target.value)} />
+                <input type="text" name="nombre" value={form.nombre} onChange={e => set('nombre', e.target.value)} />
+                {errors.nombre && <span className="form-error">{errors.nombre}</span>}
               </div>
-              <div className="form-field">
+
+              <div className={`form-field${errors.email ? ' form-field--error' : ''}`}>
                 <label>Email <span className="req">*</span></label>
-                <input type="email" name="email" required value={form.email} onChange={e => set('email', e.target.value)} />
+                <input type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} />
+                {errors.email && <span className="form-error">{errors.email}</span>}
               </div>
-              <div className="form-field">
+
+              <div className={`form-field${errors.telefono ? ' form-field--error' : ''}`}>
                 <label>Teléfono</label>
                 <input type="tel" name="telefono" value={form.telefono} onChange={e => set('telefono', e.target.value)} />
+                {errors.telefono && <span className="form-error">{errors.telefono}</span>}
               </div>
-              <div className="form-field">
+
+              <div className={`form-field${errors.producto ? ' form-field--error' : ''}`}>
                 <label>Producto de interés <span className="req">*</span></label>
-                <select name="producto" required value={form.producto} onChange={e => set('producto', e.target.value)}>
+                <select name="producto" value={form.producto} onChange={e => set('producto', e.target.value)}>
                   <option value="">Seleccionar...</option>
                   <option value="caucion">Caución</option>
                   <option value="personas">Personas (Vida, AP, Sepelio)</option>
@@ -138,16 +173,22 @@ export default function Contacto() {
                   <option value="pas">Sumarme como PAS</option>
                   <option value="otro">Otra consulta</option>
                 </select>
+                {errors.producto && <span className="form-error">{errors.producto}</span>}
               </div>
+
               <div className="form-field full">
                 <label>Tu mensaje</label>
                 <textarea name="mensaje" rows="5" placeholder="Contanos qué necesitás" value={form.mensaje} onChange={e => set('mensaje', e.target.value)} />
               </div>
+
             </div>
-            <div className="form-check">
-              <input type="checkbox" id="terms" required checked={form.terms} onChange={e => set('terms', e.target.checked)} />
+
+            <div className={`form-check${errors.terms ? ' form-field--error' : ''}`}>
+              <input type="checkbox" id="terms" checked={form.terms} onChange={e => set('terms', e.target.checked)} />
               <label htmlFor="terms">Acepto la política de privacidad y el tratamiento de mis datos personales para responder a mi consulta.</label>
             </div>
+            {errors.terms && <span className="form-error">{errors.terms}</span>}
+
             <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
               Enviar consulta <svg className="icon"><use href="#i-arrow" /></svg>
             </button>

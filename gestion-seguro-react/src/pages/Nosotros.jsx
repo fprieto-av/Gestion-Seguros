@@ -202,8 +202,8 @@ export default function Nosotros() {
           {/* Google Maps */}
           <div className="reveal delay-1" style={{ borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(14,23,48,0.08)', boxShadow: '0 4px 20px rgba(14,23,48,0.07)', display: 'flex', flexDirection: 'column' }}>
             <iframe
-              src="https://www.google.com/maps?q=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+Comuna+3%2C+C1036+CABA%2C+Argentina&output=embed"
-              title="Google Maps — Bartolomé Mitre 480, Gestión Seguros"
+              src="https://www.google.com/maps?q=Gesti%C3%B3n+Argentina+de+Seguros+S.A%2C+Bartolom%C3%A9+Mitre+480+Piso+11%2C+CABA%2C+Argentina&output=embed"
+              title="Google Maps — Bartolomé Mitre 480 Piso 11, Gestión Argentina de Seguros S.A"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               style={{ width: '100%', flex: 1, display: 'block', border: 'none', minHeight: '200px' }}
@@ -213,14 +213,15 @@ export default function Nosotros() {
                 <svg className="icon" style={{ width: '18px', flexShrink: 0, marginTop: '2px', color: 'var(--primary)' }}><use href="#i-pin" /></svg>
                 <div>
                   <p style={{ margin: 0, fontWeight: 700, fontSize: '14px', color: 'var(--dark)' }}>Bartolomé Mitre 480, Piso 11</p>
+                  <p style={{ margin: '2px 0 0', fontSize: '12px', fontWeight: 600, color: 'var(--ink)' }}>Gestión Argentina de Seguros S.A</p>
                   <p style={{ margin: 0, fontSize: '13px', color: 'var(--gray)' }}>C1036 CABA · Lunes a Viernes 9–18hs</p>
                 </div>
               </div>
               <div style={{ display: 'flex', gap: '10px' }}>
-                <a href="https://www.google.com/maps/search/?api=1&query=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+C1036+CABA" className="btn btn-primary" target="_blank" rel="noopener noreferrer" style={{ flex: 1, justifyContent: 'center' }}>
+                <a href="https://www.google.com/maps/search/?api=1&query=Gesti%C3%B3n+Argentina+de+Seguros+S.A%2C+Bartolom%C3%A9+Mitre+480+Piso+11%2C+CABA" className="btn btn-primary" target="_blank" rel="noopener noreferrer" style={{ flex: 1, justifyContent: 'center' }}>
                   Ver en Maps <svg className="icon"><use href="#i-arrow" /></svg>
                 </a>
-                <a href="https://www.google.com/maps/search/?api=1&query=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+C1036+CABA" className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.google.com/maps/search/?api=1&query=Gesti%C3%B3n+Argentina+de+Seguros+S.A%2C+Bartolom%C3%A9+Mitre+480+Piso+11%2C+CABA" className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
                   Valorar
                 </a>
               </div>

@@ -84,7 +84,7 @@
 .pay-side ul { margin: 0 0 16px; padding-left: 18px; list-style: disc; }
 .pay-side li { font-size: 13px; color: var(--ink); margin-bottom: 6px; }
 .pay-mail-btn { width: 100%; justify-content: center; text-align: center; font-size: clamp(12px,2.2vw,14px); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 10px; gap: 8px; }
-.pay-important { margin-top: 6px; }
+.pay-important { margin-top: 6px; background: var(--bg); border-color: var(--line); }
 .pay-important p { margin-bottom: 8px; }
 @media (max-width: 1024px) {
   .pay-layout { grid-template-columns: 1fr; }

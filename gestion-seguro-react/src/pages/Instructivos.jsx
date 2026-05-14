@@ -27,10 +27,16 @@ export default function Instructivos() {
       <BrandStrip />
 
       <section className="section">
+        <div className="section-head reveal">
+          <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Instructivos</span>
+        </div>
         {/* INTRO */}
-        <div className="guides-intro">
-          <h2>Todo en un solo lugar</h2>
-          <p>Seleccioná el instructivo que necesitás y descargalo para seguir el paso a paso operativo según tu gestión.</p>
+        <div className="guides-hero">
+          <img src={instructivos} alt="Gestión Seguros instructivos" />
+          <div>
+            <h2>Seleccioná el instructivo que necesitás</h2>
+            <h3>Descargalo y seguí el paso a paso según tu gestión</h3>
+          </div>
         </div>
 
         {/* ACCESO RÁPIDO */}

@@ -77,6 +77,9 @@ export default function Alquileres() {
 
       {/* INTRO + JUMP */}
       <section className="section alq-pre-sim-section">
+        <div className="section-head reveal">
+          <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Alquileres</span>
+        </div>
         <div className="detail-grid">
           <article className="detail-main detail-main--accent-titles">
             <h2 className="detail-h2-clean">¿Qué cubre nuestra garantía?</h2>
@@ -118,7 +121,7 @@ export default function Alquileres() {
         <div className="alq-programa-wrap">
           <span className="section-label alq-programa-badge"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Programa especial</span>
           <div className="alq-programa-card">
-            <h2 className="alq-section-title alq-section-title--programa">Programa "<span className="alq-programa-accent">Garantía + Fácil</span>" – CABA</h2>
+            <h2 className="alq-section-title alq-section-title--programa">Programa "<span className="alq-programa-accent">Garantía + Fácil</span>" (CABA)</h2>
             <div className="alq-programa-main">
               <p>En Gestión Seguros somos parte del programa <strong>Garantía Más Fácil</strong> del Gobierno de la Ciudad de Buenos Aires, junto al Instituto de la Vivienda.</p>
               <p>Si alquilás en CABA, podés acceder a tu garantía con hasta un <strong>70% de descuento</strong>.</p>
