@@ -18,6 +18,150 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  /* Mismo gris que FAQ, proceso y bloques .products del sitio */
+  section.section.nosotros-band {
+    background: var(--bg);
+  }
+  /* Desktop: una sola grilla de 3 filas compartidas (subgrid) → cabecera, mapa y botones alineados entre columnas */
+  .nosotros-band .social-proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 360px auto;
+    column-gap: 18px;
+    row-gap: 0;
+    align-items: start;
+    justify-items: stretch;
+    width: 100%;
+    max-width: var(--container);
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+  }
+  .social-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .social-card-head {
+    padding: 16px 18px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .social-card-head h3 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  .social-card-head p {
+    margin: 0;
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 52ch;
+  }
+  /* Misma altura que el mapa: contenedor fijo + tarjeta en flex empuja acciones al pie */
+  .social-card-media {
+    height: 100%;
+    min-height: 360px;
+    min-width: 0;
+    position: relative;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: #eef2f8;
+  }
+  .social-embed {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: #eef2f8;
+  }
+  /* LinkedIn: imagen ocupa todo el media container (sin espacios) */
+  .social-card-media--linkedin {
+    display: block;
+    min-height: 0;
+    height: 100%;
+    background: #eef2f8;
+    overflow: hidden;
+  }
+  /* Vista previa estática del perfil (LinkedIn no permite iframe) */
+  .social-card-media--linkedin .social-linkedin-preview-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 0;
+    outline: none;
+  }
+  .social-linkedin-preview-link:focus-visible {
+    box-shadow: inset 0 0 0 3px var(--primary);
+  }
+  .social-card-media--linkedin .social-linkedin-preview-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 3% center;
+    display: block;
+  }
+  /* Misma altura de botones; borde invisible en primary para igualar ghost */
+  .social-card-actions {
+    padding: 12px 18px 18px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-end;
+    align-self: stretch;
+    box-sizing: border-box;
+  }
+  .social-card-actions .btn {
+    min-height: 48px;
+    box-sizing: border-box;
+  }
+  .social-card-actions .btn-primary {
+    border: 1.5px solid transparent;
+  }
+  @media (max-width: 900px) {
+    .nosotros-band .social-proof-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 18px;
+      grid-template-rows: none;
+    }
+    .social-card {
+      display: flex;
+      flex-direction: column;
+      grid-row: auto;
+      grid-template-rows: none;
+      height: auto;
+      align-self: stretch;
+      flex: 0 0 auto;
+    }
+    /* Misma altura del bloque mapa / imagen en las dos cards al apilar */
+    .nosotros-band .social-card-media {
+      height: clamp(260px, 62vw, 360px);
+      min-height: 0;
+      flex-shrink: 0;
+    }
+    .social-card-actions {
+      align-content: unset;
+      margin-top: auto;
+    }
+  }
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -64,12 +208,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </a>
   <div class="nav-menu" id="navMenu">
     <a href="index.html">Home</a>
-    <a href="caucion.html">Caución</a>
-    <a href="personas.html">Personas</a>
-    <a href="responsabilidad-civil.html">Resp. Civil</a>
-    <a href="productores.html">Productores</a>
     <a href="nosotros.html" class="active">Nosotros</a>
+    <div class="has-submenu">
+      <a href="index.html#productos">Coberturas</a>
+      <div class="submenu">
+        <a href="caucion.html"><svg class="icon"><use href="#i-arrow"/></svg> Caución</a>
+        <a href="personas.html"><svg class="icon"><use href="#i-arrow"/></svg> Personas</a>
+        <a href="responsabilidad-civil.html"><svg class="icon"><use href="#i-arrow"/></svg> Responsabilidad Civil</a>
+      </div>
+    </div>
+    <a href="alquileres.html">Alquileres</a>
+    <a href="cotizador.html">Cotizador</a>
+    <a href="productores.html">Productores</a>
+    <a href="formularios.html">Formularios</a>
+    <a href="mediosdepago.html">Pagos</a>
     <a href="contacto.html">Contacto</a>
+    <div class="has-submenu">
+      <a href="#">Gestión Online</a>
+      <div class="submenu">
+        <a href="https://gestionar.segurosgestion.com.ar/" target="_blank" rel="noopener noreferrer" title="Acceso a sistema GestionAR"><svg class="icon"><use href="#i-arrow"/></svg> GestionAR</a>
+        <a href="instructivos.html" title="Acceso a instructivos y manuales"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos/ Manuales</a>
+      </div>
+    </div>
   </div>
   <div class="nav-cta">
     <a href="contacto.html" class="btn btn-accent">Cotizar ahora <svg class="icon" style="width:16px"><use href="#i-arrow"/></svg></a>
@@ -77,29 +237,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero" style="background-image: linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url('assets/img/nosotros.png'); background-size: cover; background-position: center;">
   <div class="page-hero-inner">
     <nav class="breadcrumb"><a href="index.html">Home</a> / <span>Nosotros</span></nav>
     <span class="section-label dark reveal"><svg class="icon" style="width:14px"><use href="#i-award"/></svg>Quiénes somos</span>
-    <h1 class="reveal delay-1">Una compañía argentina que<br>cree en el <em>beneficio mutuo</em>.</h1>
+    <h1 class="reveal delay-1">Una compañía argentina que cree en el <em>beneficio mutuo</em></h1>
     <p class="lead reveal delay-2">Tecnología con alma humana. Detrás de cada póliza hay personas escuchando, analizando y diseñando la cobertura ideal para cada situación.</p>
   </div>
 </header>
 
+<!-- Valores con íconos -->
+<section class="section proceso nosotros-band">
+  <div class="section-head reveal">
+    <span class="section-label"><svg class="icon" style="width:14px"><use href="#i-heart"/></svg>Lo que nos mueve</span>
+    <h2>Lo que nos hace <span class="gradient-text">diferentes</span></h2>
+  </div>
+  <div class="proc-grid">
+    <div class="proc-item reveal"><div class="proc-num" style="background:var(--primary)"><svg class="icon" style="color:#fff;width:22px"><use href="#i-headphones"/></svg></div><h4>Escucha real</h4><p>Hablás con personas, no con bots. Cada caso se evalúa con foco en tu situación particular.</p></div>
+    <div class="proc-item reveal delay-1"><div class="proc-num" style="background:var(--secondary)"><svg class="icon" style="color:#fff;width:22px"><use href="#i-zap"/></svg></div><h4>Agilidad</h4><p>Procesos digitales de punta a punta. Cotizás, emitís, gestionás — todo online.</p></div>
+    <div class="proc-item reveal delay-2"><div class="proc-num" style="background:var(--accent)"><svg class="icon" style="color:#fff;width:22px"><use href="#i-shield"/></svg></div><h4>Respaldo</h4><p>Autorizados por la SSN. Reservas técnicas sólidas. Cumplimos siempre.</p></div>
+    <div class="proc-item reveal delay-3"><div class="proc-num" style="background:var(--success)"><svg class="icon" style="color:var(--dark);width:22px"><use href="#i-heart"/></svg></div><h4>Cercanía</h4><p>Atendemos cada siniestro con humanidad. Sabemos que detrás hay una historia.</p></div>
+  </div>
+</section>
+
 <section class="section">
   <div class="detail-grid">
-    <article class="detail-main">
-      <h2>Nuestra historia</h2>
+    <article class="detail-main detail-main--accent-titles">
+      <h2 class="detail-h2-clean">Nuestra historia</h2>
       <p>Gestión Seguros es una compañía argentina especializada en <b>seguros de Caución, Personas y Responsabilidad Civil</b>. Nacimos con el objetivo de ser una aseguradora que no se esconda detrás de procesos burocráticos, sino que <b>acompañe</b> a sus asegurados antes, durante y después de cada póliza emitida.</p>
       <p>Con el respaldo de la <b>Superintendencia de Seguros de la Nación</b> y las principales cámaras del sector, construimos un modelo donde la tecnología y la atención humana conviven: plataforma GestionAr para productores, emisión digital ágil, y un equipo que escucha cada caso con oídos frescos.</p>
 
-      <h2>Misión</h2>
+      <h2 class="detail-h2-sub">Misión</h2>
       <p>Ofrecer soluciones aseguradoras <b>claras, ágiles y empáticas</b> que permitan a nuestros clientes enfocarse en lo que realmente importa: sus proyectos, sus familias y sus negocios.</p>
 
-      <h2>Visión</h2>
+      <h2 class="detail-h2-sub">Visión</h2>
       <p>Ser la compañía argentina de referencia en Caución, Personas y Responsabilidad Civil, reconocida por la <b>calidad humana</b> del servicio y la <b>agilidad digital</b> de los procesos.</p>
 
-      <h2>Valores</h2>
+      <h2 class="detail-h2-sub">Valores</h2>
       <ul>
         <li><b>Escucha activa</b>: cada caso es único y merece atención personalizada.</li>
         <li><b>Beneficio mutuo</b>: crecemos cuando crecen nuestros clientes y productores.</li>
@@ -108,7 +282,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><b>Solidez institucional</b>: cumplimos y excedemos los requerimientos regulatorios.</li>
       </ul>
 
-      <h2>Respaldo institucional</h2>
+      <h2 class="detail-h2-sub">Respaldo institucional</h2>
       <p>Somos una compañía <b>autorizada por la Superintendencia de Seguros de la Nación (SSN)</b>, el organismo que regula toda la actividad aseguradora en Argentina. Adicionalmente, somos miembros activos de:</p>
       <ul>
         <li><b>AACS</b> — Asociación Argentina de Compañías de Seguros.</li>
@@ -135,28 +309,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- Valores con íconos -->
-<section class="section proceso">
+<section class="section nosotros-band">
   <div class="section-head reveal">
-    <span class="section-label"><svg class="icon" style="width:14px"><use href="#i-heart"/></svg>Lo que nos mueve</span>
-    <h2>Lo que nos hace <span class="gradient-text">diferentes</span></h2>
+    <span class="section-label"><svg class="icon" style="width:14px"><use href="#i-heart"/></svg>Comunidad</span>
+    <h2>Seguinos y valoranos</h2>
+    <p>Mirá novedades de Gestión Seguros en LinkedIn y dejá tu reseña en Google Maps.</p>
   </div>
-  <div class="proc-grid">
-    <div class="proc-item reveal"><div class="proc-num" style="background:var(--primary)"><svg class="icon" style="color:#fff;width:22px"><use href="#i-headphones"/></svg></div><h4>Escucha real</h4><p>Hablás con personas, no con bots. Cada caso se evalúa con foco en tu situación particular.</p></div>
-    <div class="proc-item reveal delay-1"><div class="proc-num" style="background:var(--secondary)"><svg class="icon" style="color:#fff;width:22px"><use href="#i-zap"/></svg></div><h4>Agilidad</h4><p>Procesos digitales de punta a punta. Cotizás, emitís, gestionás — todo online.</p></div>
-    <div class="proc-item reveal delay-2"><div class="proc-num" style="background:var(--accent)"><svg class="icon" style="color:#fff;width:22px"><use href="#i-shield"/></svg></div><h4>Respaldo</h4><p>Autorizados por la SSN. Reservas técnicas sólidas. Cumplimos siempre.</p></div>
-    <div class="proc-item reveal delay-3"><div class="proc-num" style="background:var(--success)"><svg class="icon" style="color:var(--dark);width:22px"><use href="#i-heart"/></svg></div><h4>Cercanía</h4><p>Atendemos cada siniestro con humanidad. Sabemos que detrás hay una historia.</p></div>
-  </div>
-</section>
-
-<section class="cta-big">
-  <div class="cta-big-inner">
-    <h2>Sumate a la experiencia Gestión</h2>
-    <p>Cotizá tu primer seguro online o conocé el programa para Productores Asesores.</p>
-    <div class="btn-stack">
-      <a href="contacto.html" class="btn btn-primary btn-lg">Contactar <svg class="icon"><use href="#i-arrow"/></svg></a>
-      <a href="productores.html" class="btn btn-ghost btn-lg">Programa PAS</a>
-    </div>
+  <div class="social-proof-grid">
+    <article class="social-card reveal">
+      <div class="social-card-head">
+        <h3>LinkedIn · Novedades y publicaciones</h3>
+        <p>Imagen de referencia del perfil; abrí LinkedIn para ver el contenido actualizado.</p>
+      </div>
+      <div class="social-card-media social-card-media--linkedin">
+        <a href="https://www.linkedin.com/company/gestionsegurossa/" class="social-linkedin-preview-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir perfil de Gestión Seguros en LinkedIn">
+          <img src="assets/img/linkedin-perfil-gestion.png" alt="Vista del perfil de Gestión Compañía Argentina de Seguros en LinkedIn: portada, logo y datos de la empresa." width="799" height="301" loading="lazy" decoding="async">
+        </a>
+      </div>
+      <div class="social-card-actions">
+        <a href="https://www.linkedin.com/company/gestionsegurossa/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Ver en LinkedIn <svg class="icon"><use href="#i-arrow"/></svg></a>
+      </div>
+    </article>
+    <article class="social-card reveal delay-1">
+      <div class="social-card-head">
+        <h3>Google Maps · Ubicación y reseñas</h3>
+        <p>Conocé cómo llegar y ayudanos con tu calificación y comentario.</p>
+      </div>
+      <div class="social-card-media">
+        <iframe class="social-embed" src="https://www.google.com/maps?q=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+Comuna+3%2C+C1036+CABA%2C+Argentina&amp;output=embed" title="Google Maps — Bartolomé Mitre 480, Gestión Seguros" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="social-card-actions">
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+Comuna+3%2C+C1036+CABA%2C+Argentina" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Ver en Maps <svg class="icon"><use href="#i-arrow"/></svg></a>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Bartolom%C3%A9+Mitre+480%2C+Piso+11%2C+Comuna+3%2C+C1036+CABA%2C+Argentina" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Dejar valoración</a>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -166,17 +352,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="Gestión Seguros"></a>
       <p>Compañía argentina de seguros. Caución, Personas y Responsabilidad Civil.</p>
       <div class="social">
-        <a href="https://ar.linkedin.com/company/gestionsegurossa" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-li"/></svg></a>
+        <a href="https://www.linkedin.com/company/gestionsegurossa/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-li"/></svg></a>
         <a href="https://www.instagram.com/gestionseguros.sa/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-ig"/></svg></a>
         <a href="https://www.facebook.com/gestionseguros.sa" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg class="icon" style="width:18px" aria-hidden="true"><use href="#i-fb"/></svg></a>
         <a href="https://www.youtube.com/channel/UCnAyg1zeqZ5_QcsXsoBoGWw" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><svg class="social-svg" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-yt"/></svg></a>
       </div>
       <div class="ssn-block"><strong>Organismo de control</strong>SSN · <a href="https://www.argentina.gob.ar/ssn" target="_blank" rel="noopener">www.argentina.gob.ar/ssn</a></div>
     </div>
-    <div class="footer-col"><h5>Productos</h5><a href="caucion.html">Caución</a><a href="personas.html">Personas</a><a href="responsabilidad-civil.html">Resp. Civil</a></div>
-    <div class="footer-col"><h5>Empresa</h5><a href="nosotros.html">Nosotros</a><a href="productores.html">Productores</a><a href="contacto.html">Contacto</a></div>
-    <div class="footer-col"><h5>Gestión online</h5><a href="#">Mi panel</a><a href="#">Denunciar siniestro</a></div>
-    <div class="footer-col"><h5>Contacto</h5><a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a><a href="mailto:info@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> info@gestionseguros.com.ar</a></div>
+    <div class="footer-col"><h5>Coberturas</h5><a href="caucion.html">Caución</a><a href="alquileres.html">Alquileres</a><a href="personas.html">Personas</a><a href="responsabilidad-civil.html">Resp. Civil</a></div>
+    <div class="footer-col"><h5>Sitio</h5><a href="cotizador.html">Cotizador</a><a href="formularios.html">Formularios</a><a href="productores.html">Productores</a></div>
+    <div class="footer-col"><h5>Empresa</h5><a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a></div>
+    <div class="footer-col"><h5>Contacto</h5><a href="tel:+541152544009"><svg class="icon"><use href="#i-phone"/></svg> (+54) 5254-4009</a><a href="tel:08003451340"><svg class="icon"><use href="#i-phone"/></svg> 0800-345-1340</a><a href="mailto:info@gestionseguros.com.ar"><svg class="icon"><use href="#i-mail"/></svg> info@gestionseguros.com.ar</a></div>
   </div>
   <div class="footer-bottom">
     <div>© <span id="currentYear">2026</span> Gestión Seguros S.A.</div>

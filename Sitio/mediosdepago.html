@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medios de pago | Gestión Seguros</title>
+<meta name="description" content="Medios de pago de Gestión Seguros. Encontrá opciones para abonar tus pólizas y gestionar comprobantes.">
+<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  .pay-layout {
+    max-width: var(--container);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 24px;
+    align-items: start;
+  }
+  .pay-visual {
+    max-width: var(--container);
+    margin: 0 auto 22px;
+    border: 1px solid rgba(27,79,174,0.2);
+    border-radius: var(--r-xl);
+    background: linear-gradient(120deg, #0f2248 0%, #1b4fae 55%, #2b79d2 100%);
+    color: var(--white);
+    padding: 22px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+    box-shadow: 0 14px 34px rgba(16, 39, 86, 0.2);
+    overflow: hidden;
+    position: relative;
+  }
+  .pay-visual::before {
+    content: "";
+    position: absolute;
+    top: -80px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2), transparent 65%);
+    pointer-events: none;
+  }
+  .pay-visual-copy h3 {
+    margin: 0 0 8px;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.05;
+    color: var(--white);
+  }
+  .pay-visual-copy p {
+    margin: 0;
+    font-size: 15px;
+    color: rgba(255,255,255,0.9);
+    line-height: 1.55;
+    max-width: 50ch;
+  }
+  .pay-visual-list {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .pay-visual-list span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: var(--r-full);
+    border: 1px solid rgba(255,255,255,0.26);
+    background: rgba(255,255,255,0.12);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+  .pay-mini-card {
+    align-self: center;
+    justify-self: end;
+    width: min(100%, 320px);
+    border-radius: var(--r-lg);
+    border: 1px solid rgba(255,255,255,0.3);
+    background: linear-gradient(140deg, rgba(255,255,255,0.2), rgba(255,255,255,0.06));
+    backdrop-filter: blur(3px);
+    padding: 16px;
+  }
+  .pay-mini-card .line-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .pay-mini-card .chip {
+    width: 34px;
+    height: 26px;
+    border-radius: 6px;
+    background: linear-gradient(160deg, #ffd27a, #ffad33);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  .pay-mini-card b {
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+  }
+  .pay-mini-card .num {
+    font-family: 'Archivo', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    margin: 8px 0 12px;
+    color: var(--white);
+  }
+  .pay-mini-card .bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.85);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .pay-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .pay-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    padding: 20px;
+    box-shadow: 0 8px 26px rgba(16, 39, 86, 0.05);
+    transition: transform .2s var(--ease), box-shadow .2s var(--ease), border-color .2s var(--ease);
+  }
+  .pay-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(27,79,174,0.2);
+    box-shadow: 0 12px 30px rgba(16, 39, 86, 0.1);
+  }
+  .pay-card h3 {
+    font-size: 24px;
+    margin: 0 0 10px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+  .pay-card h3 span { min-width: 0; }
+  .pay-card h3 .icon {
+    width: 18px;
+    height: 18px;
+    color: var(--primary);
+    margin-top: 3px;
+  }
+  .pay-card p {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.55;
+    margin: 0 0 6px;
+  }
+  .pay-note {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--ink-light);
+  }
+  .pay-note strong { color: var(--dark); }
+  .pay-card.full {
+    grid-column: 1 / -1;
+  }
+  .pay-accounts {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .pay-account {
+    border: 1px solid rgba(27,79,174,0.12);
+    border-radius: var(--r-md);
+    padding: 12px 14px;
+    background: var(--bg);
+    border-left: 3px solid rgba(27,79,174,0.24);
+  }
+  .pay-account b {
+    display: block;
+    font-size: 12px;
+    color: var(--primary-dark);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    overflow-wrap: anywhere;
+  }
+  .pay-account span {
+    display: block;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .pay-inline-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .pay-logo-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 74px;
+    padding: 6px 10px;
+    border-radius: var(--r-full);
+    border: 1px solid var(--line);
+    background: var(--white);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .04em;
+    color: var(--primary-dark);
+    text-transform: uppercase;
+  }
+  .pay-title-text {
+    color: var(--dark);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+  }
+  .pay-important {
+    margin-top: 6px;
+  }
+  .pay-important p {
+    margin-bottom: 8px;
+  }
+  .pay-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: var(--r-full);
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    background: rgba(255,154,31,0.15);
+    margin-bottom: 10px;
+  }
+  .pay-side {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl);
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(16, 39, 86, 0.08);
+    position: sticky;
+    top: 110px;
+  }
+  .pay-side h4 {
+    margin: 0 0 8px;
+    font-size: 19px;
+  }
+  .pay-side p {
+    margin: 0 0 14px;
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .pay-side ul {
+    margin: 0 0 16px;
+    padding-left: 18px;
+    list-style: disc;
+  }
+  .pay-side li {
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .pay-mail-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: clamp(12px, 2.2vw, 14px);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 10px 10px;
+    gap: 8px;
+  }
+  .pay-card.full {
+    border-color: rgba(27,79,174,0.22);
+    background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+  }
+  .pay-card.full h3 {
+    font-size: 20px;
+  }
+  @media (max-width: 1024px) {
+    .pay-layout { grid-template-columns: 1fr; }
+    .pay-side { position: static; }
+    .pay-visual {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+    .pay-mini-card {
+      justify-self: start;
+    }
+  }
+  @media (max-width: 680px) {
+    .pay-grid { grid-template-columns: 1fr; }
+    .pay-visual {
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .pay-visual-copy h3 {
+      font-size: 24px;
+    }
+    .pay-mini-card .num {
+      font-size: 19px;
+    }
+    .pay-card {
+      padding: 18px;
+    }
+    .pay-card h3 {
+      font-size: 18px;
+      line-height: 1.2;
+    }
+    .pay-card p {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .pay-card.full h3 {
+      font-size: 18px;
+    }
+    .pay-account b,
+    .pay-account span,
+    .pay-note {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+  }
+  @media (max-width: 420px) {
+    .pay-mail-btn .icon {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><img src="assets/img/logo.png" alt="" class="loader-logo"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><path d="M22 6l-10 7L2 6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+    <symbol id="i-li" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 100 4 2 2 0 000-4z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37a4 4 0 11-4.62-4.62M17.5 6.5h.01"/></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12 9.545 15.568z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M20.52 3.48A11.93 11.93 0 0012.05 0C5.49 0 .13 5.36.13 11.92a11.9 11.9 0 001.6 5.94L0 24l6.3-1.66a11.88 11.88 0 005.73 1.46h.01c6.56 0 11.92-5.36 11.92-11.92 0-3.18-1.24-6.18-3.44-8.4z"/></symbol>
+    <symbol id="i-dollar" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></symbol>
+  </defs>
+</svg>
+
+<div class="topbar"></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="logo">
+    <img src="assets/img/logo.png" alt="Gestión Seguros">
+  </a>
+  <div class="nav-menu" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="nosotros.html">Nosotros</a>
+    <div class="has-submenu">
+      <a href="index.html#productos">Coberturas</a>
+      <div class="submenu">
+        <a href="caucion.html"><svg class="icon"><use href="#i-arrow"/></svg> Caución</a>
+        <a href="personas.html"><svg class="icon"><use href="#i-arrow"/></svg> Personas</a>
+        <a href="responsabilidad-civil.html"><svg class="icon"><use href="#i-arrow"/></svg> Responsabilidad Civil</a>
+      </div>
+    </div>
+    <a href="alquileres.html">Alquileres</a>
+    <a href="cotizador.html">Cotizador</a>
+    <a href="productores.html">Productores</a>
+    <a href="formularios.html">Formularios</a>
+    <a href="mediosdepago.html" class="active">Pagos</a>
+    <a href="contacto.html">Contacto</a>
+    <div class="has-submenu">
+      <a href="#">Gestión Online</a>
+      <div class="submenu">
+        <a href="https://gestionar.segurosgestion.com.ar/" target="_blank" rel="noopener noreferrer" title="Acceso a sistema GestionAR"><svg class="icon"><use href="#i-arrow"/></svg> GestionAR</a>
+        <a href="instructivos.html" title="Acceso a instructivos y manuales"><svg class="icon"><use href="#i-arrow"/></svg> Instructivos/ Manuales</a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-cta">
+    <a href="contacto.html" class="btn btn-accent">Contactar <svg class="icon" style="width:16px"><use href="#i-arrow"/></svg></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><svg class="icon"><use href="#i-menu"/></svg></button>
+  </div>
+</nav>
+
+<header class="page-hero" style="background-image: linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url('assets/img/mediosdepago.png'); background-size: cover; background-position: center;">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb"><a href="index.html">Home</a> / <span>Pagos</span></nav>
+    <span class="section-label dark reveal"><svg class="icon" style="width:14px"><use href="#i-award"/></svg>Pagos</span>
+    <h1>Medios de <em>Pago</em></h1>
+    <p class="lead">Medios de pago oficiales. Elegí el que más te quede cómodo en base a tu preferencia y necesidades</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="section-head">
+    <h2>Canales <span class="gradient-text">disponibles</span></h2>
+    <p>Estos son los medios oficiales vigentes para abonar pólizas de Gestión Seguros y reportar comprobantes.</p>
+  </div>
+  <div class="pay-visual">
+    <div class="pay-visual-copy">
+      <h3>Pagá como te quede más cómodo</h3>
+      <p>Centralizamos medios bancarios, electrónicos y redes de cobranza para que puedas operar con rapidez y trazabilidad.</p>
+      <div class="pay-visual-list">
+        <span>Transferencia</span>
+        <span>DEBIN</span>
+        <span>eChecks</span>
+        <span>Tarjetas</span>
+        <span>Pago Fácil</span>
+        <span>Rapipago</span>
+      </div>
+    </div>
+    <div class="pay-mini-card" aria-hidden="true">
+      <div class="line-top">
+        <div class="chip"></div>
+        <b>Gestión Seguros</b>
+      </div>
+      <div class="num">•••• •••• •••• 1022</div>
+      <div class="bottom">
+        <span>Pagos y cobranzas</span>
+        <span>ARS / USD</span>
+      </div>
+    </div>
+  </div>
+  <div class="pay-layout">
+    <div class="pay-grid">
+      <article class="pay-card full">
+        <div class="pay-chip">Bancario</div>
+        <h3><svg class="icon"><use href="#i-dollar"/></svg><span class="pay-title-text">Transferencia y depósito de efectivo en cuenta</span></h3>
+        <p><strong>Banco Patagonia</strong>. A través de su CBU también puede operar con DEBIN.</p>
+        <div class="pay-accounts">
+          <div class="pay-account">
+            <b>Cuenta para vida y sepelio</b>
+            <span>CBU: 0340010400100611022016</span>
+            <span>Cuenta: CC $ 10-100611022-1</span>
+            <span>CUIT: 30-71483881-0</span>
+          </div>
+          <div class="pay-account">
+            <b>Cuenta para accidentes personales, responsabilidad civil y caución</b>
+            <span>CBU: 0340010400100611022009</span>
+            <span>Cuenta: CC $ 10-100611022-0</span>
+            <span>CUIT: 30-71483881-0</span>
+          </div>
+          <div class="pay-account">
+            <b>Cuenta en dólares</b>
+            <span>CBU: 0340010409100611022008</span>
+            <span>Cuenta: CA USD 010-100611022-000</span>
+            <span>CUIT: 30-71483881-0</span>
+          </div>
+        </div>
+      </article>
+      <article class="pay-card">
+        <div class="pay-chip">Digital</div>
+        <h3><svg class="icon"><use href="#i-doc"/></svg><span class="pay-title-text">Cheque bancario - eChecks</span></h3>
+        <p>Emitir cheques a nombre de: <strong>GESTIÓN COMPAÑÍA ARGENTINA DE SEGUROS S.A.</strong></p>
+      </article>
+      <article class="pay-card">
+        <div class="pay-chip">Automático</div>
+        <h3><svg class="icon"><use href="#i-doc"/></svg><span class="pay-title-text">Débito directo en cuenta</span></h3>
+        <p>A través de su CBU puede adherirse a este medio de pago.</p>
+        <p class="pay-note">Enviar solicitud a: <strong><a href="mailto:cobranzas@gestionseguros.com.ar">cobranzas@gestionseguros.com.ar</a></strong></p>
+      </article>
+      <article class="pay-card">
+        <div class="pay-chip">Tarjetas</div>
+        <h3><svg class="icon"><use href="#i-dollar"/></svg><span class="pay-title-text">Tarjeta de crédito</span></h3>
+        <p>Solicitar adhesión por mail a <a href="mailto:cobranzas@gestionseguros.com.ar">cobranzas@gestionseguros.com.ar</a>.</p>
+        <div class="pay-inline-logos">
+          <span class="pay-logo-pill">VISA</span>
+          <span class="pay-logo-pill">Master</span>
+          <span class="pay-logo-pill">AMEX</span>
+        </div>
+      </article>
+      <article class="pay-card">
+        <div class="pay-chip">Recaudación</div>
+        <h3><svg class="icon"><use href="#i-doc"/></svg><span class="pay-title-text">Pago Fácil y Rapipago</span></h3>
+        <p>Para utilizar estos medios, disponés del código de barras en el cupón de pago enviado con la póliza.</p>
+        <div class="pay-inline-logos">
+          <span class="pay-logo-pill">Pago Fácil</span>
+          <span class="pay-logo-pill">Rapipago</span>
+        </div>
+      </article>
+      <article class="pay-card full pay-important">
+        <h3><svg class="icon"><use href="#i-award"/></svg>Recordatorios importantes</h3>
+        <p><strong>IMPORTANTE:</strong> En los casos de <strong>transferencia bancaria, depósito en banco y DEBIN</strong>, una vez realizado el pago de la operación, le solicitamos por favor nos informe el mismo detallando:</p>
+        <p class="pay-note"><strong>N° de Póliza</strong> y <strong>N° de Endoso o cobertura abonada</strong> mediante correo electrónico a la siguiente dirección:</p>
+        <p><strong><a href="mailto:cobranzas@gestionseguros.com.ar">cobranzas@gestionseguros.com.ar</a></strong></p>
+      </article>
+    </div>
+
+    <aside class="pay-side">
+      <h4>Gestión de cobranzas</h4>
+      <p>Para adhesiones, imputaciones y envío de comprobantes, te asistimos desde cobranzas.</p>
+      <ul>
+        <li>Adhesión a débito directo</li>
+        <li>Adhesión con tarjeta de crédito</li>
+        <li>Confirmación de pagos bancarios</li>
+      </ul>
+      <a href="mailto:cobranzas@gestionseguros.com.ar" class="btn btn-primary pay-mail-btn">cobranzas@gestionseguros.com.ar</a>
+    </aside>
+  </div>
+</section>
+
+<footer></footer>
+
+<a href="https://wa.me/5491152544009?text=Hola!%20Necesito%20información%20sobre%20medios%20de%20pago" class="wa-float" aria-label="WhatsApp" target="_blank" rel="noopener"></a>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
