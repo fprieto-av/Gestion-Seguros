@@ -1,5 +1,6 @@
 import sharp from 'sharp'
-import { mkdirSync } from 'fs'
+import toIco from 'to-ico'
+import { mkdirSync, writeFileSync } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
@@ -9,7 +10,6 @@ const outDir = path.join(root, 'public')
 
 mkdirSync(outDir, { recursive: true })
 
-// Recorte cuadrado del símbolo (lado izquierdo del logo)
 const meta = await sharp(logo).metadata()
 const cropSize = meta.height
 
@@ -34,5 +34,10 @@ for (const { name, size } of sizes) {
     .toFile(path.join(outDir, name))
   console.log(name)
 }
+
+const png16 = await iconBase.clone().resize(16, 16, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer()
+const png32 = await iconBase.clone().resize(32, 32, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png().toBuffer()
+writeFileSync(path.join(outDir, 'favicon.ico'), await toIco([png16, png32]))
+console.log('favicon.ico')
 
 console.log('Listo → public/')
