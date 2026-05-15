@@ -44,7 +44,6 @@ export default function Instructivos() {
         <div className="guides-tabs">
           <h4>Acceso rápido</h4>
           <div className="guides-links-row">
-            <a href={instructivosPdf.altaPas} target="_blank" rel="noopener">Alta PAS</a>
             <a href={instructivosPdf.altaUsuarioWeb} target="_blank" rel="noopener">Alta usuario web</a>
             <a href={instructivosPdf.webInstructivo} target="_blank" rel="noopener">Web instructivo</a>
             <a href={instructivosPdf.cargaPreliquidaciones} target="_blank" rel="noopener">Carga de preliquidaciones</a>
@@ -59,11 +58,7 @@ export default function Instructivos() {
           <article className="guides-col">
             <h5>Altas y acceso web</h5>
             <div className="guides-links-grid">
-              <a href={instructivosPdf.altaPas} target="_blank" rel="noopener">
-                <span className="guide-link-meta">Alta</span>
-                Instructivo alta PAS
-              </a>
-              <a href={instructivosPdf.altaUsuarioWeb} target="_blank" rel="noopener">
+<a href={instructivosPdf.altaUsuarioWeb} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Usuarios</span>
                 Alta usuario web
               </a>

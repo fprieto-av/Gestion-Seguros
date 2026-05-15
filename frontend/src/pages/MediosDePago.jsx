@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
 import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
+import BrandStrip from '../components/BrandStrip'
 import '../assets/css/mediosdepago.css'
 import mediosdepago from '../assets/img/mediosdepago.png'
 
@@ -38,9 +39,11 @@ export default function MediosDePago() {
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Pagos</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Pagos</span>
           <h1 className="reveal delay-1">Medios de <em>Pago</em></h1>
-          <p className="lead reveal delay-2">Medios de pago oficiales. Elegí el que más te quede cómodo en base a tu preferencia y necesidades</p>
+          <p className="lead reveal delay-2">Te ofrecemos distintas alternativas para que tus pagos sean simples. Elegí la opción que más se adecúe a tus necesidades.</p>
         </div>
       </header>
+
+      <BrandStrip />
 
       <section className="section">
         <div className="section-head">
@@ -114,7 +117,7 @@ export default function MediosDePago() {
               <div className="pay-chip">Digital</div>
               <h3>
                 <svg className="icon"><use href="#i-doc" /></svg>
-                <span className="pay-title-text">Cheque bancario - eChecks</span>
+                <span className="pay-title-text">Cheque bancario - echeQs</span>
               </h3>
               <p>Emitir cheques a nombre de: <strong>GESTIÓN COMPAÑÍA ARGENTINA DE SEGUROS S.A.</strong></p>
             </article>
@@ -127,7 +130,7 @@ export default function MediosDePago() {
                 <span className="pay-title-text">Débito directo en cuenta</span>
               </h3>
               <p>A través de su CBU puede adherirse a este medio de pago.</p>
-              <p className="pay-note">Enviar solicitud a: <strong><a href="mailto:cobranzas@gestionseguros.com.ar">cobranzas@gestionseguros.com.ar</a></strong></p>
+              <p className="pay-note">Enviar solicitud a: <strong><a href="mailto:cobranzas@segurosgestion.com.ar">cobranzas@segurosgestion.com.ar</a></strong></p>
             </article>
 
             {/* TARJETA */}
@@ -137,7 +140,7 @@ export default function MediosDePago() {
                 <svg className="icon"><use href="#i-dollar" /></svg>
                 <span className="pay-title-text">Tarjeta de crédito</span>
               </h3>
-              <p>Solicitar adhesión por mail a <a href="mailto:cobranzas@gestionseguros.com.ar">cobranzas@gestionseguros.com.ar</a>.</p>
+              <p>Solicitar adhesión por mail a <a href="mailto:cobranzas@segurosgestion.com.ar">cobranzas@segurosgestion.com.ar</a></p>
               <div className="pay-inline-logos">
                 <span className="pay-logo-pill">VISA</span>
                 <span className="pay-logo-pill">Master</span>
@@ -167,7 +170,7 @@ export default function MediosDePago() {
               </h3>
               <p><strong>IMPORTANTE:</strong> En los casos de <strong>transferencia bancaria, depósito en banco y DEBIN</strong>, una vez realizado el pago de la operación, le solicitamos por favor nos informe el mismo detallando:</p>
               <p className="pay-note"><strong>N° de Póliza</strong> y <strong>N° de Endoso o cobertura abonada</strong> mediante correo electrónico a la siguiente dirección:</p>
-              <p><strong><a href="mailto:cobranzas@gestionseguros.com.ar">cobranzas@gestionseguros.com.ar</a></strong></p>
+              <p><strong><a href="mailto:cobranzas@segurosgestion.com.ar">cobranzas@segurosgestion.com.ar</a></strong></p>
             </article>
 
           </div>
@@ -181,8 +184,8 @@ export default function MediosDePago() {
               <li>Adhesión con tarjeta de crédito</li>
               <li>Confirmación de pagos bancarios</li>
             </ul>
-            <a href="mailto:cobranzas@gestionseguros.com.ar" className="btn btn-primary pay-mail-btn">
-              cobranzas@gestionseguros.com.ar
+            <a href="mailto:cobranzas@segurosgestion.com.ar" className="btn btn-primary pay-mail-btn">
+              cobranzas@segurosgestion.com.ar
             </a>
           </aside>
         </div>
@@ -191,7 +194,7 @@ export default function MediosDePago() {
       <ContactCard
         title="Contacto directo · Cobranzas"
         subtitle="Canal rápido para consultas y seguimiento de tu gestión."
-        links={[{ label: 'cobranzas@gestionseguros.com.ar', href: 'mailto:cobranzas@gestionseguros.com.ar', icon: 'i-mail' }]}
+        links={[{ label: 'cobranzas@segurosgestion.com.ar', href: 'mailto:cobranzas@segurosgestion.com.ar', icon: 'i-mail' }]}
       />
       <PageCta
         title="¿Tenés dudas sobre tu pago?"
