@@ -91,6 +91,17 @@ section.section.nosotros-band { background: var(--bg); }
   overflow: hidden;
   box-shadow: 0 8px 40px rgba(14,23,48,0.12);
   height: 420px;
+  background: #eef2f8;
+}
+
+.equipo-img-wrap--loading {
+  background: linear-gradient(110deg, #eef2f8 8%, #f8fafc 18%, #eef2f8 33%);
+  background-size: 200% 100%;
+  animation: equipo-shimmer 1.4s ease-in-out infinite;
+}
+
+.equipo-img-wrap--carousel {
+  position: relative;
 }
 
 .equipo-img {
@@ -99,6 +110,27 @@ section.section.nosotros-band { background: var(--bg); }
   display: block;
   object-fit: cover;
   object-position: center center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.equipo-img--loaded {
+  opacity: 1;
+}
+
+.equipo-img--slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.equipo-img--slide.equipo-img--active {
+  opacity: 1;
+}
+
+@keyframes equipo-shimmer {
+  to { background-position: -200% 0; }
 }
 
 .equipo-dots {

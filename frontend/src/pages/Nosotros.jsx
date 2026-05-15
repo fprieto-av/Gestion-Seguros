@@ -5,9 +5,9 @@ import BrandStrip from '../components/BrandStrip'
 import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
 import '../assets/css/nosotros.css'
-import nosotrosImg from '../assets/img/nosotros.png'
+import nosotrosHero from '../assets/img/nosotros-hero.webp'
 import linkedinImg from '../assets/img/linkedin-perfil-gestion.png'
-import equipoImg from '../assets/img/equipocomercial.png'
+import equipoImg from '../assets/img/equipocomercial.webp'
 import sergioImg from '../assets/img/sergio-sabha.png'
 import nicolasImg from '../assets/img/nicolas-cuevas.png'
 const PERSONAS = (imgs) => [
@@ -15,14 +15,40 @@ const PERSONAS = (imgs) => [
   { img: imgs.nicolasImg, nombre: 'Nicolás Cuevas Zárate',  cargo: 'Socio' },
 ]
 
+function EquipoPhoto({ src, alt, priority = false, className = '' }) {
+  const [loaded, setLoaded] = useState(false)
+
+  return (
+    <div className={`equipo-img-wrap${loaded ? '' : ' equipo-img-wrap--loading'}${className ? ` ${className}` : ''}`}>
+      <img
+        src={src}
+        alt={alt}
+        className={`equipo-img${loaded ? ' equipo-img--loaded' : ''}`}
+        loading={priority ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchPriority={priority ? 'high' : 'auto'}
+        onLoad={() => setLoaded(true)}
+        ref={(el) => { if (el?.complete) setLoaded(true) }}
+      />
+    </div>
+  )
+}
+
 function EquipoCarousel({ equipoImg, sergioImg, nicolasImg }) {
   const slides = PERSONAS({ sergioImg, nicolasImg })
   const [idx, setIdx] = useState(0)
+
+  useEffect(() => {
+    ;[sergioImg, nicolasImg].forEach((src) => {
+      const preload = new Image()
+      preload.src = src
+    })
+  }, [sergioImg, nicolasImg])
+
   useEffect(() => {
     const t = setInterval(() => setIdx(i => (i + 1) % slides.length), 3000)
     return () => clearInterval(t)
   }, [slides.length])
-  const cur = slides[idx]
 
   return (
     <section className="section nosotros-band">
@@ -39,9 +65,7 @@ function EquipoCarousel({ equipoImg, sergioImg, nicolasImg }) {
           <div className="equipo-label-row">
             <span className="section-label" style={{ margin: 0 }}><svg className="icon" style={{ width: '13px' }}><use href="#i-users" /></svg>Equipo Comercial</span>
           </div>
-          <div className="equipo-img-wrap">
-            <img src={equipoImg} alt="Equipo comercial de Gestión Seguros" className="equipo-img" />
-          </div>
+          <EquipoPhoto src={equipoImg} alt="Equipo comercial de Gestión Seguros" />
         </div>
 
         {/* Carrusel individual */}
@@ -49,13 +73,17 @@ function EquipoCarousel({ equipoImg, sergioImg, nicolasImg }) {
           <div className="equipo-label-row">
             <span className="section-label" style={{ margin: 0 }}><svg className="icon" style={{ width: '13px' }}><use href="#i-award" /></svg>Socios</span>
           </div>
-          <div className="equipo-img-wrap">
-            <img
-              key={idx}
-              src={cur.img}
-              alt={cur.nombre}
-              className="equipo-img"
-            />
+          <div className="equipo-img-wrap equipo-img-wrap--carousel">
+            {slides.map((slide, i) => (
+              <img
+                key={slide.nombre}
+                src={slide.img}
+                alt={slide.nombre}
+                className={`equipo-img equipo-img--slide${i === idx ? ' equipo-img--active' : ''}`}
+                decoding="async"
+                loading="eager"
+              />
+            ))}
           </div>
 
           {/* Dots indicadores */}
@@ -74,13 +102,19 @@ function EquipoCarousel({ equipoImg, sergioImg, nicolasImg }) {
 export default function Nosotros() {
   useEffect(() => {
     document.title = 'Nosotros · Compañía argentina de seguros | Gestión Seguros'
+    const link = document.createElement('link')
+    link.rel = 'preload'
+    link.as = 'image'
+    link.href = nosotrosHero
+    document.head.appendChild(link)
+    return () => document.head.removeChild(link)
   }, [])
   useReveal()
 
   return (
     <>
       {/* HERO */}
-      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${nosotrosImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${nosotrosHero})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="page-hero-inner">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Nosotros</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Quiénes somos</span>
@@ -180,7 +214,7 @@ export default function Nosotros() {
               </div>
             </div>
             <a href="https://www.linkedin.com/company/gestionsegurossa/" target="_blank" rel="noopener noreferrer">
-              <img src={linkedinImg} alt="Perfil LinkedIn Gestión Seguros" style={{ width: '100%', display: 'block' }} />
+              <img src={linkedinImg} alt="Perfil LinkedIn Gestión Seguros" loading="lazy" decoding="async" style={{ width: '100%', display: 'block' }} />
             </a>
             <div style={{ padding: '20px 24px', background: '#fff', display: 'flex', flexDirection: 'column', flex: 1 }}>
               <p style={{ margin: '0 0 16px', fontSize: '14px', color: 'var(--gray)', lineHeight: 1.6, flex: 1 }}>
