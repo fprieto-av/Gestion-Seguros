@@ -1,6 +1,8 @@
 import { useRef, useCallback, useEffect } from 'react'
-import partnersLoopVideo from '../assets/video/Para Web Actualizado.mp4'
+import partnersMp4 from '../assets/video/partners-opt.mp4'
+import partnersWebm from '../assets/video/partners-opt.webm'
 import bannerHome from '../assets/img/banner-home.jpg'
+import OptimizedVideo from './OptimizedVideo'
 
 export default function PartnersVideo() {
   const shellRef = useRef(null)
@@ -24,19 +26,20 @@ export default function PartnersVideo() {
 
   return (
     <div className="partners-shell reveal delay-1" ref={shellRef}>
-      <video
+      <OptimizedVideo
         ref={videoRef}
         className="partners-video"
+        webm={partnersWebm}
+        mp4={partnersMp4}
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
         poster={bannerHome}
+        lazy
+        preload="none"
         onLoadedMetadata={(e) => syncAspectRatio(e.currentTarget)}
-      >
-        <source src={partnersLoopVideo} type="video/mp4" />
-      </video>
+      />
     </div>
   )
 }

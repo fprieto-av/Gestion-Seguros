@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
-import introVideo from '../assets/video/intro.mp4'
+import introMp4 from '../assets/video/intro-opt.mp4'
+import introWebm from '../assets/video/intro-opt.webm'
+import OptimizedVideo from '../components/OptimizedVideo'
 import bannerHome from '../assets/img/banner-home.jpg'
 import ReinsurersSection from '../components/ReinsurersSection'
 import PartnersVideo from '../components/PartnersVideo'
@@ -327,9 +329,18 @@ export default function Home() {
     <>
       {/* HERO */}
       <header className="hero">
-        <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster={bannerHome} aria-hidden="true">
-          <source src={introVideo} type="video/mp4" />
-        </video>
+        <OptimizedVideo
+          className="hero-video"
+          webm={introWebm}
+          mp4={introMp4}
+          poster={bannerHome}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-hidden
+        />
         <div className="hero-overlay"></div>
         <div className="hero-inner">
           <div className="hero-content">
