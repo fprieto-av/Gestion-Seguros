@@ -271,13 +271,8 @@ export default function Productores() {
 
             </div>
 
-            <input type="hidden" name="_subject" value="Nueva solicitud PAS desde la web" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://www.gestionseguros.com.ar/productores.html?pas=enviado" />
-
             <div className={`form-check${errors.terms ? ' form-field--error' : ''}`}>
-              <input type="checkbox" id="terms-pas" checked={form.terms} onChange={e => set('terms', e.target.checked)} />
+              <input type="checkbox" id="terms-pas" name="terms" checked={form.terms} onChange={e => set('terms', e.target.checked)} />
               <label htmlFor="terms-pas">Acepto la política de privacidad y el tratamiento de mis datos personales.</label>
             </div>
             {errors.terms && <span className="form-error">{errors.terms}</span>}
