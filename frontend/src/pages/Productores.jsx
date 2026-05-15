@@ -11,16 +11,6 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const TEL_RE   = /^[\d\s()+-]{6,20}$/
 const CUIT_RE  = /^\d{11}$/
 
-// Archivos obligatorios con sus labels para los mensajes de error
-const DOCS_REQUERIDOS = [
-  { name: 'ssnMatricula',   label: 'Constancia SSN' },
-  { name: 'rubricaDigital', label: 'Rúbrica digital' },
-  { name: 'constanciaIva',  label: 'Constancia IVA' },
-  { name: 'ingresosBrutos', label: 'Ingresos Brutos' },
-  { name: 'pagoMatricula',  label: 'Pago de matrícula' },
-  { name: 'constanciaCbu',  label: 'Constancia de CBU' },
-  { name: 'ddjjPep',        label: 'DDJJ PEP' },
-]
 
 export default function Productores() {
   useEffect(() => { document.title = 'Productores Asesores · ¡PASate a Gestión! | Gestión Seguros' }, [])
@@ -54,15 +44,6 @@ export default function Productores() {
     if (!form.cuit.trim())                errs.cuit        = 'El CUIT es obligatorio.'
     else if (!CUIT_RE.test(form.cuit))    errs.cuit        = 'El CUIT debe tener 11 dígitos sin guiones.'
     if (!form.categoriaIva)              errs.categoriaIva = 'Seleccioná una categoría.'
-
-    // Archivos: verificamos via el DOM que cada file input tenga un archivo
-    if (formRef.current) {
-      DOCS_REQUERIDOS.forEach(({ name, label }) => {
-        const el = formRef.current.elements[name]
-        if (!el || !el.files || el.files.length === 0)
-          errs[name] = `${label} es obligatorio.`
-      })
-    }
 
     if (!form.terms) errs.terms = 'Debés aceptar la política de privacidad.'
     return errs
@@ -212,57 +193,33 @@ export default function Productores() {
 
               <div className="form-field full">
                 <fieldset className="pas-docs">
-                  <h4 style={{ color: 'var(--primary)' }}>Parte 2 · Documentación obligatoria para alta de productor</h4>
-                  <p>Adjuntá todos los archivos requeridos para enviar la solicitud.</p>
+                  <h4 style={{ color: 'var(--primary)' }}>Parte 2 · Documentación para alta de productor</h4>
+                  <p>Adjuntá la documentación disponible. Podés enviarla luego si no la tenés a mano.</p>
                   <div className="pas-docs-grid">
 
-                    <div className={`pas-doc-item${errors.ssnMatricula ? ' form-field--error' : ''}`}>
-                      <label>Constancia SSN (frente y dorso) <span className="req">*</span></label>
-                      <input type="file" name="ssnMatricula" accept=".pdf,.jpg,.jpeg,.png"
-                        onChange={() => { if (errors.ssnMatricula) setErrors(e => { const n = { ...e }; delete n.ssnMatricula; return n }) }} />
-                      {errors.ssnMatricula && <span className="form-error">{errors.ssnMatricula}</span>}
+                    <div className="pas-doc-item">
+                      <label>Constancia SSN (frente y dorso)</label>
+                      <input type="file" name="ssnMatricula" accept=".pdf,.jpg,.jpeg,.png" />
                     </div>
 
-                    <div className={`pas-doc-item${errors.rubricaDigital ? ' form-field--error' : ''}`}>
-                      <label>Rúbrica digital <span className="req">*</span></label>
-                      <input type="file" name="rubricaDigital" accept=".pdf,.jpg,.jpeg,.png"
-                        onChange={() => { if (errors.rubricaDigital) setErrors(e => { const n = { ...e }; delete n.rubricaDigital; return n }) }} />
-                      {errors.rubricaDigital && <span className="form-error">{errors.rubricaDigital}</span>}
+                    <div className="pas-doc-item">
+                      <label>Constancia categoría IVA</label>
+                      <input type="file" name="constanciaIva" accept=".pdf,.jpg,.jpeg,.png" />
                     </div>
 
-                    <div className={`pas-doc-item${errors.constanciaIva ? ' form-field--error' : ''}`}>
-                      <label>Constancia categoría IVA <span className="req">*</span></label>
-                      <input type="file" name="constanciaIva" accept=".pdf,.jpg,.jpeg,.png"
-                        onChange={() => { if (errors.constanciaIva) setErrors(e => { const n = { ...e }; delete n.constanciaIva; return n }) }} />
-                      {errors.constanciaIva && <span className="form-error">{errors.constanciaIva}</span>}
+                    <div className="pas-doc-item">
+                      <label>Inscripción Ingresos Brutos</label>
+                      <input type="file" name="ingresosBrutos" accept=".pdf,.jpg,.jpeg,.png" />
                     </div>
 
-                    <div className={`pas-doc-item${errors.ingresosBrutos ? ' form-field--error' : ''}`}>
-                      <label>Inscripción Ingresos Brutos <span className="req">*</span></label>
-                      <input type="file" name="ingresosBrutos" accept=".pdf,.jpg,.jpeg,.png"
-                        onChange={() => { if (errors.ingresosBrutos) setErrors(e => { const n = { ...e }; delete n.ingresosBrutos; return n }) }} />
-                      {errors.ingresosBrutos && <span className="form-error">{errors.ingresosBrutos}</span>}
+                    <div className="pas-doc-item">
+                      <label>Pago anual de matrícula</label>
+                      <input type="file" name="pagoMatricula" accept=".pdf,.jpg,.jpeg,.png" />
                     </div>
 
-                    <div className={`pas-doc-item${errors.pagoMatricula ? ' form-field--error' : ''}`}>
-                      <label>Pago anual de matrícula <span className="req">*</span></label>
-                      <input type="file" name="pagoMatricula" accept=".pdf,.jpg,.jpeg,.png"
-                        onChange={() => { if (errors.pagoMatricula) setErrors(e => { const n = { ...e }; delete n.pagoMatricula; return n }) }} />
-                      {errors.pagoMatricula && <span className="form-error">{errors.pagoMatricula}</span>}
-                    </div>
-
-                    <div className={`pas-doc-item${errors.constanciaCbu ? ' form-field--error' : ''}`}>
-                      <label>Constancia de CBU propia <span className="req">*</span></label>
-                      <input type="file" name="constanciaCbu" accept=".pdf,.jpg,.jpeg,.png"
-                        onChange={() => { if (errors.constanciaCbu) setErrors(e => { const n = { ...e }; delete n.constanciaCbu; return n }) }} />
-                      {errors.constanciaCbu && <span className="form-error">{errors.constanciaCbu}</span>}
-                    </div>
-
-                    <div className={`pas-doc-item pas-doc-item--full${errors.ddjjPep ? ' form-field--error' : ''}`}>
-                      <label>Declaración Jurada PEP <span className="req">*</span></label>
-                      <input type="file" name="ddjjPep" accept=".pdf,.jpg,.jpeg,.png"
-                        onChange={() => { if (errors.ddjjPep) setErrors(e => { const n = { ...e }; delete n.ddjjPep; return n }) }} />
-                      {errors.ddjjPep && <span className="form-error">{errors.ddjjPep}</span>}
+                    <div className="pas-doc-item">
+                      <label>Constancia de CBU propia</label>
+                      <input type="file" name="constanciaCbu" accept=".pdf,.jpg,.jpeg,.png" />
                     </div>
 
                   </div>

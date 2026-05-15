@@ -118,6 +118,7 @@ export default function Contacto() {
                   <a href="mailto:personas@gestionseguros.com.ar">personas@gestionseguros.com.ar</a>
                   <a href="mailto:rc@gestionseguros.com.ar">rc@gestionseguros.com.ar</a>
                   <a href="mailto:comercial@gestionseguros.com.ar">comercial@gestionseguros.com.ar</a>
+                  <a href="mailto:cobranzas@segurosgestion.com.ar">cobranzas@segurosgestion.com.ar</a>
                 </div>
               </div>
               <div className="contact-method">
@@ -126,13 +127,14 @@ export default function Contacto() {
               </div>
               <div className="contact-method">
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-pin" /></svg></div>
-                <div><b>Oficina</b><span>Buenos Aires, Argentina</span></div>
+                <div><b>Oficina</b><a href="https://www.google.com/maps/search/?api=1&query=Gesti%C3%B3n+Argentina+de+Seguros+S.A%2C+Bartolom%C3%A9+Mitre+480+Piso+11%2C+CABA" target="_blank" rel="noopener noreferrer">Bartolomé Mitre 480 Piso 11, CABA</a></div>
               </div>
               <div className="contact-method">
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-shield" /></svg></div>
                 <div>
                   <b>Denunciar siniestro</b>
-                  <a href="mailto:comercial@gestionseguros.com.ar">comercial@gestionseguros.com.ar</a>
+                  <span>Rama Personas: <a href="mailto:Siniestros.personas@gestionseguros.com.ar">Siniestros.personas@gestionseguros.com.ar</a></span>
+                  <span>Rama RC: <a href="mailto:RC@gestionseguros.com.ar">RC@gestionseguros.com.ar</a></span>
                   <span>Dentro de las 72hs del hecho</span>
                 </div>
               </div>

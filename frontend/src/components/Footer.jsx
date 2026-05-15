@@ -70,6 +70,7 @@ export default function Footer() {
             <a href="tel:+541152544009"><svg className="icon"><use href="#i-phone" /></svg> (+54) 5254-4009</a>
             <a href="tel:08003451340"><svg className="icon"><use href="#i-phone" /></svg> 0800-345-1340</a>
             <a href="mailto:info@gestionseguros.com.ar"><svg className="icon"><use href="#i-mail" /></svg> info@gestionseguros.com.ar</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Gesti%C3%B3n+Argentina+de+Seguros+S.A%2C+Bartolom%C3%A9+Mitre+480+Piso+11%2C+CABA" target="_blank" rel="noopener noreferrer"><svg className="icon"><use href="#i-pin" /></svg> Bartolomé Mitre 480 Piso 11, CABA</a>
           </div>
         </div>
 

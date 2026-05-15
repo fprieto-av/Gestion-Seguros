@@ -166,7 +166,7 @@ export default function BajaPoliza() {
         title="Consultas · Baja de póliza"
         subtitle="Si tenés dudas antes de solicitar la baja, contactanos directamente."
         links={[
-          { label: 'bajas@gestionseguros.com.ar', href: 'mailto:comercial@gestionseguros.com.ar', icon: 'i-mail' },
+          { label: 'comercial@gestionseguros.com.ar', href: 'mailto:comercial@gestionseguros.com.ar', icon: 'i-mail' },
         ]}
       />
     </>

@@ -78,7 +78,7 @@ export default function Formularios() {
             <h5>Formularios de Responsabilidad Civil</h5>
             <div className="forms-links-grid">
               <a href={formularios.rcContratistasEducativos} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Contratistas</span>Contratistas establecimientos educativos
+                <span className="forms-link-meta">RC Establecimientos educativos</span>Contratistas establecimientos educativos
               </a>
               <a href={formularios.rcContratistas} target="_blank" rel="noopener">
                 <span className="forms-link-meta">Contratistas</span>Contratistas
@@ -91,9 +91,6 @@ export default function Formularios() {
               </a>
               <a href={formularios.rcCarteles} target="_blank" rel="noopener">
                 <span className="forms-link-meta">Publicidad</span>Carteles
-              </a>
-              <a href={formularios.rcCartelesAlt} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Publicidad</span>Carteles (versión 2)
               </a>
               <a href={formularios.rcEmpresasSeguridad} target="_blank" rel="noopener">
                 <span className="forms-link-meta">Seguridad</span>Empresas de seguridad
@@ -118,12 +115,6 @@ export default function Formularios() {
               </a>
               <a href={formularios.rcObras} target="_blank" rel="noopener">
                 <span className="forms-link-meta">Obras</span>Obras
-              </a>
-              <a href={formularios.rcProductos} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Productos</span>Productos
-              </a>
-              <a href={formularios.rcProfesionalIndividual} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Profesional</span>Profesional individual
               </a>
             </div>
           </article>

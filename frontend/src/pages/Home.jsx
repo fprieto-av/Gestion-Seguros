@@ -98,8 +98,6 @@ function Simulator() {
   const FACTORES = {
     'alquiler-vivienda': 0.038,
     'alquiler-comercial': 0.046,
-    'accidentes-personales': 0.012,
-    'vida-colectivo': 0.008,
   }
   const [tipo, setTipo] = useState('alquiler-vivienda')
   const [duracion, setDuracion] = useState(24)
@@ -110,11 +108,11 @@ function Simulator() {
 
   const calcular = () => {
     const f = FACTORES[tipo] || 0.03
-    let prima = valorRaw * f
-    if (duracion === 12) prima *= 1.05
-    if (duracion === 36) prima *= 0.96
-    if (duracion === 48) prima *= 0.92
-    return fmt(prima)
+    let costo = valorRaw * f
+    if (duracion === 12) costo *= 1.05
+    if (duracion === 36) costo *= 0.96
+    if (duracion === 48) costo *= 0.92
+    return fmt(costo)
   }
 
   const handleValor = (e) => {
@@ -141,7 +139,7 @@ function Simulator() {
           <div className="sim-field">
             <label>Tipo de seguro</label>
             <div className="sim-options">
-              {[['alquiler-vivienda', 'Alquiler vivienda'], ['alquiler-comercial', 'Alquiler comercial'], ['accidentes-personales', 'Accidentes personales'], ['vida-colectivo', 'Vida colectivo']].map(([val, label]) => (
+              {[['alquiler-vivienda', 'Alquiler vivienda'], ['alquiler-comercial', 'Alquiler comercial']].map(([val, label]) => (
                 <button key={val} type="button" className={`sim-option${tipo === val ? ' active' : ''}`} onClick={() => setTipo(val)}>{label}</button>
               ))}
             </div>
@@ -159,11 +157,11 @@ function Simulator() {
             </div>
           </div>
           <div className="sim-result">
-            <div><small>Prima mensual estimada</small><b>{calcular()}</b></div>
+            <div><small>Costo mensual estimado</small><b>{calcular()}</b></div>
             <svg className="icon" style={{ width: '40px', height: '40px', opacity: 0.5 }}><use href="#i-shield" /></svg>
           </div>
           <Link to="/contacto" className="btn btn-primary sim-submit">Emitir mi póliza ahora <svg className="icon"><use href="#i-arrow" /></svg></Link>
-          <p className="sim-disclaimer">* Valor estimado no vinculante. La prima final se determina según evaluación de riesgo y documentación.</p>
+          <p className="sim-disclaimer">* Valor estimado no vinculante. El costo final se determina según evaluación de riesgo y documentación.</p>
         </div>
       </div>
     </section>
