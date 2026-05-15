@@ -31,7 +31,9 @@ export default function Formularios() {
           <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Formularios</span>
         </div>
         <div className="forms-hero">
-          <img src={formulariosHero} alt="Gestión Seguros formularios" />
+          <div className="forms-hero-media">
+            <img src={formulariosHero} alt="Gestión Seguros formularios" />
+          </div>
           <div>
             <h2>Seleccioná el formulario que necesitás</h2>
             <h3>Descargá y completá para iniciar la gestión</h3>

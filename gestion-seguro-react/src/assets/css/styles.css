@@ -578,11 +578,14 @@ section.section.products {
 .why-item h4 { font-size: 18px; margin-bottom: 6px; }
 .why-item p { font-size: 14px; color: var(--ink); line-height: 1.6; }
 
-/* ===== Partners / reaseguradores (carrusel estilo referencia) ===== */
+/* ===== Partners — video (Home) ===== */
 .partners { background: var(--white); }
 section.partners {
   padding-top: clamp(14px, 2.2vw, 22px);
-  padding-bottom: 0;
+  padding-bottom: clamp(12px, 2vw, 20px);
+  padding-left: 0;
+  padding-right: 0;
+  overflow-x: clip;
 }
 .partners.section { padding-left: 0; padding-right: 0; }
 .partners-inner { max-width: none; margin: 0 auto; position: relative; }
@@ -590,6 +593,9 @@ section.partners {
   margin: 0 auto 10px;
   max-width: none;
   width: 100%;
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+  box-sizing: border-box;
   position: static;
   display: block;
   text-align: center;
@@ -598,12 +604,16 @@ section.partners {
 }
 .partners-head h2, .partners-head p { display: none; }
 .partners-shell {
+  width: 100%;
   max-width: none;
-  margin: 0 auto;
+  margin: 0;
+  aspect-ratio: var(--partners-ar, 16 / 9);
+  max-height: min(72vh, 720px);
+  height: auto;
   border-radius: 0;
   overflow: hidden;
   border: none;
-  background: var(--white);
+  background: #e8edf3;
   position: relative;
 }
 .partners-shell::after {
@@ -612,8 +622,8 @@ section.partners {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(135deg, rgba(14, 23, 48, 0.2) 0%, rgba(27, 79, 174, 0.14) 42%, rgba(27, 79, 174, 0.08) 100%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.07)' stroke-width='1' d='M30 2L30 58M2 30L58 30'/%3E%3C/svg%3E");
+    linear-gradient(180deg, rgba(14, 23, 48, 0.12) 0%, transparent 28%, transparent 72%, rgba(14, 23, 48, 0.06) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1' d='M30 2L30 58M2 30L58 30'/%3E%3C/svg%3E");
 }
 .partners-head .section-label {
   margin-left: auto;
@@ -625,10 +635,39 @@ section.partners {
 }
 .partners-video {
   width: 100%;
-  height: clamp(280px, 40vw, 520px);
+  height: 100%;
   object-fit: cover;
-  object-position: center 45%;
+  object-position: center center;
   display: block;
+}
+
+/* ===== Reaseguradores — panel (Home) ===== */
+section.section.reaseg {
+  padding-top: clamp(36px, 4.5vw, 56px);
+  padding-bottom: clamp(36px, 4.5vw, 56px);
+  background: var(--bg);
+}
+.reaseg .section-head {
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+.reaseg-panel {
+  max-width: min(760px, 100%);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+  box-sizing: border-box;
+}
+.reaseg-figure {
+  margin: 0 auto;
+  max-width: 100%;
+  line-height: 0;
+}
+.reaseg-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 /* ===== Simulador ===== */
@@ -640,7 +679,13 @@ section.partners {
 .simulator::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.08)' stroke-width='1' d='M30 2L30 58M2 30L58 30'/%3E%3C/svg%3E"); opacity: 0.6; }
 .simulator::after { content: none; }
 .sim-grid { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 70px; align-items: center; position: relative; z-index: 1; }
-.sim-left h2 { color: var(--white); margin-bottom: 20px; }
+.sim-left h2 {
+  color: var(--white);
+  margin-bottom: 20px;
+  font-size: clamp(38px, 5.2vw, 62px);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
 .sim-left p { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.65; margin-bottom: 30px; }
 .sim-perks { display: flex; flex-direction: column; gap: 14px; }
 .sim-perk { display: flex; align-items: center; gap: 14px; font-size: 14px; color: rgba(255,255,255,0.9); }
@@ -704,7 +749,9 @@ section.partners {
 
 /* ===== Testimonios ===== */
 .testimonials { background: var(--white); }
-.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: var(--container); margin: 0 auto; }
+.test-carousel { overflow: hidden; max-width: var(--container); margin: 0 auto; }
+.test-track { display: flex; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+.test-slide { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding: 4px; flex-shrink: 0; }
 .test-card {
   background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-lg);
   padding: 32px 28px; transition: all 0.3s var(--ease);
@@ -717,6 +764,9 @@ section.partners {
 .test-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: var(--white); display: grid; place-items: center; font-family: 'Archivo'; font-weight: 900; font-size: 18px; flex-shrink: 0; }
 .test-author b { display: block; font-size: 14px; color: var(--dark); }
 .test-author small { font-size: 12px; color: var(--ink-light); }
+.test-dots { display: flex; justify-content: center; gap: 10px; margin-top: 32px; }
+.test-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); border: none; cursor: pointer; transition: all 0.35s var(--ease); padding: 0; }
+.test-dot.active { background: var(--primary); transform: scale(1.4); }
 
 /* ===== FAQ ===== */
 .faq { background: var(--bg); }
@@ -1455,25 +1505,11 @@ footer { background: var(--darker); color: rgba(255,255,255,0.65); padding: 80px
   }
   .proc-grid { grid-template-columns: repeat(2, 1fr); }
   .proc-grid::before { display: none; }
-  .test-grid { grid-template-columns: 1fr; }
-  .test-card {
-    text-align: center;
-    align-items: center;
-  }
-  .test-quote {
-    max-width: 38rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .test-author {
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-  }
-  .test-author > div:last-child {
-    text-align: center;
-  }
+  .test-slide { grid-template-columns: 1fr; }
+  .test-card { text-align: center; align-items: center; }
+  .test-quote { margin-left: auto; margin-right: auto; }
+  .test-author { justify-content: center; flex-direction: column; text-align: center; gap: 12px; }
+  .test-author > div:last-child { text-align: center; }
   .stats-row { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px 40px; }
   .footer-brand { grid-column: 1 / -1; }

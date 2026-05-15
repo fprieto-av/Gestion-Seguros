@@ -2,8 +2,9 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
 import introVideo from '../assets/video/intro.mp4'
-import partnersLoopVideo from '../assets/video/Para Web Actualizado.mp4'
 import bannerHome from '../assets/img/banner-home.jpg'
+import ReinsurersSection from '../components/ReinsurersSection'
+import PartnersVideo from '../components/PartnersVideo'
 
 function Counter({ target, suffix = '', prefix = '' }) {
   const [value, setValue] = useState(0)
@@ -167,6 +168,103 @@ function Simulator() {
   )
 }
 
+const TESTIMONIALS = [
+  {
+    quote: '"Cotizamos una garantía de alquiler y el trámite fue claro y rápido. Atención impecable y precios muy competitivos."',
+    name: 'María R.', role: 'Inquilina · CABA', initials: 'MR', avatarStyle: {}
+  },
+  {
+    quote: '"Como PAS valoro muchísimo la plataforma GestionAr. El soporte técnico responde rápido y el equipo de suscripción es muy ágil con las cauciones."',
+    name: 'Juan P.', role: 'Productor Asesor · Córdoba', initials: 'JP',
+    avatarStyle: { background: 'linear-gradient(135deg,var(--accent),#FFB85C)' }
+  },
+  {
+    quote: '"Necesitábamos RC para un evento corporativo. En Gestión nos resolvieron con cobertura a medida y en tiempo récord."',
+    name: 'Laura F.', role: 'Productora de eventos · Rosario', initials: 'LF',
+    avatarStyle: { background: 'linear-gradient(135deg,var(--success),#5AFFC7)', color: 'var(--dark)' }
+  },
+  {
+    quote: '"La emisión fue 100% digital, sin trámites presenciales. Me llegó la póliza en menos de 24 horas. Increíble agilidad."',
+    name: 'Carlos M.', role: 'Empresario · Buenos Aires', initials: 'CM', avatarStyle: {}
+  },
+  {
+    quote: '"Contraté un seguro de vida colectivo para mi empresa. Excelente relación precio-cobertura y el equipo siempre disponible para consultas."',
+    name: 'Valeria T.', role: 'Gerente RRHH · Mendoza', initials: 'VT',
+    avatarStyle: { background: 'linear-gradient(135deg,var(--primary),#5A7FFF)' }
+  },
+  {
+    quote: '"Operamos con garantías aduaneras desde hace dos años. Ágiles, confiables y con muy buena respuesta ante cualquier consulta."',
+    name: 'Roberto S.', role: 'Importador · San Isidro', initials: 'RS',
+    avatarStyle: { background: 'linear-gradient(135deg,#7C3AED,#A78BFA)' }
+  },
+]
+
+const PER_PAGE_DESKTOP = 3
+const PER_PAGE_MOBILE = 2
+const MOBILE_BREAKPOINT = 768
+
+function Testimonials() {
+  const [perPage, setPerPage] = useState(
+    () => window.innerWidth < MOBILE_BREAKPOINT ? PER_PAGE_MOBILE : PER_PAGE_DESKTOP
+  )
+
+  useEffect(() => {
+    const handler = () => setPerPage(window.innerWidth < MOBILE_BREAKPOINT ? PER_PAGE_MOBILE : PER_PAGE_DESKTOP)
+    window.addEventListener('resize', handler)
+    return () => window.removeEventListener('resize', handler)
+  }, [])
+
+  const slides = []
+  for (let i = 0; i < TESTIMONIALS.length; i += perPage)
+    slides.push(TESTIMONIALS.slice(i, i + perPage))
+  const pages = slides.length
+
+  const [page, setPage] = useState(0)
+
+  useEffect(() => { setPage(0) }, [perPage])
+
+  useEffect(() => {
+    const t = setInterval(() => setPage(p => (p + 1) % pages), 3000)
+    return () => clearInterval(t)
+  }, [pages])
+
+  return (
+    <section className="section testimonials">
+      <div className="section-head reveal">
+        <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-star" /></svg>Testimonios</span>
+        <h2>Lo que dicen de <span className="gradient-text">Gestión Seguros</span></h2>
+        <p>Clientes y productores asesores que confían en nosotros para proteger lo que más les importa.</p>
+      </div>
+      <div className="test-carousel reveal">
+        <div
+          className="test-track"
+          style={{ width: `${pages * 100}%`, transform: `translateX(-${page * (100 / pages)}%)` }}
+        >
+          {slides.map((slide, si) => (
+            <div key={si} className="test-slide" style={{ width: `${100 / pages}%` }}>
+              {slide.map((t, i) => (
+                <article key={i} className="test-card">
+                  <div className="test-stars">★★★★★</div>
+                  <p className="test-quote">{t.quote}</p>
+                  <div className="test-author">
+                    <div className="test-avatar" style={t.avatarStyle}>{t.initials}</div>
+                    <div><b>{t.name}</b><small>{t.role}</small></div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="test-dots">
+        {slides.map((_, i) => (
+          <button key={i} type="button" className={`test-dot${page === i ? ' active' : ''}`} onClick={() => setPage(i)} aria-label={`Página ${i + 1}`} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function FAQ() {
   const [openIdx, setOpenIdx] = useState(0)
 
@@ -321,19 +419,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PARTNERS */}
+      {/* PARTNERS — video */}
       <section className="section partners" id="reaseguradores">
         <div className="partners-inner">
           <div className="section-head reveal partners-head">
             <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-globe" /></svg>Partners</span>
           </div>
-          <div className="partners-shell reveal delay-1">
-            <video className="partners-video" autoPlay muted loop playsInline preload="auto" poster={bannerHome}>
-              <source src={partnersLoopVideo} type="video/mp4" />
-            </video>
-          </div>
+          <PartnersVideo />
         </div>
       </section>
+
+      <ReinsurersSection />
 
       <Simulator />
 
@@ -353,30 +449,7 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIOS */}
-      <section className="section testimonials">
-        <div className="section-head reveal">
-          <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-star" /></svg>Testimonios</span>
-          <h2>Lo que dicen de <span className="gradient-text">Gestión Seguros</span></h2>
-          <p>Clientes y productores asesores que confían en nosotros para proteger lo que más les importa.</p>
-        </div>
-        <div className="test-grid">
-          <div className="test-card reveal">
-            <div className="test-stars">★★★★★</div>
-            <p className="test-quote">"Cotizamos una garantía de alquiler y el trámite fue claro y rápido. Atención impecable y precios muy competitivos."</p>
-            <div className="test-author"><div className="test-avatar">MR</div><div><b>María R.</b><small>Inquilina · CABA</small></div></div>
-          </div>
-          <div className="test-card reveal delay-1">
-            <div className="test-stars">★★★★★</div>
-            <p className="test-quote">"Como PAS valoro muchísimo la plataforma GestionAr. El soporte técnico responde rápido y el equipo de suscripción es muy ágil con las cauciones."</p>
-            <div className="test-author"><div className="test-avatar" style={{ background: 'linear-gradient(135deg,var(--accent),#FFB85C)' }}>JP</div><div><b>Juan P.</b><small>Productor Asesor · Córdoba</small></div></div>
-          </div>
-          <div className="test-card reveal delay-2">
-            <div className="test-stars">★★★★★</div>
-            <p className="test-quote">"Necesitábamos RC para un evento corporativo. En Gestión nos resolvieron con cobertura a medida."</p>
-            <div className="test-author"><div className="test-avatar" style={{ background: 'linear-gradient(135deg,var(--success),#5AFFC7)', color: 'var(--dark)' }}>LF</div><div><b>Laura F.</b><small>Productora de eventos · Rosario</small></div></div>
-          </div>
-        </div>
-      </section>
+      <Testimonials />
 
       {/* PAS TEASER */}
       <section className="section home-pas-teaser">
