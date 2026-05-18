@@ -43,7 +43,7 @@ export default function ResponsabilidadCivil() {
                 <li><a href="#rc-calderas">Calderas</a></li>
                 <li><a href="#rc-ascensores">Ascensores y/o Montacargas</a></li>
                 <li><a href="#rc-colonia">Colonia de Vacaciones</a></li>
-                <li><a href="#rc-alquiler-viviendas">Alquiler de Viviendas</a></li>
+                <li><a href="#rc-alquiler-viviendas">RC Inquilinos</a></li>
                 <li><a href="#turismo">Turismo Aventura</a></li>
                 <li><a href="#rc-garage">Garage</a></li>
                 <li><a href="#rc-carteles">Carteles, Letreros y Antenas</a></li>
@@ -99,8 +99,8 @@ export default function ResponsabilidadCivil() {
             </div>
 
             <div id="rc-alquiler-viviendas">
-              <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-home" /></svg>Alquiler de Viviendas</span>
-              <h2>Alquiler de Viviendas</h2>
+              <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-home" /></svg>RC Inquilinos</span>
+              <h2>RC Inquilinos</h2>
               <p>Ampara al propietario frente a reclamos de terceros por daños ocasionados por el inmueble alquilado, brindando tranquilidad ante imprevistos que puedan afectar a inquilinos o vecinos.</p>
             </div>
 

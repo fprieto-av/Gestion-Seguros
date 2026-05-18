@@ -6,6 +6,7 @@ import PageCta from '../components/PageCta'
 import BrandStrip from '../components/BrandStrip'
 import '../assets/css/mediosdepago.css'
 import mediosdepago from '../assets/img/mediosdepago.png'
+import { instructivos as instructivosPdf } from '../assets/instructivosUrls'
 
 function CbuCopy({ value }) {
   const [copied, setCopied] = useState(false)
@@ -119,7 +120,7 @@ export default function MediosDePago() {
                 <svg className="icon"><use href="#i-doc" /></svg>
                 <span className="pay-title-text">Cheque bancario - echeQs</span>
               </h3>
-              <p>Emitir cheques a nombre de: <strong>GESTIÓN COMPAÑÍA ARGENTINA DE SEGUROS S.A.</strong></p>
+              <p>Emitir a nombre de: <strong>GESTIÓN COMPAÑÍA ARGENTINA DE SEGUROS S.A.</strong></p>
             </article>
 
             {/* DÉBITO DIRECTO */}
@@ -129,8 +130,8 @@ export default function MediosDePago() {
                 <svg className="icon"><use href="#i-doc" /></svg>
                 <span className="pay-title-text">Débito directo en cuenta</span>
               </h3>
-              <p>A través de su CBU puede adherirse a este medio de pago.</p>
-              <p className="pay-note">Enviar solicitud a: <strong><a href="mailto:cobranzas@segurosgestion.com.ar">cobranzas@segurosgestion.com.ar</a></strong></p>
+              <p> Adherí tu CBU y olvidate de los vencimientos.</p>
+              <p className="pay-note">📩<strong><a href="mailto:cobranzas@segurosgestion.com.ar">cobranzas@segurosgestion.com.ar</a></strong></p>
             </article>
 
             {/* TARJETA */}
@@ -140,7 +141,7 @@ export default function MediosDePago() {
                 <svg className="icon"><use href="#i-dollar" /></svg>
                 <span className="pay-title-text">Tarjeta de crédito</span>
               </h3>
-              <p>Solicitar adhesión por mail a <a href="mailto:cobranzas@segurosgestion.com.ar">cobranzas@segurosgestion.com.ar</a></p>
+              <p>Solicitar adhesión por mail a: <p className="pay-note">📩<strong><a href="mailto:cobranzas@segurosgestion.com.ar">cobranzas@segurosgestion.com.ar</a></strong></p></p>
               <div className="pay-inline-logos">
                 <span className="pay-logo-pill">VISA</span>
                 <span className="pay-logo-pill">Master</span>
@@ -168,22 +169,32 @@ export default function MediosDePago() {
                 <svg className="icon"><use href="#i-award" /></svg>
                 Recordatorios importantes
               </h3>
-              <p><strong>IMPORTANTE:</strong> En los casos de <strong>transferencia bancaria, depósito en banco y DEBIN</strong>, una vez realizado el pago de la operación, le solicitamos por favor nos informe el mismo detallando:</p>
-              <p className="pay-note"><strong>N° de Póliza</strong> y <strong>N° de Endoso o cobertura abonada</strong> mediante correo electrónico a la siguiente dirección:</p>
-              <p><strong><a href="mailto:cobranzas@segurosgestion.com.ar">cobranzas@segurosgestion.com.ar</a></strong></p>
+              <p><strong>IMPORTANTE:</strong>Si realizaste el pago mediante<strong>transferencia bancaria, depósito bancario o DEBIN</strong>,  y aún no lo informaste a través de la Web, por favor envialo a <strong><a href="mailto:cobranzas@segurosgestion.com.ar" style={{ color: 'var(--primary)' }}>cobranzas@segurosgestion.com.ar</a></strong> indicando el N.º de póliza y endoso, o bien el N.º de factura. </p>
             </article>
 
           </div>
 
           {/* SIDEBAR */}
           <aside className="pay-side">
-            <h4>Gestión de cobranzas</h4>
-            <p>Para adhesiones, imputaciones y envío de comprobantes, te asistimos desde cobranzas.</p>
-            <ul>
-              <li>Adhesión a débito directo</li>
-              <li>Adhesión con tarjeta de crédito</li>
-              <li>Confirmación de pagos bancarios</li>
-            </ul>
+
+            <div className="pay-preliq-card">
+              <div className="pay-preliq-header">
+                <svg className="icon" style={{ width: '15px' }}><use href="#i-zap" /></svg>
+                <span>Rendí tus pagos online</span>
+              </div>
+              <div className="pay-preliq-body">
+                <p>Ingresá a <strong>GestionAR</strong> y gestioná tus preliquidaciones en minutos.</p>
+                <a href={instructivosPdf.cargaPreliquidaciones} target="_blank" rel="noopener" className="pay-preliq-link">
+                  💡 Descargá el instructivo acá <svg className="icon" style={{ width: '12px' }}><use href="#i-arrow" /></svg>
+                </a>
+              </div>
+            </div>
+
+            <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <svg className="icon" style={{ width: '18px', color: 'var(--primary)', flexShrink: 0 }}><use href="#i-briefcase" /></svg>
+              Gestión de cobranzas
+            </h4>
+            <p>Para consultas sobre adhesiones o pagos, escribinos directamente a: </p>
             <a href="mailto:cobranzas@segurosgestion.com.ar" className="btn btn-primary pay-mail-btn">
               cobranzas@segurosgestion.com.ar
             </a>

@@ -90,16 +90,17 @@ export default function Footer() {
               N° de inscripción en SSN <strong>0882</strong>
             </span>
             <span className="footer-ssn-pipe" aria-hidden="true" />
-            <span className="footer-ssn-cell">Organismo de control</span>
-            <span className="footer-ssn-pipe" aria-hidden="true" />
-            <a
-              href="https://www.argentina.gob.ar/ssn"
-              target="_blank"
-              rel="noopener"
-              className="footer-ssn-cell footer-ssn-link"
-            >
-              www.argentina.gob.ar/ssn
-            </a>
+            <div className="footer-ssn-cell footer-ssn-organismo">
+              <span>Organismo de control</span>
+              <a
+                href="https://www.argentina.gob.ar/ssn"
+                target="_blank"
+                rel="noopener"
+                className="footer-ssn-link"
+              >
+                www.argentina.gob.ar/ssn
+              </a>
+            </div>
             <span className="footer-ssn-pipe" aria-hidden="true" />
             <div className="footer-ssn-logo">
               <SsnSeal />

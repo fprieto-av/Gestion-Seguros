@@ -82,12 +82,22 @@
 .pay-logo-pill { display: inline-flex; align-items: center; justify-content: center; min-width: 74px; padding: 6px 10px; border-radius: var(--r-full); border: 1px solid var(--line); background: var(--white); font-size: 11px; font-weight: 800; letter-spacing: .04em; color: var(--primary-dark); text-transform: uppercase; }
 .pay-title-text { color: var(--dark); font-weight: 900; letter-spacing: -0.01em; }
 .pay-chip { display: inline-flex; align-items: center; gap: 6px; border-radius: var(--r-full); padding: 4px 10px; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-dark); background: rgba(255,154,31,0.15); margin-bottom: 10px; }
+.pay-preliq-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; margin-bottom: 16px; box-shadow: 0 4px 16px rgba(16,39,86,0.06); }
+.pay-preliq-header { display: flex; align-items: center; gap: 8px; background: var(--primary-soft); border-bottom: 1px solid rgba(27,79,174,0.12); padding: 11px 18px; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--primary); }
+.pay-preliq-header svg { color: var(--primary); flex-shrink: 0; }
+.pay-preliq-body { padding: 16px 18px 18px; }
+.pay-preliq-card p { margin: 0 0 14px; font-size: 14px; color: var(--ink); line-height: 1.6; }
+.pay-preliq-card strong { color: var(--primary-dark); font-weight: 700; }
+.pay-preliq-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--primary); text-decoration: none; transition: color 0.15s; }
+.pay-preliq-link:hover { color: var(--primary-dark); text-decoration: underline; }
+
 .pay-side { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 20px; box-shadow: 0 8px 24px rgba(16,39,86,0.08); position: sticky; top: 110px; }
 .pay-side h4 { margin: 0 0 8px; font-size: 19px; }
 .pay-side p { margin: 0 0 14px; font-size: 14px; color: var(--ink); }
 .pay-side ul { margin: 0 0 16px; padding-left: 18px; list-style: disc; }
 .pay-side li { font-size: 13px; color: var(--ink); margin-bottom: 6px; }
-.pay-mail-btn { width: 100%; justify-content: center; text-align: center; font-size: clamp(12px,2.2vw,14px); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 10px; gap: 8px; }
+.pay-mail-btn { width: 100%; justify-content: center; text-align: center; font-size: clamp(12px,2.2vw,14px); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 10px; gap: 8px; background: linear-gradient(135deg, #4e7de9 0%, #6b9fff 100%) !important; color: #fff !important; border-color: transparent !important; }
+.pay-mail-btn:hover { background: linear-gradient(135deg, #3d6edb 0%, #5a8fee 100%) !important; }
 .pay-important { margin-top: 6px; background: var(--bg); border-color: var(--line); }
 .pay-important p { margin-bottom: 8px; }
 @media (max-width: 1024px) {

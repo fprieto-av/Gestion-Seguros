@@ -138,7 +138,7 @@ export default function Alquileres() {
 
             <h2>Tipos de garantías</h2>
             <p><strong className="alq-type-title">Garantía de alquiler de vivienda:</strong> protege al propietario frente al incumplimiento del pago del alquiler, expensas, servicios y demás obligaciones contractuales.</p>
-            <p><strong className="alq-type-title">Garantía de alquiler comercial:</strong> orientada a oficinas, locales, depósitos y naves industriales para asegurar el cumplimiento de las obligaciones del inquilino.</p>
+            <p><strong className="alq-type-title">Garantía de alquiler comercial:</strong> orientada a oficinas, locales, depósitos y naves industriales para asegurar el cumplimiento de las obligaciones del inquilino en el desarrollo de su actividad comercial.</p>
 
             <h2>Requisitos</h2>
             <ul>
@@ -162,27 +162,55 @@ export default function Alquileres() {
       </section>
 
       {/* BENEFICIOS PROPIETARIOS E INQUILINOS */}
-      <section className="section">
+      <section className="section alq-beneficios-section">
         <div className="section-head reveal">
           <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Beneficios</span>
+          <h2>¿Por qué elegir la <span className="gradient-text">garantía de alquiler</span>?</h2>
         </div>
-        <div className="detail-grid">
-          <article className="detail-main detail-main--accent-titles">
-            <h2>Beneficios para Propietarios</h2>
-            <ul>
-              <li><strong>Cobro asegurado:</strong> Frente al incumplimiento de pago, la compañía procede rápidamente en (aprox. 15 días), sin necesidad de ejecutar una garantía propietaria.</li>
-              <li><strong>Cobertura integral:</strong> Incluye alquileres, depósito en garantía, expensas, impuestos y costos legales hasta la restitución del inmueble.</li>
-              <li><strong>Respaldo real:</strong> Es un seguro regulado por la Superintendencia de Seguros de la Nación, emitido por una compañía aseguradora.</li>
-            </ul>
-          </article>
-          <article className="detail-main detail-main--accent-titles">
-            <h2>Beneficios para Inquilinos</h2>
-            <ul>
-              <li><strong>Acceso más simple:</strong> No necesitás propiedad en garantía. Solo ingresos demostrables y buen historial.</li>
-              <li><strong>Proceso ágil y digital:</strong> Cotizás y contratás online, con emisión de póliza en el día.</li>
-              <li><strong>Financiación:</strong> Posibilidad de pagar en cuotas, con los mejores costos del mercado.</li>
-            </ul>
-          </article>
+        <div className="alq-beneficios-grid reveal">
+
+          <div className="alq-ben-col alq-ben-col--prop">
+            <div className="alq-ben-header">
+              <div className="alq-ben-icon"><svg className="icon" style={{ width: '22px' }}><use href="#i-home" /></svg></div>
+              <h3>Para Propietarios</h3>
+            </div>
+            <div className="alq-ben-items">
+              <div className="alq-ben-item">
+                <div className="alq-ben-item-icon"><svg className="icon" style={{ width: '16px' }}><use href="#i-shield" /></svg></div>
+                <div><strong>Cobro asegurado</strong><p>Frente al incumplimiento, la compañía procede rápidamente (aprox. 15 días), sin ejecutar garantía propietaria.</p></div>
+              </div>
+              <div className="alq-ben-item">
+                <div className="alq-ben-item-icon"><svg className="icon" style={{ width: '16px' }}><use href="#i-check" /></svg></div>
+                <div><strong>Cobertura integral</strong><p>Incluye alquileres, depósito, expensas, impuestos y costos legales hasta la restitución del inmueble.</p></div>
+              </div>
+              <div className="alq-ben-item">
+                <div className="alq-ben-item-icon"><svg className="icon" style={{ width: '16px' }}><use href="#i-award" /></svg></div>
+                <div><strong>Respaldo real</strong><p>Seguro regulado por la SSN, emitido por una compañía aseguradora habilitada.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div className="alq-ben-col alq-ben-col--inq">
+            <div className="alq-ben-header">
+              <div className="alq-ben-icon"><svg className="icon" style={{ width: '22px' }}><use href="#i-users" /></svg></div>
+              <h3>Para Inquilinos</h3>
+            </div>
+            <div className="alq-ben-items">
+              <div className="alq-ben-item">
+                <div className="alq-ben-item-icon"><svg className="icon" style={{ width: '16px' }}><use href="#i-zap" /></svg></div>
+                <div><strong>Acceso más simple</strong><p>No necesitás propiedad en garantía. Solo ingresos demostrables y buen historial.</p></div>
+              </div>
+              <div className="alq-ben-item">
+                <div className="alq-ben-item-icon"><svg className="icon" style={{ width: '16px' }}><use href="#i-activity" /></svg></div>
+                <div><strong>Proceso ágil y digital</strong><p>Cotizás y contratás online, con emisión de póliza en el día.</p></div>
+              </div>
+              <div className="alq-ben-item">
+                <div className="alq-ben-item-icon"><svg className="icon" style={{ width: '16px' }}><use href="#i-dollar" /></svg></div>
+                <div><strong>Financiación</strong><p>Posibilidad de pagar en cuotas, con los mejores costos del mercado.</p></div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 

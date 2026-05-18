@@ -55,3 +55,20 @@
   border-color: var(--accent);
   color: var(--accent-dark);
 }
+
+
+/* Nota general al pie de una sección */
+.caucion-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 28px;
+  margin-bottom: 32px;
+  padding: 14px 18px;
+  background: linear-gradient(90deg, var(--primary-soft) 0%, rgba(27,79,174,0.06) 100%);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--ink);
+}
+.caucion-note svg { color: var(--primary); }
+.caucion-note p { margin: 0; font-size: 14px; line-height: 1.6; }

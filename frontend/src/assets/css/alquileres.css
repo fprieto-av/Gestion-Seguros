@@ -1,3 +1,24 @@
+/* ── Beneficios ── */
+.alq-beneficios-section { background: var(--bg); }
+.alq-beneficios-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: var(--container); margin: 0 auto; }
+.alq-ben-col { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; box-shadow: 0 4px 20px rgba(16,39,86,0.06); }
+.alq-ben-header { display: flex; align-items: center; gap: 14px; padding: 22px 24px; border-bottom: 1px solid var(--line); }
+.alq-ben-col--prop .alq-ben-header { background: linear-gradient(90deg, var(--primary-soft) 0%, rgba(27,79,174,0.04) 100%); }
+.alq-ben-col--inq .alq-ben-header { background: linear-gradient(90deg, rgba(255,154,31,0.08) 0%, rgba(255,154,31,0.02) 100%); }
+.alq-ben-icon { width: 46px; height: 46px; border-radius: var(--r-md); display: grid; place-items: center; flex-shrink: 0; }
+.alq-ben-col--prop .alq-ben-icon { background: var(--primary-soft); color: var(--primary); }
+.alq-ben-col--inq .alq-ben-icon { background: rgba(255,154,31,0.12); color: var(--accent-dark); }
+.alq-ben-header h3 { font-size: 18px; font-weight: 800; color: var(--dark); margin: 0; }
+.alq-ben-items { display: flex; flex-direction: column; padding: 8px 0; }
+.alq-ben-item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 24px; border-bottom: 1px solid var(--line); }
+.alq-ben-item:last-child { border-bottom: none; }
+.alq-ben-item-icon { width: 32px; height: 32px; border-radius: var(--r-sm); display: grid; place-items: center; flex-shrink: 0; margin-top: 1px; }
+.alq-ben-col--prop .alq-ben-item-icon { background: var(--primary-soft); color: var(--primary); }
+.alq-ben-col--inq .alq-ben-item-icon { background: rgba(255,154,31,0.1); color: var(--accent-dark); }
+.alq-ben-item strong { display: block; font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+.alq-ben-item p { margin: 0; font-size: 13.5px; color: var(--ink); line-height: 1.55; }
+@media (max-width: 768px) { .alq-beneficios-grid { grid-template-columns: 1fr; } }
+
 .alq-sim-title { margin-bottom: 18px; }
 .alq-sim-title h3 { font-size: 24px; margin-bottom: 8px; }
 .alq-sim-title p { color: var(--ink); font-size: 14px; }
@@ -119,7 +140,7 @@
 .alq-programa-wrap { max-width: 980px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
 
 .alq-programa-section {
-  background: var(--bg);
+  background: var(--white);
 }
 
 .alq-section-title {

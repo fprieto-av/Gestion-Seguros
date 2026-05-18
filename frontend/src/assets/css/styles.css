@@ -126,7 +126,7 @@ h1, h2, h3, h4, h5 {
 /* ===== Topbar contacto (misma lógica visual que .trust-bar: gris → blanco en hover) ===== */
 .topbar {
   background: var(--dark);
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.88);
   padding: clamp(14px, 2.2vw, 20px) var(--pad-x);
   font-size: 13px;
   line-height: 1;
@@ -582,7 +582,7 @@ section.section.products {
 .partners { background: var(--white); }
 section.partners {
   padding-top: clamp(14px, 2.2vw, 22px);
-  padding-bottom: clamp(12px, 2vw, 20px);
+  padding-bottom: 0;
   padding-left: 0;
   padding-right: 0;
   overflow-x: clip;
@@ -645,7 +645,7 @@ section.partners {
 section.section.reaseg {
   padding-top: clamp(36px, 4.5vw, 56px);
   padding-bottom: clamp(36px, 4.5vw, 56px);
-  background: var(--bg);
+  background: var(--white);
 }
 .reaseg .section-head {
   margin-bottom: clamp(24px, 3vw, 40px);
@@ -1146,6 +1146,7 @@ footer { background: var(--darker); color: rgba(255,255,255,0.65); padding: 80px
 .detail-main p { font-size: 16px; color: var(--ink); line-height: 1.75; margin-bottom: 14px; }
 .detail-main ul { margin: 14px 0 24px 0; padding-left: 0; }
 .detail-main ul li { padding: 10px 0 10px 32px; position: relative; font-size: 15px; color: var(--ink); line-height: 1.6; border-top: 1px solid var(--line); }
+.detail-main ul li a { display: inline-flex; align-items: center; gap: 4px; }
 .detail-main ul li:first-child { border-top: none; }
 .detail-main ul li::before {
   content: ''; position: absolute; left: 0; top: 14px; width: 20px; height: 20px;
@@ -1209,11 +1210,16 @@ footer { background: var(--darker); color: rgba(255,255,255,0.65); padding: 80px
 .contact-info::before { content: ''; position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(43,184,232,0.25), transparent 60%); }
 .contact-info h3 { color: var(--white); font-size: 28px; margin-bottom: 14px; position: relative; }
 .contact-info > p { color: rgba(255,255,255,0.75); font-size: 15px; line-height: 1.65; margin-bottom: 30px; position: relative; }
-.contact-methods { display: flex; flex-direction: column; gap: 22px; position: relative; }
-.contact-method { display: flex; gap: 16px; align-items: flex-start; }
-.contact-method .ic { width: 46px; height: 46px; border-radius: var(--r-md); background: rgba(43,184,232,0.15); color: var(--secondary); display: grid; place-items: center; flex-shrink: 0; }
-.contact-method b { display: block; font-size: 12px; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin-bottom: 4px; }
-.contact-method a, .contact-method span { color: var(--white); font-size: 15px; font-weight: 600; display: block; }
+.contact-methods { display: flex; flex-direction: column; gap: 0; position: relative; }
+.contact-method { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.contact-method:last-child { border-bottom: none; padding-bottom: 0; }
+.contact-method:first-child { padding-top: 0; }
+.contact-method .ic { width: 46px; height: 46px; border-radius: var(--r-md); background: rgba(43,184,232,0.12); border: 1px solid rgba(43,184,232,0.22); color: var(--secondary); display: grid; place-items: center; flex-shrink: 0; }
+.contact-method b { display: block; font-size: 11px; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1.8px; font-weight: 800; margin-bottom: 6px; }
+.contact-method a { color: rgba(255,255,255,0.88); font-size: 14.5px; font-weight: 600; display: block; transition: color 0.15s, text-shadow 0.15s; }
+.contact-method a:hover { color: #fff; text-shadow: 0 0 12px rgba(255,255,255,0.4); }
+.contact-method span { color: rgba(255,255,255,0.88); font-size: 14.5px; font-weight: 500; display: block; line-height: 1.55; }
+.contact-method span a { display: inline; font-size: inherit; }
 
 .contact-form { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-xl); padding: 44px; box-shadow: var(--shadow-md); }
 .contact-info, .contact-form { height: 100%; }
@@ -1399,6 +1405,12 @@ footer { background: var(--darker); color: rgba(255,255,255,0.65); padding: 80px
     font-size: 13px;
     line-height: 1.5;
     text-align: center;
+  }
+  .footer-ssn-organismo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
   }
   .footer-ssn-logo {
     grid-column: 1 / -1;
@@ -1673,10 +1685,10 @@ footer { background: var(--darker); color: rgba(255,255,255,0.65); padding: 80px
   .contact-info { padding: 28px 20px; }
   .contact-info h3 { font-size: 22px; }
   .contact-info > p { font-size: 14px; margin-bottom: 22px; }
-  .contact-methods { gap: 16px; }
-  .contact-method { gap: 12px; }
+  .contact-methods { gap: 0; }
+  .contact-method { gap: 12px; padding: 14px 0; }
   .contact-method .ic { width: 40px; height: 40px; }
-  .contact-method b { font-size: 11px; letter-spacing: 1.1px; }
+  .contact-method b { font-size: 10px; letter-spacing: 1.4px; }
   .contact-method a,
   .contact-method span {
     font-size: 13px;

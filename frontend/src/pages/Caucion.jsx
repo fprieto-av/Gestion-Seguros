@@ -22,7 +22,7 @@ export default function Caucion() {
           <p className="lead reveal delay-2">La gran ventaja es que permite operar sin inmovilizar capital, optimizando la capacidad financiera y dando mayor solidez frente a clientes, proveedores u organismos públicos.</p>
           <div className="hero-ctas reveal delay-3" style={{ marginTop: '30px' }}>
             <a href="mailto:caucion@gestionseguros.com.ar" className="btn btn-accent btn-lg"><svg className="icon"><use href="#i-mail" /></svg> caucion@gestionseguros.com.ar</a>
-            <a href="#tipos" className="btn btn-ghost btn-lg">Ver tipos</a>
+            <a href="#tipos" className="btn btn-ghost btn-lg">Ver Coberturas</a>
           </div>
         </div>
       </header>
@@ -43,6 +43,7 @@ export default function Caucion() {
                 <li><a href="#concesion">Garantías de Concesión</a></li>
                 <li><a href="#judiciales">Judiciales</a></li>
                 <li><a href="#internacionales">Internacionales</a></li>
+                <li><a href="#alquileres">Alquileres</a></li>
               </ul>
             </nav>
 
@@ -56,20 +57,21 @@ export default function Caucion() {
               <p>Habitualmente, la suma asegurada se ubica entre el 1% y el 5% del monto total del contrato.</p>
               <h3>Ejecución de contrato</h3>
               <p>Cubre el cumplimiento, en tiempo y forma, de todas las obligaciones asumidas por el tomador.</p>
-              <p>La garantía se libera con la recepción definitiva de la obra o servicio. La suma asegurada suele oscilar entre el 5% y hasta un 20% del monto total contractual.</p>
               <h3>Anticipo financiero o por acopio</h3>
               <p>Garantiza el correcto uso de los fondos adelantados al tomador, conforme a lo establecido en el contrato u orden de compra.</p>
-              <p>Se libera con la recepción provisoria o a medida que se certifican avances o entregas. No cubre obligaciones de pago, multas ni penalidades.</p>
+              <p>Se libera con la recepción provisoria y a su vez parcialmente a medida que se certifican avances o Entregas.</p>
               <h3>Sustitución de fondo de reparo</h3>
               <p>Permite reemplazar las retenciones que realiza el comitente, garantizando la correcta ejecución de reparaciones ante posibles defectos de obra o de materiales.</p>
-              <p>Se libera con la recepción definitiva. La suma asegurada suele estar entre el 5% y el 10% del monto contractual.</p>
               <h3>Garantía de tenencia (uso, reparación o reacondicionamiento)</h3>
               <p>Garantiza la correcta tenencia y devolución de bienes que el asegurado entrega al tomador para su uso, reparación, mantenimiento o reacondicionamiento.</p>
               <h3>Garantía de tenencia de materiales para fabricación y montaje</h3>
               <p>Cubre la tenencia e incorporación de materiales entregados al tomador para la fabricación, construcción o montaje de un bien o proyecto solicitado por el beneficiario.</p>
               <h3>Garantía de certificación de avance de fabricación</h3>
               <p>Garantiza los pagos realizados al tomador en función del avance de fabricación en taller, cubriendo hasta la entrega final del bien.</p>
-              <p>Nuestro foco está en darte rapidez de respuesta, acompañamiento comercial y soluciones a medida para cada operación.</p>
+              <div className="caucion-note">
+                <svg className="icon" style={{ width: '16px', flexShrink: 0, marginTop: '2px' }}><use href="#i-shield" /></svg>
+                <p><strong>Nuestro foco está en darte rapidez de respuesta, acompañamiento comercial y soluciones a medida para cada operación.</strong> Esto aplica a todas las coberturas contractuales.</p>
+              </div>
             </div>
 
             <div id="aduaneras">
@@ -94,13 +96,16 @@ export default function Caucion() {
                 <li><strong>Importación temporaria de extranjeros no residentes (ITER):</strong> Cubre las importaciones temporarias de bienes pertenecientes a extranjeros con residencia temporaria (mudanzas).</li>
                 <li><strong>Envíos en consignación (ECON):</strong> Garantiza la mercadería enviada en consignación hasta la concreción de la venta.</li>
               </ul>
-              <p>Nuestro objetivo es que puedas enfocarte en tu negocio, mientras nosotros te damos el respaldo necesario para operar con tranquilidad.</p>
+               <div className="caucion-note">
+                <svg className="icon" style={{ width: '16px', flexShrink: 0, marginTop: '2px' }}><use href="#i-shield" /></svg>
+                <p><strong>Nuestro objetivo es que puedas enfocarte en tu negocio, mientras nosotros te damos el respaldo necesario para operar con tranquilidad.</strong></p>
+              </div>
               <p>En Gestión Seguros acompañamos este tipo de operaciones que suelen estar vinculadas a proyectos estratégicos para el país, como:</p>
               <ul>
-                <li>desarrollos mineros</li>
-                <li>proyectos de oil &amp; gas</li>
-                <li>energías renovables (parques eólicos y solares)</li>
-                <li>infraestructura y obras de gran envergadura</li>
+                <li>Desarrollos Mineros.</li>
+                <li>Proyectos de IOL &amp; GAS.</li>
+                <li>Energías Renovables (Parques Eólicos y Solares).</li>
+                <li>Infraestructura Y Obras de gran envergadura.</li>
               </ul>
               <p>Estas garantías permiten a las empresas acceder a beneficios impositivos y aduaneros, asegurando al mismo tiempo el cumplimiento de todas las condiciones del régimen.</p>
             </div>
@@ -156,6 +161,19 @@ export default function Caucion() {
               <p>En Gestión Seguros acompañamos a empresas que operan fuera del país, brindando respaldo para contratos internacionales de obra, provisión de bienes y servicios.</p>
               <p>A través de nuestra red de alianzas en Latinoamérica, ofrecemos soluciones de fronting y backing para garantizar el cumplimiento en cada operación.</p>
               <p>Consultá a nuestro equipo comercial.</p>
+            </div>
+
+            <div id="alquileres">
+              <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-home" /></svg>Alquileres</span>
+              <h2>Garantías de Alquiler</h2>
+              <p>Una alternativa digital y segura que reemplaza la garantía propietaria tradicional, sin trámites complejos ni avales personales.</p>
+              <h3>Garantía de alquiler de vivienda</h3>
+              <p>Protege al propietario frente al incumplimiento del pago del alquiler, expensas, servicios y demás obligaciones contractuales.</p>
+              <h3>Garantía de alquiler comercial</h3>
+              <p>Orientada a oficinas, locales, depósitos y naves industriales para asegurar el cumplimiento de las obligaciones del inquilino en el desarrollo de su actividad comercial.</p>
+              <Link to="/alquileres" className="btn-link" style={{ marginTop: '8px' }}>
+                Ver más sobre alquileres
+              </Link>
             </div>
 
           </article>

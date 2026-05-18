@@ -44,8 +44,6 @@ export default function Instructivos() {
         <div className="guides-tabs">
           <h4>Acceso rápido</h4>
           <div className="guides-links-row">
-            <a href={instructivosPdf.altaUsuarioWeb} target="_blank" rel="noopener">Alta usuario web</a>
-            <a href={instructivosPdf.webInstructivo} target="_blank" rel="noopener">Web instructivo</a>
             <a href={instructivosPdf.cargaPreliquidaciones} target="_blank" rel="noopener">Carga de preliquidaciones</a>
             <a href={instructivosPdf.extraccionPoliza} target="_blank" rel="noopener">Extracción de póliza</a>
             <a href={instructivosPdf.validacionFirmaDigital} target="_blank" rel="noopener">Validación de firma digital</a>
@@ -55,19 +53,17 @@ export default function Instructivos() {
         {/* SECCIONES */}
         <div className="guides-sections">
 
+          {/* TODO: actualizar formulario antes de publicar
           <article className="guides-col">
             <h5>Altas y acceso web</h5>
             <div className="guides-links-grid">
-<a href={instructivosPdf.altaUsuarioWeb} target="_blank" rel="noopener">
-                <span className="guide-link-meta">Usuarios</span>
-                Alta usuario web
-              </a>
               <a href={instructivosPdf.webInstructivo} target="_blank" rel="noopener">
                 <span className="guide-link-meta">Portal</span>
                 Web instructivo
               </a>
             </div>
           </article>
+          */}
 
           <article className="guides-col">
             <h5>Pólizas e ítems</h5>

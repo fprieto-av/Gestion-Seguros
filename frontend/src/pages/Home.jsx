@@ -51,7 +51,7 @@ function ProductTabs() {
     { cat: 'caucion', icon: 'i-doc', title: 'Garantías Contractuales', desc: 'Son las más utilizadas en el mercado y acompañan a las empresas en todo el proceso de contratación, tanto en el ámbito público como privado.', tags: ['Licitaciones', 'B2B'], href: '/caucion#contractuales' },
     { cat: 'caucion', icon: 'i-truck', title: 'Garantías Aduaneras', desc: 'Pensadas para que puedas operar con agilidad, liberar mercadería sin demoras y optimizar tu flujo de fondos.', tags: ['Comex', 'Aduana'], href: '/caucion#aduaneras' },
     { cat: 'caucion', icon: 'i-gavel', title: 'Garantías Judiciales', desc: 'Para sustituir o constituir medidas cautelares, cumpliendo exigencias del proceso sin inmovilizar fondos.', tags: ['Contracautela', 'Judicial'], href: '/caucion#judiciales' },
-    { cat: 'caucion', icon: 'i-home', title: 'Garantía de Alquiler', desc: 'Alternativa digital y segura que reemplaza la garantía propietaria tradicional.', tags: ['Vivienda', 'Digital'], href: '/alquileres' },
+    { cat: 'caucion', icon: 'i-home', title: 'Garantía de Alquiler', desc: 'Alternativa digital y segura que reemplaza la garantía propietaria tradicional.', tags: ['Vivienda', 'Comercial'], href: '/alquileres' },
     { cat: 'personas', icon: 'i-activity', title: 'Accidentes Personales', desc: 'Coberturas pensadas para brindar protección económica inmediata frente a imprevistos, en el ámbito laboral y en la vida cotidiana.', tags: ['Personas', 'AP'], href: '/personas#accidentes', mod: 'succ' },
     { cat: 'personas', icon: 'i-heart', title: 'Seguro de Vida', desc: 'Respaldo económico y tranquilidad, a nivel individual y para empresas.', tags: ['Individual', 'Colectivo'], href: '/personas#vida', mod: 'succ' },
     { cat: 'personas', icon: 'i-coffin', title: 'Sepelio', desc: 'Respaldo y gestión ante el fallecimiento del asegurado, dentro o fuera del país.', tags: ['Familiar', 'Integral'], href: '/personas#sepelio', mod: 'succ' },
@@ -129,7 +129,7 @@ function Simulator() {
           <h2>Cotizá tu seguro<br /><em style={{ color: 'var(--accent)', fontStyle: 'normal' }}>en segundos</em></h2>
           <p>Elegí el producto, ingresá algunos datos y obtené una cotización orientativa. Sin compromiso.</p>
           <div className="sim-perks">
-            <div className="sim-perk"><div className="ic"><svg className="icon" style={{ width: '18px' }}><use href="#i-zap" /></svg></div> Cálculo orientativo, sin registrarte</div>
+            <div className="sim-perk"><div className="ic"><svg className="icon" style={{ width: '18px' }}><use href="#i-zap" /></svg></div> Cálculo orientativo</div>
             <div className="sim-perk"><div className="ic"><svg className="icon" style={{ width: '18px' }}><use href="#i-shield" /></svg></div> Datos protegidos y confidenciales</div>
             <div className="sim-perk"><div className="ic"><svg className="icon" style={{ width: '18px' }}><use href="#i-headphones" /></svg></div> Asesor asignado post-cotización</div>
           </div>
@@ -342,7 +342,7 @@ export default function Home() {
         <div className="hero-overlay"></div>
         <div className="hero-inner">
           <div className="hero-content">
-            <div className="hero-badge reveal"><span className="dot"></span>Compañía argentina · Autorizada por la SSN</div>
+            <div className="hero-badge reveal"><span className="dot"></span>Compañía argentina</div>
             <h1 className="reveal delay-1">Estamos <span className="highlight">cuando más</span><br />nos necesitás</h1>
             <p className="lead reveal delay-2">
               Somos una compañía argentina de seguros que cree en el beneficio mutuo.<br />
@@ -407,7 +407,6 @@ export default function Home() {
               <h3>Una compañía argentina que sabe escucharte</h3>
               <p>Estamos siempre atentos a tus necesidades. Evaluamos todos los riesgos posibles y ofrecemos la cobertura ideal para tu situación particular.</p>
               <ul>
-                <li><svg className="icon"><use href="#i-check" /></svg> Autorizada por la Superintendencia de Seguros</li>
                 <li><svg className="icon"><use href="#i-check" /></svg> Soporte técnico y humano permanente</li>
                 <li><svg className="icon"><use href="#i-check" /></svg> Creemos en el beneficio mutuo</li>
                 <li><svg className="icon"><use href="#i-check" /></svg> Plataforma GestionAr para productores</li>
