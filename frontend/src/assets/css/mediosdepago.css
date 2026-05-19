@@ -96,8 +96,8 @@
 .pay-side p { margin: 0 0 14px; font-size: 14px; color: var(--ink); }
 .pay-side ul { margin: 0 0 16px; padding-left: 18px; list-style: disc; }
 .pay-side li { font-size: 13px; color: var(--ink); margin-bottom: 6px; }
-.pay-mail-btn { width: 100%; justify-content: center; text-align: center; font-size: clamp(12px,2.2vw,14px); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 10px; gap: 8px; background: linear-gradient(135deg, #4e7de9 0%, #6b9fff 100%) !important; color: #fff !important; border-color: transparent !important; }
-.pay-mail-btn:hover { background: linear-gradient(135deg, #3d6edb 0%, #5a8fee 100%) !important; }
+.pay-mail-btn { width: 100%; justify-content: center; text-align: center; font-size: clamp(12px,2.2vw,14px); line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 10px; gap: 8px; background: var(--primary) !important; color: #fff !important; border-color: transparent !important; box-shadow: var(--shadow-cta); }
+.pay-mail-btn:hover { background: var(--primary-dark) !important; transform: translateY(-2px); box-shadow: 0 20px 50px rgba(27,79,174,0.45); }
 .pay-important { margin-top: 6px; background: var(--bg); border-color: var(--line); }
 .pay-important p { margin-bottom: 8px; }
 @media (max-width: 1024px) {
