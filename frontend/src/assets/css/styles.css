@@ -420,13 +420,20 @@ section.section { padding: clamp(36px, 5vw, 70px) var(--pad-x); }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 14px;
-  border: 1px solid var(--line);
+  padding: 10px 18px;
+  border: 1px solid var(--primary);
   border-radius: var(--r-full);
   font-size: 13px;
   font-weight: 700;
-  color: var(--primary);
-  background: var(--primary-soft);
+  color: #fff;
+  background: var(--primary);
+  transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+.gs-unit-card-links a:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  box-shadow: 0 4px 14px rgba(27,79,174,0.3);
+  transform: translateY(-1px);
 }
 
 .gs-page-cta {

@@ -205,7 +205,10 @@ export default function MediosDePago() {
       <ContactCard
         title="Contacto directo · Cobranzas"
         subtitle="Canal rápido para consultas y seguimiento de tu gestión."
-        links={[{ label: 'cobranzas@segurosgestion.com.ar', href: 'mailto:cobranzas@segurosgestion.com.ar', icon: 'i-mail' }]}
+        links={[
+          { label: 'cobranzas@segurosgestion.com.ar', href: 'mailto:cobranzas@segurosgestion.com.ar', icon: 'i-mail' },
+          { label: 'WhatsApp Cobranzas', href: 'https://wa.me/5491138917326', icon: 'i-whatsapp' },
+        ]}
       />
       <PageCta
         title="¿Tenés dudas sobre tu pago?"
