@@ -167,8 +167,6 @@ export default function Nosotros() {
             <ul>
               <li><b>AACS</b> — <a href="https://www.aacs.org.ar" target="_blank" rel="noopener">Asociación Argentina de Compañías de Seguros <svg className="icon" style={{ width: '11px' }}><use href="#i-arrow" /></svg></a></li>
               <li><b>AAPAS</b> — <a href="https://aapas.org.ar/" target="_blank" rel="noopener">Asociación Argentina de Productores Asesores de Seguros <svg className="icon" style={{ width: '11px' }}><use href="#i-arrow" /></svg></a></li>
-              <li><b>SCVS</b> — <a href="https://www.supercias.gob.ec/portalscvs/index.htm?" target="_blank" rel="noopener">Sector de Compañías de Vida y Seguros <svg className="icon" style={{ width: '11px' }}><use href="#i-arrow" /></svg></a></li>
-              <li><a href="https://www.argentina.gob.ar/superintendencia-de-seguros" target="_blank" rel="noopener"><b>Cámara de Seguros</b> <svg className="icon" style={{ width: '11px' }}><use href="#i-arrow" /></svg></a>.</li>
               <li><b>APF - PASA</b> — <a href="https://www.apfpasa.ch/" target="_blank" rel="noopener">Asociación Panamericana de Fianzas / Panamerican Surety Association <svg className="icon" style={{ width: '11px' }}><use href="#i-arrow" /></svg></a></li>
             </ul>
           </article>

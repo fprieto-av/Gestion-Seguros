@@ -60,7 +60,7 @@ export default function MediosDePago() {
             <div className="pay-visual-list">
               <span>Transferencia</span>
               <span>DEBIN</span>
-              <span>eChecks</span>
+              <span>E-cheqs</span>
               <span>Tarjetas</span>
               <span>Pago Fácil</span>
               <span>Rapipago</span>
@@ -118,7 +118,7 @@ export default function MediosDePago() {
               <div className="pay-chip">Digital</div>
               <h3>
                 <svg className="icon"><use href="#i-doc" /></svg>
-                <span className="pay-title-text">Cheque bancario - echeQs</span>
+                <span className="pay-title-text">Cheque bancario E-cheqs</span>
               </h3>
               <p>Emitir a nombre de: <strong>GESTIÓN COMPAÑÍA ARGENTINA DE SEGUROS S.A.</strong></p>
             </article>
@@ -183,7 +183,7 @@ export default function MediosDePago() {
                 <span>Rendí tus pagos online</span>
               </div>
               <div className="pay-preliq-body">
-                <p>Ingresá a <strong>GestionAR</strong> y gestioná tus preliquidaciones en minutos.</p>
+                <p>Ingresá a <a href="https://gestionar.segurosgestion.com.ar/" target="_blank" rel="noopener"><strong>GestionAR</strong></a> y gestioná tus preliquidaciones en minutos.</p>
                 <a href={instructivosPdf.cargaPreliquidaciones} target="_blank" rel="noopener" className="pay-preliq-link">
                   💡 Descargá el instructivo acá <svg className="icon" style={{ width: '12px' }}><use href="#i-arrow" /></svg>
                 </a>

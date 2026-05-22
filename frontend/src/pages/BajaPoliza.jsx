@@ -29,7 +29,7 @@ export default function BajaPoliza() {
             ¿Estás seguro que ya no<br /><em>necesitás nuestra protección?</em>
           </h1>
           <p className="lead reveal delay-2">
-            Te queremos recordar que el Seguro de Vida en Gestión Seguros es para cuidar a tus personas más importantes: una suma de dinero para cubrirlos ante cualquier eventualidad.
+             En Gestión Seguros trabajamos para acompañarte a vos, tu familia y tu actividad con coberturas pensadas para brindarte respaldo y tranquilidad ante cualquier imprevisto. 
           </p>
           <div className="hero-ctas reveal delay-3 page-hero-pas-ctas">
             <a href="#form-baja" className="btn btn-accent btn-lg">

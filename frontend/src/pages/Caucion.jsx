@@ -103,18 +103,11 @@ export default function Caucion() {
               <p>En Gestión Seguros acompañamos este tipo de operaciones que suelen estar vinculadas a proyectos estratégicos para el país, como:</p>
               <ul>
                 <li>Desarrollos Mineros.</li>
-                <li>Proyectos de IOL &amp; GAS.</li>
+                <li>Proyectos de OIL &amp; GAS.</li>
                 <li>Energías Renovables (Parques Eólicos y Solares).</li>
                 <li>Infraestructura Y Obras de gran envergadura.</li>
               </ul>
               <p>Estas garantías permiten a las empresas acceder a beneficios impositivos y aduaneros, asegurando al mismo tiempo el cumplimiento de todas las condiciones del régimen.</p>
-            </div>
-
-            <div id="otras-garantias">
-              <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-shield" /></svg>Otras Garantías</span>
-              <h2>Otras Garantías</h2>
-              <p>En Gestión Seguros también ofrecemos soluciones de caución específicas, adaptadas a distintas actividades, regulaciones y necesidades particulares.</p>
-              <p>Estas garantías permiten cumplir con exigencias normativas, contractuales o judiciales sin necesidad de inmovilizar fondos, facilitando la operatoria y el desarrollo de cada actividad.</p>
             </div>
 
             <div id="actividad-profesion">

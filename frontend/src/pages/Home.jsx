@@ -376,15 +376,15 @@ export default function Home() {
       {/* STATS */}
       <div className="stats-row">
         <div className="stat-item reveal">
-          <div className="stat-num"><Counter target={15} suffix="+" /></div>
+          <div className="stat-num"><Counter target={10} suffix="+" /></div>
           <div className="stat-label">Años de trayectoria</div>
         </div>
         <div className="stat-item reveal delay-1">
-          <div className="stat-num"><Counter target={50} suffix="k+" /></div>
+          <div className="stat-num"><Counter target={80} suffix="k+" /></div>
           <div className="stat-label">Pólizas emitidas</div>
         </div>
         <div className="stat-item reveal delay-2">
-          <div className="stat-num"><Counter target={800} suffix="+" /></div>
+          <div className="stat-num"><Counter target={300} suffix="+" /></div>
           <div className="stat-label">Productores asociados</div>
         </div>
         <div className="stat-item reveal delay-3">
@@ -487,7 +487,7 @@ export default function Home() {
           <p>Cotizá ahora o contactá a un asesor para la cobertura que necesites.</p>
           <div className="btn-stack">
             <a href="#simulador" className="btn btn-primary btn-lg">Cotizar mi seguro <svg className="icon"><use href="#i-arrow" /></svg></a>
-            <Link to="/contacto" className="btn btn-ghost btn-lg">Hablar con un asesor</Link>
+            <Link to="/contacto" className="btn btn-ghost btn-lg">Hablar con un ejecutivo</Link>
           </div>
         </div>
       </section>
