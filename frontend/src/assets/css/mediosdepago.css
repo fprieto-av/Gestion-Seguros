@@ -39,6 +39,12 @@
   border: 1px solid rgba(255,255,255,0.26);
   background: rgba(255,255,255,0.12);
   font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase;
+  cursor: default;
+  transition: background 0.2s, border-color 0.2s;
+}
+.pay-visual-list span:hover {
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.45);
 }
 .pay-mini-card {
   align-self: center; justify-self: end;
@@ -68,6 +74,8 @@
 .pay-card p { font-size: 14px; color: var(--ink); line-height: 1.55; margin: 0 0 6px; }
 .pay-note { margin-top: 10px; font-size: 13px; color: var(--ink-light); }
 .pay-note strong { color: var(--dark); }
+.pay-note strong a, .pay-mail-link { color: var(--primary); font-weight: 700; text-decoration: none; }
+.pay-note strong a:hover, .pay-mail-link:hover { text-decoration: underline; text-underline-offset: 3px; }
 .pay-card.full { grid-column: 1 / -1; border-color: rgba(27,79,174,0.22); background: linear-gradient(180deg,#ffffff 0%,#f7faff 100%); }
 .pay-card.full h3 { font-size: 20px; }
 .pay-accounts { display: grid; gap: 10px; margin-top: 10px; }
@@ -83,11 +91,13 @@
 .pay-title-text { color: var(--dark); font-weight: 900; letter-spacing: -0.01em; }
 .pay-chip { display: inline-flex; align-items: center; gap: 6px; border-radius: var(--r-full); padding: 4px 10px; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-dark); background: rgba(255,154,31,0.15); margin-bottom: 10px; }
 .pay-preliq-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden; margin-bottom: 16px; box-shadow: 0 4px 16px rgba(16,39,86,0.06); }
-.pay-preliq-header { display: flex; align-items: center; gap: 8px; background: var(--primary-soft); border-bottom: 1px solid rgba(27,79,174,0.12); padding: 11px 18px; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--primary); }
-.pay-preliq-header svg { color: var(--primary); flex-shrink: 0; }
+.pay-preliq-header { display: flex; align-items: center; gap: 8px; background: linear-gradient(90deg, #1b4fae 0%, #4a9fd4 100%); border-bottom: none; padding: 11px 18px; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #fff; }
+.pay-preliq-header svg { color: #fff; flex-shrink: 0; }
 .pay-preliq-body { padding: 16px 18px 18px; }
 .pay-preliq-card p { margin: 0 0 14px; font-size: 14px; color: var(--ink); line-height: 1.6; }
 .pay-preliq-card strong { color: var(--primary-dark); font-weight: 700; }
+.pay-preliq-card p a { color: var(--primary); font-weight: 700; text-decoration: none; transition: text-decoration-color 0.15s; }
+.pay-preliq-card p a:hover { text-decoration: underline; }
 .pay-preliq-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--primary); text-decoration: none; transition: color 0.15s; }
 .pay-preliq-link:hover { color: var(--primary-dark); text-decoration: underline; }
 

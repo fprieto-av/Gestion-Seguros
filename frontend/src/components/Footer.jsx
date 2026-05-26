@@ -27,7 +27,7 @@ export default function Footer() {
             <Link to="/" className="logo">
               <img src={logoImg} alt="Gestión Seguros" />
             </Link>
-            <p>Compañía argentina de seguros. Caución, Personas y Responsabilidad Civil.</p>
+            <p>Compañía argentina especializada en seguros de Caución, Personas y Responsabilidad Civil.</p>
             <div className="social">
               <a href="https://ar.linkedin.com/company/gestionsegurossa" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                 <svg className="icon" style={{ width: '18px' }} aria-hidden="true"><use href="#i-li" /></svg>

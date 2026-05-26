@@ -62,6 +62,7 @@ export default function MediosDePago() {
               <span>DEBIN</span>
               <span>E-cheqs</span>
               <span>Tarjetas</span>
+              <span>MercadoPago</span>
               <span>Pago Fácil</span>
               <span>Rapipago</span>
             </div>
@@ -169,7 +170,7 @@ export default function MediosDePago() {
                 <svg className="icon"><use href="#i-award" /></svg>
                 Recordatorios importantes
               </h3>
-              <p><strong>IMPORTANTE:</strong>Si realizaste el pago mediante<strong>transferencia bancaria, depósito bancario o DEBIN</strong>,  y aún no lo informaste a través de la Web, por favor envialo a <strong><a href="mailto:cobranzas@segurosgestion.com.ar" style={{ color: 'var(--primary)' }}>cobranzas@segurosgestion.com.ar</a></strong> indicando el N.º de póliza y endoso, o bien el N.º de factura. </p>
+              <p><strong>IMPORTANTE:</strong>Si realizaste el pago mediante<strong>transferencia bancaria, depósito bancario o DEBIN</strong>,  y aún no lo informaste a través de la Web, por favor envialo a <strong><a href="mailto:cobranzas@segurosgestion.com.ar" className="pay-mail-link">cobranzas@segurosgestion.com.ar</a></strong> indicando el N.º de póliza y endoso, o bien el N.º de factura. </p>
             </article>
 
           </div>

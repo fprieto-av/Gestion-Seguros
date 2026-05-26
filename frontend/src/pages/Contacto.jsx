@@ -99,9 +99,9 @@ export default function Contacto() {
         <div className="contact-grid">
           <div className="contact-info">
             <h3 style={{ position: 'relative' }}>Estamos disponibles</h3>
-            <p style={{ position: 'relative' }}>Tres canales, un solo equipo detrás. Elegí el que más te quede cómodo.</p>
+            <p style={{ position: 'relative' }}>Múltiples canales, un solo equipo detrás. Elegí el que más te quede cómodo.</p>
             <div className="contact-methods">
-              <div className="contact-method">
+              <div className="contact-method multi">
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-phone" /></svg></div>
                 <div>
                   <b>Teléfono</b>
@@ -109,7 +109,7 @@ export default function Contacto() {
                   <a href="tel:08003451340">0800-345-1340 (gratuito)</a>
                 </div>
               </div>
-              <div className="contact-method">
+              <div className="contact-method multi">
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-mail" /></svg></div>
                 <div>
                   <b>Emails por línea</b>
@@ -129,7 +129,7 @@ export default function Contacto() {
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-pin" /></svg></div>
                 <div><b>Oficina</b><a href="https://www.google.com/maps/search/?api=1&query=Gesti%C3%B3n+Argentina+de+Seguros+S.A%2C+Bartolom%C3%A9+Mitre+480+Piso+11%2C+CABA" target="_blank" rel="noopener noreferrer">Bartolomé Mitre 480 Piso 11, CABA</a></div>
               </div>
-              <div className="contact-method">
+              <div className="contact-method multi">
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-shield" /></svg></div>
                 <div>
                   <b>Denunciar siniestro</b>

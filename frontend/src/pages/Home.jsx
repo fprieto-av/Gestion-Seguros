@@ -484,7 +484,7 @@ export default function Home() {
       <section className="cta-big">
         <div className="cta-big-inner">
           <h2>Tu seguro, <span style={{ color: 'var(--accent)' }}>a un click</span></h2>
-          <p>Cotizá ahora o contactá a un asesor para la cobertura que necesites.</p>
+          <p>Cotizá ahora o contactá a un ejecutivo para la cobertura que necesites.</p>
           <div className="btn-stack">
             <a href="#simulador" className="btn btn-primary btn-lg">Cotizar mi seguro <svg className="icon"><use href="#i-arrow" /></svg></a>
             <Link to="/contacto" className="btn btn-ghost btn-lg">Hablar con un ejecutivo</Link>

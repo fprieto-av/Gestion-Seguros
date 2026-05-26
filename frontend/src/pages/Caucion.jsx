@@ -5,6 +5,7 @@ import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
 import BrandStrip from '../components/BrandStrip'
 import bannerCaucion from '../assets/img/banner-caucion.jpg'
+import { formularios } from '../assets/formulariosUrls'
 import '../assets/css/detail-index.css'
 
 export default function Caucion() {
@@ -44,6 +45,7 @@ export default function Caucion() {
                 <li><a href="#judiciales">Judiciales</a></li>
                 <li><a href="#internacionales">Internacionales</a></li>
                 <li><a href="#alquileres">Alquileres</a></li>
+                <li><a href="#baja-poliza">Baja de Póliza</a></li>
               </ul>
             </nav>
 
@@ -167,6 +169,17 @@ export default function Caucion() {
               <Link to="/alquileres" className="btn-link" style={{ marginTop: '8px' }}>
                 Ver más sobre alquileres
               </Link>
+            </div>
+
+            <div id="baja-poliza">
+              <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-doc" /></svg>Baja de Póliza</span>
+              <h2>Baja de Póliza de Caución</h2>
+              <p>Si necesitás dar de baja tu póliza de caución o realizar una desafectación parcial, deberás enviar la documentación que acredite el cese del riesgo o el cumplimiento de las obligaciones garantizadas.</p>
+              <p>Recordá que la mayoría de las pólizas de caución poseen vigencia abierta, por lo que continuarán generando refacturaciones hasta recibir la notificación formal y la documentación correspondiente.</p>
+              <a href={formularios.documentacionBajaPolizaCaucion} target="_blank" rel="noopener" className="btn-link" style={{ marginTop: '8px' }}>
+                Accedé acá al instructivo con la documentación requerida
+              </a>
+              <p style={{ marginTop: '16px' }}>Podés enviar la documentación a: <a href="mailto:comercial@gestionseguros.com.ar" className="pay-mail-link">comercial@gestionseguros.com.ar</a></p>
             </div>
 
           </article>

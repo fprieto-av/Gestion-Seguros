@@ -63,7 +63,7 @@ export default function Productores() {
       <header className="page-hero page-hero--pas-wide" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${bannerPas})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <div className="page-hero-inner page-hero-inner--pas-wide">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Productores</span></nav>
-          <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Programa PAS</span>
+          <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Beneficios de trabajar con Gestión </span>
           <h1 className="reveal delay-1" id="pas-hero-title">Si sos <em>PAS</em>,<br />¡<span className="pas-ink">PAS</span>ate a Gestión!</h1>
           <p className="lead reveal delay-2">Sumate a nuestro equipo de <b>Productores Asesores de Seguros</b> y tené un respaldo de confianza. Plataforma GestionAr, capacitación continua, comisiones competitivas y soporte humano todos los días.</p>
           <div className="hero-ctas reveal delay-3 page-hero-pas-ctas">
@@ -83,38 +83,42 @@ export default function Productores() {
           <p>Pensamos al PAS como socio estratégico, no como un canal más. Te damos las herramientas que te hacen la vida más fácil y rentable.</p>
         </div>
         <div className="proc-grid">
-          <div className="proc-item reveal"><div className="proc-num" style={{ background: 'var(--primary)' }}><svg className="icon" style={{ color: '#fff', width: '22px' }}><use href="#i-zap" /></svg></div><h4>Plataforma GestionAr</h4><p>Cotizá, emití, cobrá y gestionás tu cartera online. Sin llamar, sin esperar.</p></div>
-          <div className="proc-item reveal delay-1"><div className="proc-num" style={{ background: 'var(--secondary)' }}><svg className="icon" style={{ color: '#fff', width: '22px' }}><use href="#i-dollar" /></svg></div><h4>Comisiones competitivas</h4><p>Esquemas transparentes. Facturación mensual y liquidación puntual.</p></div>
-          <div className="proc-item reveal delay-2"><div className="proc-num" style={{ background: 'var(--accent)' }}><svg className="icon" style={{ color: '#fff', width: '22px' }}><use href="#i-headphones" /></svg></div><h4>Soporte dedicado</h4><p>Ejecutivo comercial asignado. Mesa técnica que responde en minutos.</p></div>
-          <div className="proc-item reveal delay-3"><div className="proc-num" style={{ background: 'var(--success)' }}><svg className="icon" style={{ color: 'var(--dark)', width: '22px' }}><use href="#i-doc" /></svg></div><h4>Capacitación continua</h4><p>Cursos y workshops de producto, regulación y ventas. Sin costo para el PAS.</p></div>
+          <div className="proc-item reveal"><div className="proc-num" style={{ background: 'var(--primary)' }}><svg className="icon" style={{ color: '#fff', width: '22px' }}><use href="#i-zap" /></svg></div><h4>Plataforma GestionAr</h4><p>Cotizá, emití y gestioná tus pólizas de forma simple, rápida y 100% online.</p></div>
+          <div className="proc-item reveal delay-1"><div className="proc-num" style={{ background: 'var(--secondary)' }}><svg className="icon" style={{ color: '#fff', width: '22px' }}><use href="#i-dollar" /></svg></div><h4>Comisiones competitivas</h4><p>Esquemas claros, liquidación mensual y acompañamiento para potenciar tu cartera.</p></div>
+          <div className="proc-item reveal delay-2"><div className="proc-num" style={{ background: 'var(--accent)' }}><svg className="icon" style={{ color: '#fff', width: '22px' }}><use href="#i-headphones" /></svg></div><h4>Soporte dedicado</h4><p>Ejecutivo comercial y equipo técnico para darte respuestas ágiles cuando las necesitás.</p></div>
+          <div className="proc-item reveal delay-3"><div className="proc-num" style={{ background: 'var(--success)' }}><svg className="icon" style={{ color: 'var(--dark)', width: '22px' }}><use href="#i-doc" /></svg></div><h4>Capacitación continua</h4><p>Charlas, capacitaciones y eventos exclusivos para generar vínculos y nuevas oportunidades.</p></div>
         </div>
       </section>
 
       {/* FORM PAS */}
       <section className="section" id="form-pas">
         <div className="section-head" style={{ maxWidth: '1060px', width: 'min(100%, 1060px)', margin: '0 auto 22px' }}>
-          <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Programa PAS</span>
+          <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Trabajá con Gestión </span>
         </div>
         <div className="contact-grid">
           <div className="contact-info">
-            <h3 style={{ position: 'relative' }}>¿Querés unirte como <span className="pas-accent">Productor Asesor de Seguros</span>?</h3>
-            <p style={{ position: 'relative' }}>Trabajamos con Productores Asesores habilitados por la Superintendencia de Seguros de la Nación. El proceso es simple y rápido.</p>
+            <h3 style={{ position: 'relative' }}>¿Querés potenciar tu negocio con Gestión Seguros?</h3>
+            <p style={{ position: 'relative' }}>Para comenzar a operar con Gestión Seguros y acceder a todos los beneficios para PAS, solo necesitás cumplir con los siguientes requisitos:</p>
             <div className="contact-methods">
               <div className="contact-method">
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-check" /></svg></div>
-                <div><b>Matrícula</b><span>Matrícula SSN vigente y sin inhabilitaciones</span></div>
+                <div><b>Matrícula</b><span>Matrícula SSN activa y sin inhabilitaciones</span></div>
               </div>
               <div className="contact-method">
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-check" /></svg></div>
-                <div><b>DDJJ impositiva</b><span>Inscripción vigente en AFIP y últimos comprobantes</span></div>
+                <div><b>DDJJ impositiva</b><span>Constancia vigente en AFIP y documentación impositiva al día</span></div>
               </div>
               <div className="contact-method">
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-check" /></svg></div>
-                <div><b>Cuenta bancaria</b><span>Para liquidación de comisiones (CBU a nombre del PAS)</span></div>
+                <div><b>Cuenta bancaria</b><span>CBU a nombre del PAS para liquidación de comisiones</span></div>
               </div>
               <div className="contact-method">
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-check" /></svg></div>
-                <div><b>Alta en GestionAr</b><span>Capacitamos y activamos tu acceso en 48hs</span></div>
+                <div><b>Acceso a plataforma</b><span>Capacitación inicial y acceso a nuestra plataforma en hasta 24hs</span></div>
+              </div>
+              <div className="contact-method">
+                <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-check" /></svg></div>
+                <div><b>Acompañamiento comercial</b><span>Ejecutivo asignado y soporte técnico para tu cartera</span></div>
               </div>
               <div className="contact-method">
                 <div className="ic"><svg className="icon" style={{ width: '22px' }}><use href="#i-mail" /></svg></div>
@@ -135,7 +139,7 @@ export default function Productores() {
             onSubmit={handleSubmit}
             noValidate
           >
-            <h3>Asociate a través del formulario</h3>
+            <h3>Comenzá a operar con Gestión </h3>
             <h4 style={{ margin: '4px 0 12px', color: 'var(--primary)' }}>Parte 1 · Datos del productor</h4>
             <div className="form-grid">
 
@@ -242,7 +246,7 @@ export default function Productores() {
 
       <ContactCard
         title="Contacto directo · Productores"
-        subtitle="Canal rápido para sumar productores y consultas del programa PAS."
+        subtitle="Escribinos por consultas, cotizaciones, alta de PAS y asesoramiento comercial. "
         links={[{ label: 'comercial@gestionseguros.com.ar', href: 'mailto:comercial@gestionseguros.com.ar', icon: 'i-mail' }]}
       />
     </>

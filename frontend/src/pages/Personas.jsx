@@ -120,7 +120,7 @@ export default function Personas() {
 
       <ContactCard
         title="Contacto directo · Personas"
-        subtitle="Canal rápido para cotizar vida, accidentes y sepelio."
+        subtitle="Escribinos para cotizaciones y consultas sobre seguros de vida, accidentes personales y sepelio. "
         links={[{ label: 'personas@gestionseguros.com.ar', href: 'mailto:personas@gestionseguros.com.ar', icon: 'i-mail' }]}
       />
       <PageCta
