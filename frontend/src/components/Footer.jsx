@@ -1,21 +1,7 @@
 import { Link } from 'react-router-dom'
 import logoImg from '../assets/img/logo.png'
-
-function SsnSeal() {
-  return (
-    <svg viewBox="0 0 56 56" width="46" height="46" aria-hidden="true">
-      <circle cx="28" cy="28" r="27" fill="#005DA4" />
-      <circle cx="28" cy="28" r="22" fill="#0068BC" />
-      <circle cx="28" cy="28" r="22" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1" />
-      <path d="M10 28 Q16.5 20 23 28 Q29.5 36 36 28 Q42.5 20 49 28"
-        fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M10 22 Q16.5 14 23 22 Q29.5 30 36 22 Q42.5 14 49 22"
-        fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M10 34 Q16.5 26 23 34 Q29.5 42 36 34 Q42.5 26 49 34"
-        fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  )
-}
+import ssnLogoImg from '../assets/img/superintendencia-logo.png'
+import afipQr from '../assets/img/afip-datafiscal-qr.png'
 
 export default function Footer() {
   return (
@@ -103,11 +89,7 @@ export default function Footer() {
             </div>
             <span className="footer-ssn-pipe" aria-hidden="true" />
             <div className="footer-ssn-logo">
-              <SsnSeal />
-              <div className="footer-ssn-logo-text">
-                <strong>SSN</strong>
-                <span>SUPERINTENDENCIA DE<br />SEGUROS DE LA NACIÓN</span>
-              </div>
+              <img src={ssnLogoImg} alt="Superintendencia de Seguros de la Nación" style={{ height: '32px', width: 'auto', objectFit: 'contain' }} />
             </div>
           </div>
         </div>
@@ -142,19 +124,33 @@ export default function Footer() {
               </p>
             </div>
 
-            {/* DATA FISCAL — reemplazar el href con el código QR provisto por AFIP */}
             <div className="footer-regulatory-qr">
-              <a
-                href="http://qr.afip.gob.ar/?qr=REEMPLAZAR_CON_CODIGO_AFIP"
-                target="_F960AFIPInfo"
-                rel="noopener noreferrer"
-                title="Datos Fiscales AFIP"
-              >
-                <img
-                  src="https://www.afip.gob.ar/images/DATOFISCAL.jpg"
-                  alt="DATA FISCAL"
-                />
-              </a>
+              <div style={{
+                display: 'inline-flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                borderRadius: '10px',
+                overflow: 'hidden',
+                border: '2px solid #1B4FAE',
+              }}>
+                <div style={{ background: '#fff', padding: '6px' }}>
+                  <img src={afipQr} alt="QR Data Fiscal AFIP" style={{ width: '78px', height: 'auto', display: 'block' }} />
+                </div>
+                <div style={{
+                  background: '#1B4FAE',
+                  color: '#fff',
+                  fontSize: '9px',
+                  fontWeight: 700,
+                  letterSpacing: '1.5px',
+                  textAlign: 'center',
+                  width: '100%',
+                  padding: '4px 0',
+                  lineHeight: 1.4,
+                  fontFamily: "'Archivo', sans-serif",
+                }}>
+                  DATA<br />FISCAL
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -25,7 +25,8 @@
       "Bash(Remove-Item \"c:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\frontend\\\\src\\\\assets\\\\img\\\\nadia-machado.png\" -ErrorAction SilentlyContinue)",
       "Bash(Remove-Item \"c:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\frontend\\\\src\\\\assets\\\\img\\\\german-camino.png\" -ErrorAction SilentlyContinue)",
       "Bash(Write-Host \"Archivos eliminados\")",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "PowerShell(python -m pip install pymupdf --quiet 2>&1 | Select-Object -Last 3)"
     ]
   }
 }

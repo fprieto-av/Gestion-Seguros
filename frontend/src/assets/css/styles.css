@@ -1376,14 +1376,7 @@ footer { background: var(--darker); color: rgba(255,255,255,0.65); padding: 80px
 }
 .footer-regulatory-text a:hover { color: var(--primary-dark); text-decoration: underline; }
 .footer-regulatory-qr { flex-shrink: 0; }
-.footer-regulatory-qr a {
-  display: block;
-  line-height: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  overflow: hidden;
-  transition: box-shadow 0.2s;
-}
+.footer-regulatory-qr a { transition: box-shadow 0.2s; }
 .footer-regulatory-qr a:hover { box-shadow: var(--shadow-sm); }
 .footer-regulatory-qr img { width: 78px; height: auto; display: block; }
 

@@ -69,15 +69,15 @@ export default function Instructivos() {
             <h5>Pólizas e ítems</h5>
             <div className="guides-links-grid">
               <a href={instructivosPdf.extraccionPoliza} target="_blank" rel="noopener">
-                <span className="guide-link-meta">Pólizas</span>
+                <span className="guide-link-meta">Pólizas de Caución</span>
                 Extracción de póliza
               </a>
               <a href={instructivosPdf.inclusionItem} target="_blank" rel="noopener">
-                <span className="guide-link-meta">Ítems</span>
+                <span className="guide-link-meta">Ítems AP</span>
                 Inclusión de ítem
               </a>
               <a href={instructivosPdf.exclusionItem} target="_blank" rel="noopener">
-                <span className="guide-link-meta">Ítems</span>
+                <span className="guide-link-meta">Ítems AP</span>
                 Exclusión de ítem
               </a>
             </div>
@@ -95,7 +95,7 @@ export default function Instructivos() {
                 Carga de preliquidaciones
               </a>
               <a href={instructivosPdf.libreDeudaCertificadoGrupal} target="_blank" rel="noopener">
-                <span className="guide-link-meta">Certificados</span>
+                <span className="guide-link-meta">Certificados AP & VIDA</span>
                 Libre deuda y certificado grupal
               </a>
             </div>

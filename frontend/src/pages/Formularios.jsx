@@ -128,59 +128,11 @@ export default function Formularios() {
           <article className="forms-col">
             <h5>Formularios de Personas</h5>
             <div className="forms-links-grid">
-              <a href={formularios.personasHumanasAsegurados} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Personas Humanas</span>Formulario asegurados
-              </a>
-              <a href={formularios.personasJuridicasAsegurados} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Personas Jurídicas</span>Formulario asegurados
-              </a>
-              <a href={formularios.accidentesPersonasTomador} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Accidentes Personales</span>Tomador Accidentes Personales
-              </a>
-              <a href={formularios.accidentesPersonasAsegurable} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Accidentes Personales</span>Individual asegurable
-              </a>
               <a href={formularios.accidentesPersonasDenuncia} target="_blank" rel="noopener">
                 <span className="forms-link-meta">Accidentes Personales</span>Denuncia de siniestros
               </a>
-              <a href={formularios.vidaColectivoTomador} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Vida Colectivo</span>Tomador Vida Colectivo
-              </a>
-              <a href={formularios.vidaColectivoCuestionarioSalud} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Vida Colectivo</span>Cuestionario de salud simplificado
-              </a>
-              <a href={formularios.solicitudIndividualVidaColectivo} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Vida Colectivo</span>Solicitud individual del asegurable
-              </a>
-              <a href={formularios.vidaObligatorioBeneficiario} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Vida Obligatorio</span>Designación de beneficiario
-              </a>
-              <a href={formularios.continuidadEscolarTomador} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Continuidad Escolar</span>Tomador Escolar
-              </a>
-              <a href={formularios.continuidadEscolarSolicitudVida} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Continuidad Escolar</span>Solicitud de vida asegurable
-              </a>
-              <a href={formularios.continuidadEscolarCuestionarioSalud} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Continuidad Escolar</span>Cuestionario de salud simplificado
-              </a>
-              <a href={formularios.convenioMercantilTomador} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Convenio Mercantil</span>Tomador Mercantil
-              </a>
               <a href={formularios.convenioMercantilBeneficiarios} target="_blank" rel="noopener">
                 <span className="forms-link-meta">Convenio Mercantil</span>Designación de beneficiarios
-              </a>
-              <a href={formularios.empleadosOptativoTomador} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Empleados Optativo</span>Tomador Empleados
-              </a>
-              <a href={formularios.empleadosOptativoSolicitudEmpleado} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Empleados Optativo</span>Solicitud individual del empleado
-              </a>
-              <a href={formularios.empleadosOptativoCuestionarioSalud} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Empleados Optativo</span>Cuestionario de salud simplificado
-              </a>
-              <a href={formularios.sepelioTomador} target="_blank" rel="noopener">
-                <span className="forms-link-meta">Sepelio</span>Tomador Sepelio
               </a>
               <a href={formularios.sepelioAsegurable} target="_blank" rel="noopener">
                 <span className="forms-link-meta">Sepelio</span>Solicitud del asegurable

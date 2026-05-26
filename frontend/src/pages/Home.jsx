@@ -290,7 +290,7 @@ function FAQ() {
     },
     {
       q: '¿Cómo denuncio un siniestro?',
-      a: <>Tenés tres canales:<br />• <b>Portal online</b>: ingresá a tu panel y cargá la denuncia.<br />• <b>Email</b>: <a href="mailto:comercial@gestionseguros.com.ar" style={{ color: 'var(--primary)', fontWeight: 700 }}>comercial@gestionseguros.com.ar</a>.<br />• <b>Teléfono</b>: 0800-345-1340, lunes a viernes de 9 a 18hs.</>
+      a: <>Tenés tres canales:<br />• <b>Portal online</b>: mediante el contacto con tu Productor Asesor de Seguros.<br />• <b>Email</b>:<br />&nbsp;&nbsp;&nbsp;- Rama Personas: <a href="mailto:Siniestros.personas@gestionseguros.com.ar" style={{ color: 'var(--primary)', fontWeight: 700 }}>Siniestros.personas@gestionseguros.com.ar</a><br />&nbsp;&nbsp;&nbsp;- Rama RC: <a href="mailto:RC@gestionseguros.com.ar" style={{ color: 'var(--primary)', fontWeight: 700 }}>RC@gestionseguros.com.ar</a><br />&nbsp;&nbsp;&nbsp;- Dentro de las 72hs del hecho.<br />• <b>Teléfono</b>: 0800-345-1340, lunes a viernes de 9 a 18hs.</>
     },
     {
       q: 'Soy Productor Asesor, ¿cómo me asocio a Gestión Seguros?',

@@ -194,9 +194,9 @@ export default function Nosotros() {
       {/* REDES + MAPA */}
       <section className="section nosotros-band">
         <div className="section-head reveal">
-          <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-heart" /></svg>Comunidad</span>
+          <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-heart" /></svg>Nuestras redes</span>
           <h2>Seguinos y <span className="gradient-text">valoranos</span></h2>
-          <p>Encontranos en LinkedIn y Google Maps.</p>
+          <p>Seguinos en redes y conocé las opiniones de quienes ya confían en Gestión Seguros.</p>
         </div>
 
         <div className="social-grid">
@@ -253,7 +253,7 @@ export default function Nosotros() {
                   Ver en Maps <svg className="icon"><use href="#i-arrow" /></svg>
                 </a>
                 <a href="https://www.google.com/maps/search/?api=1&query=Gesti%C3%B3n+Argentina+de+Seguros+S.A%2C+Bartolom%C3%A9+Mitre+480+Piso+11%2C+CABA" className="btn btn-ghost" target="_blank" rel="noopener noreferrer">
-                  Valorar
+                  Calificanos
                 </a>
               </div>
             </div>
@@ -264,7 +264,7 @@ export default function Nosotros() {
 
       <ContactCard
         title="Contacto directo · Institucional"
-        subtitle="Canal rápido para consultas y seguimiento de tu gestión."
+        subtitle="Escribinos por consultas generales, información o asistencia sobre nuestros productos y servicios."
         links={[{ label: 'info@gestionseguros.com.ar', href: 'mailto:info@gestionseguros.com.ar', icon: 'i-mail' }]}
       />
       <PageCta
