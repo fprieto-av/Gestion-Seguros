@@ -77,14 +77,14 @@ export default function Footer() {
             </span>
             <span className="footer-ssn-pipe" aria-hidden="true" />
             <div className="footer-ssn-cell footer-ssn-organismo">
-              <span>Organismo de control</span>
+              <span>Organismo de control </span>
               <a
                 href="https://www.argentina.gob.ar/ssn"
                 target="_blank"
                 rel="noopener"
                 className="footer-ssn-link"
               >
-                www.argentina.gob.ar/ssn
+                 www.argentina.gob.ar/ssn
               </a>
             </div>
             <span className="footer-ssn-pipe" aria-hidden="true" />
