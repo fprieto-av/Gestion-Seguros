@@ -4,7 +4,7 @@ import useReveal from '../hooks/useReveal'
 import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
 import BrandStrip from '../components/BrandStrip'
-import bannerPersonas from '../assets/img/banner-personas.jpg'
+import bannerPersonas from '../assets/img/banners-web/personas.jpg'
 import '../assets/css/detail-index.css'
 
 export default function Personas() {
@@ -13,7 +13,7 @@ export default function Personas() {
 
   return (
     <>
-      <header className="page-hero page-hero--personas" style={{ backgroundImage: `linear-gradient(135deg, rgba(27,79,174,0.93) 0%, rgba(0,192,127,0.4) 100%), url(${bannerPersonas})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <header className="page-hero page-hero--personas" style={{ backgroundImage: `linear-gradient(135deg, rgba(27,79,174,0.93) 0%, rgba(0,192,127,0.4) 100%), url(${bannerPersonas})` }}>
         <div className="page-hero-inner">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Personas</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-heart" /></svg>Seguros de Personas</span>

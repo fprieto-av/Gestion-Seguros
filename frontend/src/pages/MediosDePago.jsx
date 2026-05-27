@@ -5,7 +5,7 @@ import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
 import BrandStrip from '../components/BrandStrip'
 import '../assets/css/mediosdepago.css'
-import mediosdepago from '../assets/img/mediosdepago.png'
+import mediosdepago from '../assets/img/banners-web/pagos.jpg'
 import { instructivos as instructivosPdf } from '../assets/instructivosUrls'
 
 function CbuCopy({ value }) {
@@ -35,7 +35,7 @@ export default function MediosDePago() {
   return (
     <>
       {/* HERO */}
-      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${mediosdepago})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${mediosdepago})` }}>
         <div className="page-hero-inner">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Pagos</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Pagos</span>
@@ -191,14 +191,16 @@ export default function MediosDePago() {
               </div>
             </div>
 
-            <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <svg className="icon" style={{ width: '18px', color: 'var(--primary)', flexShrink: 0 }}><use href="#i-briefcase" /></svg>
-              Gestión de cobranzas
-            </h4>
-            <p>Para consultas sobre adhesiones o pagos, escribinos directamente a: </p>
-            <a href="mailto:cobranzas@segurosgestion.com.ar" className="btn btn-primary pay-mail-btn">
-              cobranzas@segurosgestion.com.ar
-            </a>
+            <div className="pay-side-contact">
+              <h4 style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <svg className="icon" style={{ width: '18px', color: 'var(--primary)', flexShrink: 0 }}><use href="#i-briefcase" /></svg>
+                Gestión de cobranzas
+              </h4>
+              <p>Para consultas sobre adhesiones o pagos, escribinos directamente a: </p>
+              <a href="mailto:cobranzas@segurosgestion.com.ar" className="btn btn-primary pay-mail-btn">
+                cobranzas@segurosgestion.com.ar
+              </a>
+            </div>
           </aside>
         </div>
       </section>

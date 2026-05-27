@@ -125,6 +125,8 @@
     justify-content: center;
   }
   .pay-mini-card { justify-self: center; }
+  /* El mail del sidebar es redundante con el ContactCard de abajo — se oculta */
+  .pay-side-contact { display: none; }
 }
 @media (max-width: 680px) {
   .pay-grid { grid-template-columns: 1fr; }

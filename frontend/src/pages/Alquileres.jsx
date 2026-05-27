@@ -5,7 +5,7 @@ import BrandStrip from '../components/BrandStrip'
 import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
 import '../assets/css/alquileres.css'
-import alquileresBg from '../assets/img/alquileres.png'
+import alquileresBg from '../assets/img/banners-web/alquileres.jpg'
 
 /** Ancho máximo (px) para mostrar la barra fija “Ir al simulador” al hacer scroll */
 const SIM_STICKY_MAX_WIDTH = 768
@@ -109,7 +109,7 @@ export default function Alquileres() {
 
   return (
     <>
-      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${alquileresBg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${alquileresBg})` }}>
         <div className="page-hero-inner">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Alquileres</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Alquileres</span>

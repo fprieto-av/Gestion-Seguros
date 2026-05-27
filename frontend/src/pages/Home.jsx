@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
-import introMp4 from '../assets/video/intro-opt.mp4'
-import introWebm from '../assets/video/intro-opt.webm'
-import OptimizedVideo from '../components/OptimizedVideo'
-import bannerHome from '../assets/img/banner-home.jpg'
+import bannerHome from '../assets/img/banners-web/home.jpg'
 import ReinsurersSection from '../components/ReinsurersSection'
 import PartnersVideo from '../components/PartnersVideo'
 
@@ -326,20 +323,7 @@ export default function Home() {
   return (
     <>
       {/* HERO */}
-      <header className="hero">
-        <OptimizedVideo
-          className="hero-video"
-          webm={introWebm}
-          mp4={introMp4}
-          poster={bannerHome}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden
-        />
-        <div className="hero-overlay"></div>
+      <header className="hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.85) 0%, rgba(27,79,174,0.75) 50%, rgba(43,184,232,0.45) 100%), url(${bannerHome})` }}>
         <div className="hero-inner">
           <div className="hero-content">
             <div className="hero-badge reveal"><span className="dot"></span>Compañía argentina</div>

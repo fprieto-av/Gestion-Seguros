@@ -26,7 +26,14 @@
       "Bash(Remove-Item \"c:\\\\Users\\\\USUARIO\\\\Documents\\\\Gestion Seguro\\\\frontend\\\\src\\\\assets\\\\img\\\\german-camino.png\" -ErrorAction SilentlyContinue)",
       "Bash(Write-Host \"Archivos eliminados\")",
       "Bash(npm install *)",
-      "PowerShell(python -m pip install pymupdf --quiet 2>&1 | Select-Object -Last 3)"
+      "PowerShell(python -m pip install pymupdf --quiet 2>&1 | Select-Object -Last 3)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\GitHub\\\\Gestion-Seguros-Frontend\\\\frontend\\\\src\" -Recurse -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(Sort-Object)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\GitHub\\\\Gestion-Seguros-Frontend\\\\frontend\\\\src\\\\assets\\\\img\\\\banners-web\" -File | ForEach-Object { $_.FullName })",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5199/)",
+      "Bash(node -e \"require\\('playwright'\\)\")",
+      "Bash(python3 -c \"from PIL import Image; print\\('pillow ok'\\)\")"
     ]
   }
 }

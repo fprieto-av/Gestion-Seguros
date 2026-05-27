@@ -4,7 +4,7 @@ import useReveal from '../hooks/useReveal'
 import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
 import BrandStrip from '../components/BrandStrip'
-import bannerRc from '../assets/img/banner-rc.jpg'
+import bannerRc from '../assets/img/banners-web/responsabilidad-civil.jpg'
 import '../assets/css/detail-index.css'
 
 export default function ResponsabilidadCivil() {
@@ -13,11 +13,11 @@ export default function ResponsabilidadCivil() {
 
   return (
     <>
-      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${bannerRc})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${bannerRc})` }}>
         <div className="page-hero-inner">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Responsabilidad Civil</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-shield" /></svg>Responsabilidad Civil</span>
-          <h1 className="reveal delay-1">Seguros de<br /><em>Responsabilidad Civil</em></h1>
+          <h1 className="reveal delay-1">Seguros de <em>Responsabilidad Civil</em></h1>
           <p className="lead reveal delay-2">En Gestión Seguros te ayudamos a proteger tu patrimonio frente a reclamos de terceros.<br />Son una herramienta clave para operar con tranquilidad, especialmente en contextos donde los riesgos y las exigencias legales son cada vez mayores.</p>
           <div className="hero-ctas reveal delay-3" style={{ marginTop: '30px' }}>
             <a href="mailto:rc@gestionseguros.com.ar" className="btn btn-accent btn-lg"><svg className="icon"><use href="#i-mail" /></svg> rc@gestionseguros.com.ar</a>

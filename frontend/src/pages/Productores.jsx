@@ -4,7 +4,7 @@ import useReveal from '../hooks/useReveal'
 import BrandStrip from '../components/BrandStrip'
 import ContactCard from '../components/ContactCard'
 import '../assets/css/productores.css'
-import bannerPas from '../assets/img/banner-pas.jpg'
+import bannerPas from '../assets/img/banners-web/productores.jpg'
 
 // Regex reutilizables
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -60,11 +60,11 @@ export default function Productores() {
 
   return (
     <>
-      <header className="page-hero page-hero--pas-wide" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${bannerPas})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <header className="page-hero page-hero--pas-wide" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${bannerPas})` }}>
         <div className="page-hero-inner page-hero-inner--pas-wide">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Productores</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Beneficios de trabajar con Gestión </span>
-          <h1 className="reveal delay-1" id="pas-hero-title">Si sos <em>PAS</em>,<br />¡<span className="pas-ink">PAS</span>ate a Gestión!</h1>
+          <h1 className="reveal delay-1" id="pas-hero-title">Si sos <em>PAS</em><br />¡<span className="pas-ink">PAS</span>ate a Gestión!</h1>
           <p className="lead reveal delay-2">Sumate a nuestro equipo de <b>Productores Asesores de Seguros</b> y tené un respaldo de confianza. Plataforma GestionAr, capacitación continua, comisiones competitivas y soporte humano todos los días.</p>
           <div className="hero-ctas reveal delay-3 page-hero-pas-ctas">
             <a href="#form-pas" className="btn btn-accent btn-lg">Quiero unirme <svg className="icon"><use href="#i-arrow" /></svg></a>

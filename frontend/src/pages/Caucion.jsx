@@ -4,7 +4,7 @@ import useReveal from '../hooks/useReveal'
 import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
 import BrandStrip from '../components/BrandStrip'
-import bannerCaucion from '../assets/img/banner-caucion.jpg'
+import bannerCaucion from '../assets/img/banners-web/caucion.jpg'
 import { formularios } from '../assets/formulariosUrls'
 import '../assets/css/detail-index.css'
 
@@ -14,13 +14,12 @@ export default function Caucion() {
 
   return (
     <>
-      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${bannerCaucion})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${bannerCaucion})` }}>
         <div className="page-hero-inner">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Caución</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-doc" /></svg>Seguros de Caución</span>
           <h1 className="reveal delay-1">Seguros de <em>Caución</em></h1>
-          <p className="lead reveal delay-2">En Gestión Seguros acompañamos a nuestros clientes con soluciones de caución pensadas para facilitar negocios, respaldar operaciones y generar confianza.</p>
-          <p className="lead reveal delay-2">La gran ventaja es que permite operar sin inmovilizar capital, optimizando la capacidad financiera y dando mayor solidez frente a clientes, proveedores u organismos públicos.</p>
+          <p className="lead reveal delay-2">En Gestión Seguros acompañamos a nuestros clientes con soluciones de caución pensadas para facilitar negocios, respaldar operaciones y generar confianza.<br />Operá sin inmovilizar capital, optimizando tu capacidad financiera y dando mayor solidez frente a clientes, proveedores u organismos públicos.</p>
           <div className="hero-ctas reveal delay-3" style={{ marginTop: '30px' }}>
             <a href="mailto:caucion@gestionseguros.com.ar" className="btn btn-accent btn-lg"><svg className="icon"><use href="#i-mail" /></svg> caucion@gestionseguros.com.ar</a>
             <a href="#tipos" className="btn btn-ghost btn-lg">Ver Coberturas</a>

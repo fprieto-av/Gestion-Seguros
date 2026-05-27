@@ -5,7 +5,8 @@ import BrandStrip from '../components/BrandStrip'
 import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
 import '../assets/css/nosotros.css'
-import nosotrosHero from '../assets/img/nosotros-hero.webp'
+import nosotrosHero from '../assets/img/banners-web/nosotros.jpg'
+import institucionalVideo from '../assets/video/Institucional - GS.mp4'
 import linkedinImg from '../assets/img/linkedin-perfil-gestion.png'
 import equipoImg from '../assets/img/equipocomercial.webp'
 import sergioImg from '../assets/img/sergio-sabha.png'
@@ -114,7 +115,7 @@ export default function Nosotros() {
   return (
     <>
       {/* HERO */}
-      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${nosotrosHero})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${nosotrosHero})` }}>
         <div className="page-hero-inner">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Nosotros</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Quiénes somos</span>
@@ -136,6 +137,29 @@ export default function Nosotros() {
           <div className="proc-item reveal delay-1"><div className="proc-num" style={{ background: 'var(--secondary)' }}><svg className="icon" style={{ color: '#fff', width: '22px' }}><use href="#i-zap" /></svg></div><h4>Agilidad</h4><p>Procesos digitales de punta a punta. Cotizás, emitís, gestionás — todo online.</p></div>
           <div className="proc-item reveal delay-2"><div className="proc-num" style={{ background: 'var(--accent)' }}><svg className="icon" style={{ color: '#fff', width: '22px' }}><use href="#i-shield" /></svg></div><h4>Respaldo</h4><p>Autorizados por la SSN. Reservas técnicas sólidas. Cumplimos siempre.</p></div>
           <div className="proc-item reveal delay-3"><div className="proc-num" style={{ background: 'var(--success)' }}><svg className="icon" style={{ color: 'var(--dark)', width: '22px' }}><use href="#i-heart" /></svg></div><h4>Cercanía</h4><p>Atendemos cada siniestro con humanidad. Sabemos que detrás hay una historia.</p></div>
+        </div>
+      </section>
+
+      {/* VIDEO INSTITUCIONAL */}
+      <section className="nosotros-video-section">
+        <div className="nosotros-video-inner">
+          <div className="section-head reveal" style={{ marginBottom: '32px' }}>
+            <span className="section-label">
+              <svg className="icon" style={{ width: '14px' }}><use href="#i-play" /></svg>
+              Nuestro día a día
+            </span>
+            <h2>Conocé <span className="gradient-text">Gestión Seguros</span></h2>
+            <p>Una compañía argentina que acompaña a sus clientes antes, durante y después de cada póliza.</p>
+          </div>
+          <div className="nosotros-video-wrap reveal delay-1">
+            <video
+              className="nosotros-video"
+              src={institucionalVideo}
+              controls
+              playsInline
+              preload="metadata"
+            />
+          </div>
         </div>
       </section>
 

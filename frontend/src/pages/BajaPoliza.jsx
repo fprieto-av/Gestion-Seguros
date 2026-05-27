@@ -16,8 +16,6 @@ export default function BajaPoliza() {
         className="page-hero page-hero--pas-wide"
         style={{
           backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${bannerBaja})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 20%',
         }}
       >
         <div className="page-hero-inner page-hero-inner--pas-wide">

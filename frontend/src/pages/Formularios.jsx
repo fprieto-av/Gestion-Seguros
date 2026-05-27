@@ -5,7 +5,7 @@ import ContactCard from '../components/ContactCard'
 import PageCta from '../components/PageCta'
 import BrandStrip from '../components/BrandStrip'
 import '../assets/css/formularios.css'
-import formulariosBg from '../assets/img/formularios.png'
+import formulariosBg from '../assets/img/banners-web/formularios.jpg'
 import formulariosHero from '../assets/img/formularios-hero.png'
 import { formularios } from '../assets/formulariosUrls'
 
@@ -15,7 +15,7 @@ export default function Formularios() {
 
   return (
     <>
-      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${formulariosBg})`, backgroundSize: 'cover', backgroundPosition: 'center 100%' }}>
+      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${formulariosBg})` }}>
         <div className="page-hero-inner">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Formularios</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Formularios</span>
