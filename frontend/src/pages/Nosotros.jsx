@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
 import BrandStrip from '../components/BrandStrip'
@@ -9,8 +9,8 @@ import nosotrosHero from '../assets/img/banners-web/nosotros.jpg'
 import institucionalVideo from '../assets/video/Institucional - GS.mp4'
 import linkedinImg from '../assets/img/linkedin-perfil-gestion.png'
 import equipoImg from '../assets/img/equipocomercial.webp'
-import sergioImg from '../assets/img/sergio-sabha.png'
-import nicolasImg from '../assets/img/nicolas-cuevas.png'
+/* import sergioImg from '../assets/img/sergio-sabha.png'
+import nicolasImg from '../assets/img/nicolas-cuevas.png' */
 const PERSONAS = (imgs) => [
   { img: imgs.sergioImg,  nombre: 'Sergio Sabha',           cargo: 'Socio' },
   { img: imgs.nicolasImg, nombre: 'Nicolás Cuevas Zárate',  cargo: 'Socio' },
@@ -115,7 +115,7 @@ export default function Nosotros() {
   return (
     <>
       {/* HERO */}
-      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${nosotrosHero})` }}>
+      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.45) 0%, rgba(27,79,174,0.30) 100%), url(${nosotrosHero})` }}>
         <div className="page-hero-inner">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Nosotros</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Quiénes somos</span>
@@ -156,6 +156,9 @@ export default function Nosotros() {
               className="nosotros-video"
               src={institucionalVideo}
               controls
+              autoPlay
+              muted
+              loop
               playsInline
               preload="metadata"
             />
@@ -212,8 +215,8 @@ export default function Nosotros() {
         </div>
       </section>
 
-      {/* EQUIPO COMERCIAL */}
-      <EquipoCarousel equipoImg={equipoImg} sergioImg={sergioImg} nicolasImg={nicolasImg} />
+      {/* SOCIOS */}
+      <EquipoCarousel equipoImg={equipoImg} /* sergioImg={sergioImg} nicolasImg={nicolasImg} */ />
 
       {/* REDES + MAPA */}
       <section className="section nosotros-band">

@@ -352,8 +352,7 @@ export default function Home() {
           <span className="trust-logo">SSN · Autorizada</span>
           <span className="trust-logo">AACS</span>
           <span className="trust-logo">AAPAS</span>
-          <span className="trust-logo">SCVS</span>
-          <span className="trust-logo">Cámara Seguros</span>
+          <span className="trust-logo">APF-PASA</span>
         </div>
       </div>
 

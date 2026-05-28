@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+﻿import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
 import BrandStrip from '../components/BrandStrip'
@@ -15,7 +15,7 @@ export default function BajaPoliza() {
       <header
         className="page-hero page-hero--pas-wide"
         style={{
-          backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.88) 0%, rgba(27,79,174,0.7) 100%), url(${bannerBaja})`,
+          backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.45) 0%, rgba(27,79,174,0.30) 100%), url(${bannerBaja})`,
         }}
       >
         <div className="page-hero-inner page-hero-inner--pas-wide">
