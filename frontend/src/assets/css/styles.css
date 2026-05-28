@@ -236,7 +236,7 @@ h1, h2, h3, h4, h5 {
   color: var(--white);
   isolation: isolate;
   background-size: cover;
-  background-position: 65% center;
+  background-position: 65% 60%;
 }
 
 .hero-inner { max-width: var(--container); margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.15fr 1fr; gap: 60px; align-items: center; }
