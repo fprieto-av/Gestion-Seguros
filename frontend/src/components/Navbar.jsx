@@ -16,6 +16,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    setMenuOpen(false)
+    setCoberturasOpen(false)
+    setGestionOpen(false)
+  }, [pathname])
+
   const closeMenu = () => {
     setMenuOpen(false)
     setCoberturasOpen(false)
