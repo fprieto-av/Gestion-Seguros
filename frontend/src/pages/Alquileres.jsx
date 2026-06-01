@@ -109,7 +109,7 @@ export default function Alquileres() {
 
   return (
     <>
-      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.45) 0%, rgba(27,79,174,0.30) 100%), url(${alquileresBg})` }}>
+      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.58) 0%, rgba(27,79,174,0.42) 100%), url(${alquileresBg})` }}>
         <div className="page-hero-inner">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Alquileres</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-award" /></svg>Alquileres</span>
@@ -380,3 +380,4 @@ export default function Alquileres() {
     </>
   )
 }
+

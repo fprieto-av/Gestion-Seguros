@@ -976,6 +976,7 @@ footer { background: var(--darker); color: rgba(255,255,255,0.65); padding: 80px
   overflow: hidden;
 }
 .page-hero--instructivos { background-position: 90% center; }
+.page-hero--baja { background-position: 20% center; }
 .page-hero::before { content: ''; position: absolute; top: -30%; right: -10%; width: 50%; height: 160%; background: radial-gradient(ellipse, rgba(43,184,232,0.22), transparent 60%); }
 .page-hero::after  { content: ''; position: absolute; bottom: -50%; left: -10%; width: 40%; height: 100%; background: radial-gradient(ellipse, rgba(255,154,31,0.15), transparent 60%); }
 .page-hero-inner { max-width: var(--container); margin: 0 auto; width: 100%; position: relative; z-index: 1; }
@@ -1479,24 +1480,28 @@ footer { background: var(--darker); color: rgba(255,255,255,0.65); padding: 80px
     background-position: 65% center;
   }
   .page-hero--instructivos { background-position: 90% center; }
+  .page-hero--baja { background-position: 20% center; }
 }
 
 /* Page hero: desktop ancho — empieza a desplazar el foco hacia la derecha */
 @media (max-width: 1440px) {
   .page-hero { background-position: 55% center; }
   .page-hero--instructivos { background-position: 90% center; }
+  .page-hero--baja { background-position: 20% center; }
 }
 
 /* Page hero: desktop mediano */
 @media (max-width: 1280px) {
   .page-hero { background-position: 60% center; }
   .page-hero--instructivos { background-position: 90% center; }
+  .page-hero--baja { background-position: 20% center; }
 }
 
 /* Page hero: tablet-chica — punto intermedio para suavizar la transición */
 @media (max-width: 768px) {
   .page-hero { background-position: 72% center; }
   .page-hero--instructivos { background-position: 90% center; }
+  .page-hero--baja { background-position: 20% center; }
 }
 
 /* Topbar: entre tablet estrecha y móvil el layout en 2 filas alineado a la izquierda se ve mal */

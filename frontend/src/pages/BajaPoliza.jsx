@@ -4,7 +4,7 @@ import useReveal from '../hooks/useReveal'
 import BrandStrip from '../components/BrandStrip'
 import ContactCard from '../components/ContactCard'
 import '../assets/css/productores.css'
-import bannerBaja from '../assets/img/bajapoliza.png'
+import bannerBaja from '../assets/img/banners-web/bajapoliza.png'
 
 export default function BajaPoliza() {
   useEffect(() => { document.title = 'Baja de Póliza | Gestión Seguros' }, [])
@@ -13,9 +13,9 @@ export default function BajaPoliza() {
   return (
     <>
       <header
-        className="page-hero page-hero--pas-wide"
+        className="page-hero page-hero--pas-wide page-hero--baja"
         style={{
-          backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.45) 0%, rgba(27,79,174,0.30) 100%), url(${bannerBaja})`,
+          backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.58) 0%, rgba(27,79,174,0.42) 100%), url(${bannerBaja})`,
         }}
       >
         <div className="page-hero-inner page-hero-inner--pas-wide">
@@ -170,3 +170,4 @@ export default function BajaPoliza() {
     </>
   )
 }
+

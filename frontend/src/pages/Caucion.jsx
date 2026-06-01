@@ -14,7 +14,7 @@ export default function Caucion() {
 
   return (
     <>
-      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.45) 0%, rgba(27,79,174,0.30) 100%), url(${bannerCaucion})` }}>
+      <header className="page-hero" style={{ backgroundImage: `linear-gradient(135deg, rgba(14,23,48,0.58) 0%, rgba(27,79,174,0.42) 100%), url(${bannerCaucion})` }}>
         <div className="page-hero-inner">
           <nav className="breadcrumb"><Link to="/">Home</Link> / <span>Caución</span></nav>
           <span className="section-label dark reveal"><svg className="icon" style={{ width: '14px' }}><use href="#i-doc" /></svg>Seguros de Caución</span>
@@ -213,3 +213,4 @@ export default function Caucion() {
     </>
   )
 }
+
