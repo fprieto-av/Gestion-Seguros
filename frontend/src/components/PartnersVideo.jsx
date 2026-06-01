@@ -1,5 +1,6 @@
 import { useRef, useCallback, useEffect } from 'react'
-import evaluacionMp4 from '../assets/video/evaluacionA+.mp4'
+import evaluacionMp4 from '../assets/video/evaluacionA+-opt.mp4'
+import evaluacionWebm from '../assets/video/evaluacionA+-opt.webm'
 import OptimizedVideo from './OptimizedVideo'
 
 export default function PartnersVideo() {
@@ -27,6 +28,7 @@ export default function PartnersVideo() {
       <OptimizedVideo
         ref={videoRef}
         className="partners-video"
+        webm={evaluacionWebm}
         mp4={evaluacionMp4}
         autoPlay
         muted

@@ -33,7 +33,11 @@
       "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\GitHub\\\\Gestion-Seguros-Frontend\\\\frontend\\\\src\\\\assets\\\\img\\\\banners-web\" -File | ForEach-Object { $_.FullName })",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5199/)",
       "Bash(node -e \"require\\('playwright'\\)\")",
-      "Bash(python3 -c \"from PIL import Image; print\\('pillow ok'\\)\")"
+      "Bash(python3 -c \"from PIL import Image; print\\('pillow ok'\\)\")",
+      "PowerShell($f = \"C:\\\\Users\\\\USUARIO\\\\Documents\\\\GitHub\\\\Gestion-Seguros-Frontend\\\\frontend\\\\src\\\\assets\\\\video\\\\evaluacionA+.mp4\"; \"$\\([math]::Round\\(\\(Get-Item $f\\).Length/1MB, 2\\)\\) MB\")",
+      "PowerShell(ffprobe *)",
+      "PowerShell(winget list *)",
+      "PowerShell(winget install *)"
     ]
   }
 }
