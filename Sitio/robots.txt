@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /maqueta/
-Disallow: /contenido/
-
-Sitemap: https://www.gestionseguros.com.ar/sitemap.xml

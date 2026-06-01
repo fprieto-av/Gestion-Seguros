@@ -1,0 +1,74 @@
+.detail-index {
+  margin-bottom: 32px;
+  padding-top: 3px;
+}
+
+.detail-index-title {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  opacity: .5;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.detail-index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.detail-main .detail-index-list li {
+  padding: 0;
+  border-top: none;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  position: static;
+}
+
+.detail-main .detail-index-list li::before {
+  display: none;
+}
+
+.detail-index-list a {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(27, 79, 174, 0.18);
+  background: linear-gradient(90deg, var(--primary-soft) 0%, var(--primary-50) 100%);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  transition: background .15s, border-color .15s, color .15s, box-shadow .15s;
+  white-space: nowrap;
+}
+
+.detail-index-list a:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+
+/* Nota general al pie de una sección */
+.caucion-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 28px;
+  margin-bottom: 32px;
+  padding: 14px 18px;
+  background: linear-gradient(90deg, var(--primary-soft) 0%, rgba(27,79,174,0.06) 100%);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 8px 8px 0;
+  color: var(--ink);
+}
+.caucion-note svg { color: var(--primary); }
+.caucion-note p { margin: 0; font-size: 14px; line-height: 1.6; }
