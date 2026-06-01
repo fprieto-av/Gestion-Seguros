@@ -9,13 +9,6 @@ import nosotrosHero from '../assets/img/banners-web/nosotros.jpg'
 import institucionalVideo from '../assets/video/Institucional - GS.mp4'
 import linkedinImg from '../assets/img/linkedin-perfil-gestion.png'
 import equipoImg from '../assets/img/equipocomercial.webp'
-/* import sergioImg from '../assets/img/sergio-sabha.png'
-import nicolasImg from '../assets/img/nicolas-cuevas.png' */
-const PERSONAS = (imgs) => [
-  { img: imgs.sergioImg,  nombre: 'Sergio Sabha',           cargo: 'Socio' },
-  { img: imgs.nicolasImg, nombre: 'Nicolás Cuevas Zárate',  cargo: 'Socio' },
-]
-
 function EquipoPhoto({ src, alt, priority = false, className = '' }) {
   const [loaded, setLoaded] = useState(false)
 
@@ -35,22 +28,7 @@ function EquipoPhoto({ src, alt, priority = false, className = '' }) {
   )
 }
 
-function EquipoCarousel({ equipoImg, sergioImg, nicolasImg }) {
-  const slides = PERSONAS({ sergioImg, nicolasImg })
-  const [idx, setIdx] = useState(0)
-
-  useEffect(() => {
-    ;[sergioImg, nicolasImg].forEach((src) => {
-      const preload = new Image()
-      preload.src = src
-    })
-  }, [sergioImg, nicolasImg])
-
-  useEffect(() => {
-    const t = setInterval(() => setIdx(i => (i + 1) % slides.length), 3000)
-    return () => clearInterval(t)
-  }, [slides.length])
-
+function EquipoSection({ equipoImg }) {
   return (
     <section className="section nosotros-band">
       <div className="section-head reveal">
@@ -58,43 +36,13 @@ function EquipoCarousel({ equipoImg, sergioImg, nicolasImg }) {
         <h2>Nuestro <span className="gradient-text">equipo</span></h2>
         <p>Las personas detrás de cada póliza.</p>
       </div>
-
-      <div className="equipo-grid">
-
-        {/* Foto grupal */}
+      <div className="equipo-grid equipo-grid--single">
         <div>
           <div className="equipo-label-row">
             <span className="section-label" style={{ margin: 0 }}><svg className="icon" style={{ width: '13px' }}><use href="#i-users" /></svg>Equipo Comercial</span>
           </div>
           <EquipoPhoto src={equipoImg} alt="Equipo comercial de Gestión Seguros" />
         </div>
-
-        {/* Carrusel individual */}
-        <div>
-          <div className="equipo-label-row">
-            <span className="section-label" style={{ margin: 0 }}><svg className="icon" style={{ width: '13px' }}><use href="#i-award" /></svg>Socios</span>
-          </div>
-          <div className="equipo-img-wrap equipo-img-wrap--carousel">
-            {slides.map((slide, i) => (
-              <img
-                key={slide.nombre}
-                src={slide.img}
-                alt={slide.nombre}
-                className={`equipo-img equipo-img--slide${i === idx ? ' equipo-img--active' : ''}`}
-                decoding="async"
-                loading="eager"
-              />
-            ))}
-          </div>
-
-          {/* Dots indicadores */}
-          <div className="equipo-dots">
-            {slides.map((_, i) => (
-              <div key={i} className={`equipo-dot${i === idx ? ' equipo-dot--active' : ''}`} />
-            ))}
-          </div>
-        </div>
-
       </div>
     </section>
   )
@@ -215,8 +163,7 @@ export default function Nosotros() {
         </div>
       </section>
 
-      {/* SOCIOS */}
-      <EquipoCarousel equipoImg={equipoImg} /* sergioImg={sergioImg} nicolasImg={nicolasImg} */ />
+      <EquipoSection equipoImg={equipoImg} />
 
       {/* REDES + MAPA */}
       <section className="section nosotros-band">
