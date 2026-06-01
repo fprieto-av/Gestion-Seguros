@@ -818,20 +818,21 @@ section.section.reaseg {
 
 /* ===== Home: puente a Productores (no replica foto/titular de productores.html) ===== */
 .home-pas-teaser {
-  background: linear-gradient(135deg, #4a7fd4 0%, #1B4FAE 40%, #0a1845 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 40%, var(--secondary) 100%);
   color: var(--white);
   border-top: none;
   border-bottom: none;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 .home-pas-teaser::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(ellipse 60% 80% at 10% 30%, rgba(180, 210, 255, 0.22) 0%, transparent 70%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.08)' stroke-width='1' d='M30 2L30 58M2 30L58 30'/%3E%3C/svg%3E");
+  opacity: 0.6;
 }
 .home-pas-teaser-inner {
   max-width: var(--container);
