@@ -1,7 +1,5 @@
 import { useRef, useCallback, useEffect } from 'react'
-import partnersMp4 from '../assets/video/partners-opt.mp4'
-import partnersWebm from '../assets/video/partners-opt.webm'
-import bannerHome from '../assets/img/banner-home.jpg'
+import evaluacionMp4 from '../assets/video/evaluacionA+.mp4'
 import OptimizedVideo from './OptimizedVideo'
 
 export default function PartnersVideo() {
@@ -29,13 +27,11 @@ export default function PartnersVideo() {
       <OptimizedVideo
         ref={videoRef}
         className="partners-video"
-        webm={partnersWebm}
-        mp4={partnersMp4}
+        mp4={evaluacionMp4}
         autoPlay
         muted
         loop
         playsInline
-        poster={bannerHome}
         lazy
         preload="none"
         onLoadedMetadata={(e) => syncAspectRatio(e.currentTarget)}

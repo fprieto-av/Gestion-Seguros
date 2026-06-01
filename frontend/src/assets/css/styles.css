@@ -607,23 +607,14 @@ section.partners {
   max-width: none;
   margin: 0;
   aspect-ratio: var(--partners-ar, 16 / 9);
-  max-height: min(72vh, 720px);
   height: auto;
   border-radius: 0;
-  overflow: hidden;
+  overflow: visible;
   border: none;
-  background: #e8edf3;
+  background: var(--white);
   position: relative;
 }
-.partners-shell::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(14, 23, 48, 0.12) 0%, transparent 28%, transparent 72%, rgba(14, 23, 48, 0.06) 100%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='1' d='M30 2L30 58M2 30L58 30'/%3E%3C/svg%3E");
-}
+.partners-shell::after { display: none; }
 .partners-head .section-label {
   margin-left: auto;
   margin-right: auto;
@@ -634,30 +625,24 @@ section.partners {
 }
 .partners-video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
+  height: auto;
+  object-fit: contain;
   display: block;
 }
 
 /* ===== Reaseguradores — panel (Home) ===== */
 section.section.reaseg {
-  padding-top: clamp(36px, 4.5vw, 56px);
-  padding-bottom: clamp(36px, 4.5vw, 56px);
+  padding: 0;
   background: var(--white);
-}
-.reaseg .section-head {
-  margin-bottom: clamp(24px, 3vw, 40px);
+  overflow: hidden;
 }
 .reaseg-panel {
-  max-width: min(760px, 100%);
-  margin: 0 auto;
-  padding: 0 var(--pad-x);
-  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 .reaseg-figure {
-  margin: 0 auto;
-  max-width: 100%;
+  margin: 0;
   line-height: 0;
 }
 .reaseg-figure img {
@@ -670,28 +655,28 @@ section.section.reaseg {
 }
 
 /* ===== Simulador ===== */
-.simulator { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 40%, var(--secondary) 100%); color: var(--white); position: relative; overflow: hidden; }
+.simulator { background: var(--white); color: var(--dark); position: relative; overflow: hidden; }
 .simulator.section {
   padding-top: clamp(34px, 5vw, 56px);
   padding-bottom: clamp(34px, 5vw, 56px);
 }
-.simulator::before { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.08)' stroke-width='1' d='M30 2L30 58M2 30L58 30'/%3E%3C/svg%3E"); opacity: 0.6; }
+.simulator::before { content: none; }
 .simulator::after { content: none; }
 .sim-grid { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 70px; align-items: center; position: relative; z-index: 1; }
 .sim-left h2 {
-  color: var(--white);
+  color: var(--dark);
   margin-bottom: 20px;
   font-size: clamp(38px, 5.2vw, 62px);
   line-height: 1.06;
   letter-spacing: -0.03em;
 }
-.sim-left p { font-size: 17px; color: rgba(255,255,255,0.75); line-height: 1.65; margin-bottom: 30px; }
+.sim-left p { font-size: 17px; color: var(--ink-light); line-height: 1.65; margin-bottom: 30px; }
 .sim-perks { display: flex; flex-direction: column; gap: 14px; }
-.sim-perk { display: flex; align-items: center; gap: 14px; font-size: 14px; color: rgba(255,255,255,0.9); }
-.sim-perk .ic { width: 36px; height: 36px; border-radius: var(--r-sm); background: rgba(43,184,232,0.15); color: var(--secondary); display: grid; place-items: center; flex-shrink: 0; }
+.sim-perk { display: flex; align-items: center; gap: 14px; font-size: 14px; color: var(--ink); }
+.sim-perk .ic { width: 36px; height: 36px; border-radius: var(--r-sm); background: rgba(43,184,232,0.12); color: var(--secondary); display: grid; place-items: center; flex-shrink: 0; }
 .sim-card {
   background: var(--white); border-radius: var(--r-xl); padding: 40px;
-  color: var(--dark); box-shadow: var(--shadow-xl);
+  color: var(--dark); box-shadow: var(--shadow-xl); border: 1px solid var(--line);
 }
 .sim-card h3 { font-size: 22px; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
 .sim-card h3 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--success); animation: pulse 2s infinite; }
@@ -833,10 +818,10 @@ section.section.reaseg {
 
 /* ===== Home: puente a Productores (no replica foto/titular de productores.html) ===== */
 .home-pas-teaser {
-  background: linear-gradient(135deg, var(--dark) 0%, #1A2544 50%, var(--primary-dark) 100%);
+  background: linear-gradient(135deg, #4a7fd4 0%, #1B4FAE 40%, #0a1845 100%);
   color: var(--white);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: none;
+  border-bottom: none;
   position: relative;
   overflow: hidden;
 }
@@ -846,8 +831,7 @@ section.section.reaseg {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle, rgba(43,184,232,0.18), transparent 65%),
-    radial-gradient(circle, rgba(255,154,31,0.12), transparent 65%);
+    radial-gradient(ellipse 60% 80% at 10% 30%, rgba(180, 210, 255, 0.22) 0%, transparent 70%);
 }
 .home-pas-teaser-inner {
   max-width: var(--container);

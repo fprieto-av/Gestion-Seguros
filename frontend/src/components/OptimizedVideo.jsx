@@ -73,8 +73,8 @@ const OptimizedVideo = forwardRef(function OptimizedVideo({
     >
       {active && !reduceMotion && (
         <>
-          <source src={webm} type="video/webm" />
-          <source src={mp4} type="video/mp4" />
+          {webm && <source src={webm} type="video/webm" />}
+          {mp4 && <source src={mp4} type="video/mp4" />}
         </>
       )}
     </video>

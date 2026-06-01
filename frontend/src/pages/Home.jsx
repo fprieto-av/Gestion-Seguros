@@ -416,10 +416,7 @@ export default function Home() {
       {/* PARTNERS — video */}
       <section className="section partners" id="reaseguradores">
         <div className="partners-inner">
-          <div className="section-head reveal partners-head">
-            <span className="section-label"><svg className="icon" style={{ width: '14px' }}><use href="#i-globe" /></svg>Partners</span>
-          </div>
-          <PartnersVideo />
+<PartnersVideo />
         </div>
       </section>
 
