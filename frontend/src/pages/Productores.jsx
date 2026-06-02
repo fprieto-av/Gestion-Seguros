@@ -49,13 +49,32 @@ export default function Productores() {
     return errs
   }
 
-  const handleSubmit = (ev) => {
+  const [loading, setLoading] = useState(false)
+  const [sent, setSent] = useState(false)
+  const [error, setError] = useState(null)
+
+  const handleSubmit = async (ev) => {
     ev.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setErrors({})
-    // Envío nativo: respeta el action/encType para subir archivos a formsubmit.co
-    formRef.current.submit()
+    setLoading(true)
+    setError(null)
+    try {
+      const fd = new FormData(formRef.current)
+      fd.set('terms', 'true')
+      const res = await fetch('/api/productores', {
+        method: 'POST',
+        body: fd,
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Error al enviar')
+      setSent(true)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -129,9 +148,6 @@ export default function Productores() {
             ref={formRef}
             className="contact-form"
             name="form-pas"
-            action="https://formsubmit.co/comercial@gestionseguros.com.ar"
-            method="POST"
-            encType="multipart/form-data"
             onSubmit={handleSubmit}
             noValidate
           >
@@ -228,10 +244,6 @@ export default function Productores() {
 
             </div>
 
-            <input type="hidden" name="_subject" value="Nueva solicitud PAS desde la web" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next" value="https://www.gestionseguros.com.ar/productores.html?pas=enviado" />
 
             <div className={`form-check${errors.terms ? ' form-field--error' : ''}`}>
               <input type="checkbox" id="terms-pas" checked={form.terms} onChange={e => set('terms', e.target.checked)} />
@@ -239,9 +251,19 @@ export default function Productores() {
             </div>
             {errors.terms && <span className="form-error">{errors.terms}</span>}
 
-            <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-              Enviar solicitud <svg className="icon"><use href="#i-arrow" /></svg>
+            <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} disabled={loading}>
+              {loading ? 'Enviando...' : <> Enviar solicitud <svg className="icon"><use href="#i-arrow" /></svg></>}
             </button>
+            {sent && (
+              <p style={{ marginTop: '14px', padding: '12px', background: 'rgba(0,192,127,0.12)', color: 'var(--success)', borderRadius: '8px', fontSize: '14px', fontWeight: '600', textAlign: 'center' }}>
+                ¡Solicitud enviada! Te contactamos a la brevedad.
+              </p>
+            )}
+            {error && (
+              <p style={{ marginTop: '14px', padding: '12px', background: 'rgba(220,53,69,0.1)', color: 'var(--error)', borderRadius: '8px', fontSize: '14px', fontWeight: '600', textAlign: 'center' }}>
+                {error}
+              </p>
+            )}
         </form>
       </section>
 

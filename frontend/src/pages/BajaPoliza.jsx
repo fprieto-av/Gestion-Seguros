@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useReveal from '../hooks/useReveal'
 import BrandStrip from '../components/BrandStrip'
@@ -6,9 +6,65 @@ import ContactCard from '../components/ContactCard'
 import '../assets/css/productores.css'
 import bannerBaja from '../assets/img/bajapoliza.png'
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const TEL_RE   = /^[\d\s()+-]{6,20}$/
+
 export default function BajaPoliza() {
   useEffect(() => { document.title = 'Baja de Póliza | Gestión Seguros' }, [])
   useReveal()
+
+  const [form, setForm] = useState({
+    nombre_apellido: '', dni_cuit: '', email: '', telefono: '',
+    tipo_seguro: '', numero_poliza: '', fecha_contratacion: '',
+    motivo: '', terms: false,
+  })
+  const [errors, setErrors]   = useState({})
+  const [loading, setLoading] = useState(false)
+  const [sent, setSent]       = useState(false)
+  const [error, setError]     = useState(null)
+
+  const set = (k, v) => {
+    setForm(f => ({ ...f, [k]: v }))
+    if (errors[k]) setErrors(e => { const n = { ...e }; delete n[k]; return n })
+  }
+
+  const validate = () => {
+    const errs = {}
+    if (!form.nombre_apellido.trim())    errs.nombre_apellido    = 'El nombre es obligatorio.'
+    if (!form.dni_cuit.trim())           errs.dni_cuit           = 'El DNI/CUIT es obligatorio.'
+    if (!form.email.trim())              errs.email              = 'El email es obligatorio.'
+    else if (!EMAIL_RE.test(form.email)) errs.email              = 'Ingresá un email válido.'
+    if (!form.telefono.trim())           errs.telefono           = 'El teléfono es obligatorio.'
+    else if (!TEL_RE.test(form.telefono)) errs.telefono          = 'Teléfono inválido.'
+    if (!form.tipo_seguro)               errs.tipo_seguro        = 'Seleccioná un tipo de seguro.'
+    if (!form.numero_poliza.trim())      errs.numero_poliza      = 'El número de póliza es obligatorio.'
+    if (!form.fecha_contratacion)        errs.fecha_contratacion = 'La fecha es obligatoria.'
+    if (!form.terms)                     errs.terms              = 'Debés aceptar la declaración.'
+    return errs
+  }
+
+  const handleSubmit = async (ev) => {
+    ev.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length) { setErrors(errs); return }
+    setErrors({})
+    setLoading(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/baja-poliza', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, terms: true }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Error al enviar')
+      setSent(true)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <>
@@ -92,40 +148,39 @@ export default function BajaPoliza() {
           <form
             className="contact-form"
             name="baja-poliza"
-            action="https://formsubmit.co/comercial@gestionseguros.com.ar"
-            method="POST"
-            encType="multipart/form-data"
+            onSubmit={handleSubmit}
+            noValidate
           >
-            <input type="hidden" name="_subject" value="Solicitud de baja de póliza" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
-
             <h4 style={{ margin: '16px 0 12px', color: 'var(--primary)' }}>Parte 1 · Datos personales</h4>
             <div className="form-grid form-grid--4col">
-              <div className="form-field">
+              <div className={`form-field${errors.nombre_apellido ? ' form-field--error' : ''}`}>
                 <label>Nombre y Apellido <span className="req">*</span></label>
-                <input type="text" name="nombre_apellido" required placeholder="Juan García" />
+                <input type="text" name="nombre_apellido" placeholder="Juan García" value={form.nombre_apellido} onChange={e => set('nombre_apellido', e.target.value)} />
+                {errors.nombre_apellido && <span className="form-error">{errors.nombre_apellido}</span>}
               </div>
-              <div className="form-field">
+              <div className={`form-field${errors.dni_cuit ? ' form-field--error' : ''}`}>
                 <label>DNI / CUIT <span className="req">*</span></label>
-                <input type="text" name="dni_cuit" required placeholder="Sin puntos" />
+                <input type="text" name="dni_cuit" placeholder="Sin puntos" value={form.dni_cuit} onChange={e => set('dni_cuit', e.target.value)} />
+                {errors.dni_cuit && <span className="form-error">{errors.dni_cuit}</span>}
               </div>
-              <div className="form-field">
+              <div className={`form-field${errors.email ? ' form-field--error' : ''}`}>
                 <label>Email <span className="req">*</span></label>
-                <input type="email" name="email" required placeholder="tu@email.com" />
+                <input type="email" name="email" placeholder="tu@email.com" value={form.email} onChange={e => set('email', e.target.value)} />
+                {errors.email && <span className="form-error">{errors.email}</span>}
               </div>
-              <div className="form-field">
+              <div className={`form-field${errors.telefono ? ' form-field--error' : ''}`}>
                 <label>Teléfono <span className="req">*</span></label>
-                <input type="tel" name="telefono" required placeholder="11 1234-5678" />
+                <input type="tel" name="telefono" placeholder="11 1234-5678" value={form.telefono} onChange={e => set('telefono', e.target.value)} />
+                {errors.telefono && <span className="form-error">{errors.telefono}</span>}
               </div>
             </div>
 
             <h4 style={{ margin: '20px 0 12px', color: 'var(--primary)' }}>Parte 2 · Datos de la póliza</h4>
             <div className="form-grid form-grid--3col">
-              <div className="form-field">
+              <div className={`form-field${errors.tipo_seguro ? ' form-field--error' : ''}`}>
                 <label>Tipo de seguro <span className="req">*</span></label>
-                <select name="tipo_seguro" required defaultValue="">
-                  <option value="" disabled>Seleccionar...</option>
+                <select name="tipo_seguro" value={form.tipo_seguro} onChange={e => set('tipo_seguro', e.target.value)}>
+                  <option value="">Seleccionar...</option>
                   <option value="Caución">Caución</option>
                   <option value="Garantía de Alquiler">Garantía de Alquiler</option>
                   <option value="Accidentes Personales">Accidentes Personales</option>
@@ -134,30 +189,44 @@ export default function BajaPoliza() {
                   <option value="Responsabilidad Civil">Responsabilidad Civil</option>
                   <option value="Otro">Otro</option>
                 </select>
+                {errors.tipo_seguro && <span className="form-error">{errors.tipo_seguro}</span>}
               </div>
-              <div className="form-field">
+              <div className={`form-field${errors.numero_poliza ? ' form-field--error' : ''}`}>
                 <label>Número de póliza <span className="req">*</span></label>
-                <input type="text" name="numero_poliza" required placeholder="Ej: 00012345" />
+                <input type="text" name="numero_poliza" placeholder="Ej: 00012345" value={form.numero_poliza} onChange={e => set('numero_poliza', e.target.value)} />
+                {errors.numero_poliza && <span className="form-error">{errors.numero_poliza}</span>}
               </div>
-              <div className="form-field">
+              <div className={`form-field${errors.fecha_contratacion ? ' form-field--error' : ''}`}>
                 <label>Fecha de contratación <span className="req">*</span></label>
-                <input type="date" name="fecha_contratacion" required />
+                <input type="date" name="fecha_contratacion" value={form.fecha_contratacion} onChange={e => set('fecha_contratacion', e.target.value)} />
+                {errors.fecha_contratacion && <span className="form-error">{errors.fecha_contratacion}</span>}
               </div>
               <div className="form-field full">
                 <label>Motivo de la baja <span style={{ color: 'var(--gray)', fontWeight: 400 }}>(opcional)</span></label>
-                <textarea name="motivo" rows="3" placeholder="Podés contarnos el motivo de tu solicitud" />
+                <textarea name="motivo" rows="3" placeholder="Podés contarnos el motivo de tu solicitud" value={form.motivo} onChange={e => set('motivo', e.target.value)} />
               </div>
             </div>
 
-            <div className="form-check">
-              <input type="checkbox" id="terms-baja" required />
+            <div className={`form-check${errors.terms ? ' form-field--error' : ''}`}>
+              <input type="checkbox" id="terms-baja" checked={form.terms} onChange={e => set('terms', e.target.checked)} />
               <label htmlFor="terms-baja">
                 Declaro que los datos ingresados son correctos y solicito la baja de la póliza indicada, en ejercicio de los derechos que me confiere la Ley N° 24.240.
               </label>
             </div>
-            <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-              Enviar solicitud de baja <svg className="icon"><use href="#i-arrow" /></svg>
+            {errors.terms && <span className="form-error">{errors.terms}</span>}
+            <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} disabled={loading}>
+              {loading ? 'Enviando...' : <> Enviar solicitud de baja <svg className="icon"><use href="#i-arrow" /></svg></>}
             </button>
+            {sent && (
+              <p style={{ marginTop: '14px', padding: '12px', background: 'rgba(0,192,127,0.12)', color: 'var(--success)', borderRadius: '8px', fontSize: '14px', fontWeight: '600', textAlign: 'center' }}>
+                ¡Solicitud enviada! Nos contactamos en las próximas 72hs.
+              </p>
+            )}
+            {error && (
+              <p style={{ marginTop: '14px', padding: '12px', background: 'rgba(220,53,69,0.1)', color: 'var(--error)', borderRadius: '8px', fontSize: '14px', fontWeight: '600', textAlign: 'center' }}>
+                {error}
+              </p>
+            )}
           </form>
         </div>
       </section>

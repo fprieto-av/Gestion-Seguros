@@ -4,14 +4,6 @@ import useReveal from '../hooks/useReveal'
 import BrandStrip from '../components/BrandStrip'
 import contactoBg from '../assets/img/contacto.png'
 
-const DESTINOS = {
-  caucion: 'caucion@gestionseguros.com.ar',
-  personas: 'personas@gestionseguros.com.ar',
-  rc: 'rc@gestionseguros.com.ar',
-  pas: 'comercial@gestionseguros.com.ar',
-}
-
-// Regex reutilizables — fácil de ajustar cuando haya backend
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const TEL_RE = /^[\d\s()+-]{6,20}$/
 
@@ -44,6 +36,8 @@ export default function Contacto() {
   })
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   // Actualiza el campo y borra su error en tiempo real
   const set = (k, v) => {
@@ -62,19 +56,35 @@ export default function Contacto() {
     return errs
   }
 
-  const handleSubmit = (ev) => {
+  const handleSubmit = async (ev) => {
     ev.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setErrors({})
-    const destino = DESTINOS[form.producto] || 'info@gestionseguros.com.ar'
-    const subject = encodeURIComponent(`Consulta ${form.producto || 'web'} · ${form.nombre}`)
-    const body = encodeURIComponent(
-      `Nombre: ${form.nombre}\nEmail: ${form.email}\nTeléfono: ${form.telefono || '-'}\nProducto: ${form.producto || '-'}\n\nMensaje:\n${form.mensaje || '-'}`
-    )
-    window.location.href = `mailto:${destino}?subject=${subject}&body=${body}`
-    setSent(true)
-    setTimeout(() => setSent(false), 6000)
+    setLoading(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/contacto', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nombre:   form.nombre,
+          email:    form.email,
+          telefono: form.telefono,
+          producto: form.producto,
+          mensaje:  form.mensaje,
+          terms:    true,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Error al enviar')
+      setSent(true)
+      setTimeout(() => setSent(false), 6000)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -191,12 +201,17 @@ export default function Contacto() {
             </div>
             {errors.terms && <span className="form-error">{errors.terms}</span>}
 
-            <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-              Enviar consulta <svg className="icon"><use href="#i-arrow" /></svg>
+            <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} disabled={loading}>
+              {loading ? 'Enviando...' : <> Enviar consulta <svg className="icon"><use href="#i-arrow" /></svg></>}
             </button>
             {sent && (
               <p style={{ marginTop: '14px', padding: '12px', background: 'rgba(0,192,127,0.12)', color: 'var(--success)', borderRadius: '8px', fontSize: '14px', fontWeight: '600', textAlign: 'center' }}>
                 ¡Consulta enviada! Te contactamos en la brevedad.
+              </p>
+            )}
+            {error && (
+              <p style={{ marginTop: '14px', padding: '12px', background: 'rgba(220,53,69,0.1)', color: 'var(--error)', borderRadius: '8px', fontSize: '14px', fontWeight: '600', textAlign: 'center' }}>
+                {error}
               </p>
             )}
           </form>
